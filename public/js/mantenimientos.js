@@ -1,0 +1,123 @@
+$(document).ready(function(){
+    $('#tablamantenimientos').load('mantenimientos/tablamantenimientos.php');
+    $('#tablaequipos').load('mantenimientos/tablaequipos.php');
+});
+
+function detalleequipo(idequipo){
+    $.ajax({
+        type: "POST",
+        data: "idequipo=" + idequipo,
+        url: "../controllers/mantenimientos/detalle.php",
+        success: function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            //console.log(respuesta)
+            $('#idequipo').val(respuesta['idequipo']);
+            $('#idpersonau').val(respuesta['idpersona']);
+            $('#idtipequu').val(respuesta['idtipequ']);
+            $('#idsedeu').val(respuesta['idsede']);
+            $('#idareau').val(respuesta['idarea']);
+            $('#areau').val(respuesta['area']);
+            $('#marcau').val(respuesta['marca']);
+            $('#modelou').val(respuesta['modelo']);
+            $('#tipramu').val(respuesta['tipram']);
+            $('#ramu').val(respuesta['ram']);
+            $('#procesau').val(respuesta['procesa']);
+            $('#tipdisu').val(respuesta['tipdis']);
+            $('#capdisu').val(respuesta['capdis']);
+            $('#graficu').val(respuesta['grafic']);
+            $('#fechau').val(respuesta['fecha']);
+        }
+    });
+}
+
+function crearequipo(){
+    $.ajax({
+        type: "POST",
+        data: $('#frmcrearequipo').serialize(),
+        url: "../controllers/mantenimientos/agregar.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#tablaequipos').load('mantenimientos/tablaequipos.php');
+                $('#frmcrearequipo')[0].reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Equipo Aggregado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
+function agregaractivo(){
+    $.ajax({
+        type: "POST",
+        data: $('#frmcodactivo').serialize(),
+        url: "../controllers/mantenimientos/activo.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#tablaequipos').load('mantenimientos/tablaequipos.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Codigo Agregado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
+function editarequipo(){
+    $.ajax({
+        type: "POST",
+        data: $('#frmeditarequipo').serialize(),
+        url: "../controllers/mantenimientos/editar.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta)
+                $('#tablaequipos').load('mantenimientos/tablaequipos.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Equipo Actualizado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al Editar!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        console.log(respuesta);
+        }
+    });
+    return false;
+}
