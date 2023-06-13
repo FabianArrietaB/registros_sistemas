@@ -3,6 +3,7 @@ session_start();
 if (!empty($_SESSION["user_estado"])) {
   header("location:../index.php");
 }
+setlocale(LC_ALL,"es_ES");
 ?>
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->

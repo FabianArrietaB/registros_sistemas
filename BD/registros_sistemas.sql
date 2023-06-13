@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-06-2023 a las 03:20:02
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 14-06-2023 a las 01:02:22
+-- Versión del servidor: 10.4.27-MariaDB
+-- Versión de PHP: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -84,8 +84,10 @@ CREATE TABLE `equipos` (
   `equ_tipdis` varchar(45) NOT NULL,
   `equ_capdis` varchar(45) NOT NULL,
   `equ_grafica` varchar(45) NOT NULL,
-  `equ_codact` varchar(45) NOT NULL,
   `equ_serial` varchar(45) NOT NULL,
+  `equ_codact` varchar(45) NOT NULL,
+  `equ_nomequ` varchar(45) NOT NULL,
+  `equ_mac` varchar(45) NOT NULL,
   `equ_fecope` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -93,9 +95,9 @@ CREATE TABLE `equipos` (
 -- Volcado de datos para la tabla `equipos`
 --
 
-INSERT INTO `equipos` (`id_equipo`, `id_operador`, `id_sede`, `id_area`, `id_tipequ`, `equ_marca`, `equ_modelo`, `equ_tipram`, `equ_ram`, `equ_proce`, `equ_tipdis`, `equ_capdis`, `equ_grafica`, `equ_codact`, `equ_serial`, `equ_fecope`) VALUES
-(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', '000384', 'PF3LY21H', '2023-06-10'),
-(2, 1, 1, 1, 2, 'power group', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'no tiene', '000358', '11GEHMP0218C39', '2020-01-01');
+INSERT INTO `equipos` (`id_equipo`, `id_operador`, `id_sede`, `id_area`, `id_tipequ`, `equ_marca`, `equ_modelo`, `equ_tipram`, `equ_ram`, `equ_proce`, `equ_tipdis`, `equ_capdis`, `equ_grafica`, `equ_serial`, `equ_codact`, `equ_nomequ`, `equ_mac`, `equ_fecope`) VALUES
+(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000384', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
+(2, 1, 1, 1, 2, 'power group', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'NO TIENE', '11GEHMP0218C39', '000358', '', '', '2020-01-01');
 
 -- --------------------------------------------------------
 
@@ -279,11 +281,18 @@ CREATE TABLE `tareas` (
   `id_nivel` int(11) NOT NULL,
   `id_asignado` int(11) DEFAULT NULL,
   `tar_detalle` varchar(45) NOT NULL,
-  `tar_fecope` date NOT NULL,
   `tar_fecupt` date NOT NULL,
   `tar_fecrea` date NOT NULL,
-  `tar_estado` varchar(45) DEFAULT NULL
+  `tar_fecope` date NOT NULL,
+  `tar_estado` varchar(45) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tareas`
+--
+
+INSERT INTO `tareas` (`id_tarea`, `id_usuario`, `id_nivel`, `id_asignado`, `tar_detalle`, `tar_fecupt`, `tar_fecrea`, `tar_fecope`, `tar_estado`) VALUES
+(1, 3, 1, 1, 'REVISION SOFTWARE ', '0000-00-00', '0000-00-00', '2023-06-13', '0');
 
 -- --------------------------------------------------------
 
@@ -311,8 +320,8 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id_usuario`, `id_operador`, `id_persona`, `id_rol`, `id_area`, `user_nombre`, `user_password`, `user_estado`, `user_fecope`, `user_fecupt`) VALUES
 (1, 1, 10, 4, 10, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-10 12:23:45'),
 (2, 1, 10, 4, 10, 'FARRIETA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-10 20:04:50'),
-(3, 1, 11, 3, 10, 'CBAUTISTA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-05-24 22:41:39'),
-(4, 1, 75, 2, 4, 'YVENGAL', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-05-24 22:41:39');
+(3, 1, 11, 3, 9, 'CBAUTISTA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56'),
+(4, 1, 75, 2, 4, 'YVENGAL', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56');
 
 --
 -- Índices para tablas volcadas
@@ -422,7 +431,7 @@ ALTER TABLE `sedes`
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

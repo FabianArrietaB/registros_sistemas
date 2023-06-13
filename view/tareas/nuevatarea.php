@@ -41,6 +41,12 @@
                                     <textarea type="text" id="detalle" name="detalle" class="form-control input-sm" rows="3"></textarea>
                                 </div>
                             </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha Registro</span>
+                                    <input type="date" id="fecini" name="fecini" class="form-control input-sm">
+                                </div>
+                            </div>
                         </div>
                     </fieldset>
                     <div class="card-footer text-center">

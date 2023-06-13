@@ -58,7 +58,7 @@ function crearequipo(){
                 $('#frmcrearequipo')[0].reset();
                 Swal.fire({
                     icon: 'success',
-                    title: 'Equipo Aggregado Exitosamente',
+                    title: 'Equipo Agregado Exitosamente',
                     showConfirmButton: false,
                     timer: 1500
                 });

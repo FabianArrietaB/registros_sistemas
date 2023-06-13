@@ -15,9 +15,7 @@
         t.tar_fecrea  AS fecrea,
         t.tar_estado  AS estado
     FROM tareas AS t
-    WHERE t.id_usuario = '$idusuario'
-    AND t.id_asignado = 4
-    AND t.tar_estado = 0 ";
+    WHERE t.tar_estado = 0 ";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -41,14 +39,37 @@
         ?>
             <tr>
                 <td><?php echo $equipos['detalle'];?></td>
-                <td><?php echo $equipos['idnivel']; ?></td>
-                <td><?php echo $equipos['idasignado']; ?></td>
+                <td>
+                <?php if ($equipos['idnivel'] == 1) { ?>
+                    <h5><span class="badge text-bg-success">BASICO</span></h5>
+                <?php } else if ($equipos['idnivel'] == 2) { ?>
+                    <h5><span class="badge text-bg-warning">MEDIO</span></h5>
+                <?php } else if ($equipos['idnivel'] == 3) { ?>
+                    <h5><span class="badge text-bg-danger">URGENTE</span></h5>
+                <?php } ?>
+                </td>
+                <td>
+                <?php if ($equipos['idasignado'] == 1) { ?>
+                    <h5><span >Fabian</span></h5>
+                <?php } else if ($equipos['idasignado'] == 2) { ?>
+                    <h5><span >Jesus</span></h5>
+                <?php } else if ($equipos['idasignado'] == 3) { ?>
+                    <h5><span >Todos</span></h5>
+                <?php } ?>
+                </td>
                 <td><?php echo $equipos['fecope'];  ?></td>
                 <td><?php echo $equipos['fecrea'];  ?></td>
-                <td><?php echo $equipos['estado'];  ?></td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarequipo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#codactivo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
+                <?php if ($equipos['estado'] == 0) { ?>
+                    <h5><span class="badge text-bg-danger">ABIERTO</span></h5>
+                <?php } else if ($equipos['estado'] == 1) { ?>
+                    <h5><span class="badge text-bg-warning">OPERACION</span></h5>
+                <?php } else if ($equipos['estado'] == 2) { ?>
+                    <h5><span class="badge text-bg-success">FINALIZADA</span></h5>
+                <?php } ?></td>
+                <td>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarequipo" onclick="detalleequipo('<?php echo $equipos['idtarea']?>')"><i class="fa-solid fa-check-to-slot fa-2x"></i></button> | 
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#codactivo" onclick="detalleequipo('<?php echo $equipos['idtarea']?>')"><i class="fa-solid fa-check-to-slot fa-2x"></i></button>
                 </td>
             </tr>
         <?php } ?>
