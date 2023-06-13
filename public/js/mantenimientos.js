@@ -10,7 +10,7 @@ function detalleequipo(idequipo){
         url: "../controllers/mantenimientos/detalle.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            //console.log(respuesta)
+            console.log(respuesta)
             $('#idequipo').val(respuesta['idequipo']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
@@ -24,7 +24,23 @@ function detalleequipo(idequipo){
             $('#capdisu').val(respuesta['capdis']);
             $('#graficu').val(respuesta['grafic']);
             $('#serialu').val(respuesta['serial']);
+            $('#nomequu').val(respuesta['nomequ']);
+            $('#macu').val(respuesta['mac']);
             $('#fechau').val(respuesta['fecha']);
+        }
+    });
+}
+
+function detalleactivo(idequipo){
+    $.ajax({
+        type: "POST",
+        data: "idequipo=" + idequipo,
+        url: "../controllers/mantenimientos/detalle.php",
+        success: function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            console.log(respuesta)
+            $('#idequipo').val(respuesta['idequipo']);
+            $('#codactu').val(respuesta['codact']);
         }
     });
 }

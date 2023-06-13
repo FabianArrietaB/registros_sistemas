@@ -106,7 +106,7 @@
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Grafica</span>
-                                    <input type="text" id="grafica" name="grafica" class="form-control input-sm">
+                                    <input type="text" id="grafic" name="grafic" class="form-control input-sm">
                                 </div>
                             </div>
                             <div class="col-6">
@@ -119,6 +119,18 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
                                     <input type="text" id="serial" name="serial" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Nombre Equipo</span>
+                                    <input type="text" id="nomequ" name="nomequ" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">MAC</span>
+                                    <input type="text" id="mac" name="mac" class="form-control input-sm">
                                 </div>
                             </div>
                         </div>

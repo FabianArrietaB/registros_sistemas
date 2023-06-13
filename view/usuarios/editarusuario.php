@@ -13,7 +13,6 @@
                     <legend class="group-border">Informacion Usuario</legend>
                     <div class="row">
                         <input hidden type="text" id="idusuario" name="idusuario" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <input hidden type="text" id="idpersona" name="idpersona" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="col-12">
                             <div class="input-group mb-3">
                                 <input disabled type="text" id="nombreu" name="nombreu" class="form-control input-sm">

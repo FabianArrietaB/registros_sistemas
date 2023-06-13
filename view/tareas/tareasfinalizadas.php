@@ -5,25 +5,19 @@
     $conexion = $con->conectar();
     $idusuario = $_SESSION['usuario']['id'];
     $sql = "SELECT
-        e.id_equipo   AS idequipo,
-        e.id_area     AS idarea,
-        e.id_sede     AS idsede,
-        s.sed_nombre  AS sede,
-        a.are_nombre  AS area,
-        e.equ_marca   AS marca,
-        e.equ_modelo  AS modelo,
-        e.equ_tipram  AS tipram,
-        e.equ_ram     AS ram,
-        e.equ_proce   AS procesa,
-        e.equ_tipdis  AS tipdis,
-        e.equ_capdis  AS capdis,
-        e.equ_fecope  AS fecha,
-        e.equ_codact  AS codigo,
-        e.equ_serial  AS serial,
-        e.equ_grafica AS grafic
-    FROM equipos AS e
-    INNER JOIN areas AS a ON a.id_area = e.id_area
-    INNER JOIN sedes AS s ON s.id_sede = e.id_sede";
+        t.id_tarea    AS idtarea,
+        t.id_usuario  AS idusuario,
+        t.id_nivel    AS idnivel,
+        t.id_asignado AS idasignado,
+        t.tar_detalle AS detalle,
+        t.tar_fecope  AS fecope,
+        t.tar_fecupt  AS fecupt,
+        t.tar_fecrea  AS fecrea,
+        t.tar_estado  AS estado
+    FROM tareas AS t
+    WHERE t.id_usuario = '$idusuario'
+    AND t.id_asignado = 4
+    AND t.tar_estado = 1 ";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -31,17 +25,13 @@
     <table class="table table-light text-center">
         <thead>
             <tr>
-                <th scope="col" >AREA</th>
-                <th scope="col" >MARCA</th>
-                <th scope="col" >MODELO</th>
-                <th scope="col" >SERIAL</th>
-                <th scope="col" >CODIGO ACTIVO</th>
-                <th scope="col" >SEDE</th>
-                <th scope="col" >FECHA REGISTRO</th>
+                <th scope="col" >DETALLE</th>
+                <th scope="col" >NIVEL</th>
+                <th scope="col" >ASIGNADO</th>
+                <th scope="col" >FECHA INI</th>
+                <th scope="col" >FECHA FIN</th>
+                <th scope="col" >ESTADO</th>
                 <th>
-                    <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearequipo"><i class="fa-solid fa-square-plus fa-lg"></i></button>
-                    </div>
                 </th>
             </tr>
         </thead>
@@ -50,13 +40,12 @@
             while ($equipos = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $equipos['area'];?></td>
-                <td><?php echo $equipos['marca']; ?></td>
-                <td><?php echo $equipos['modelo']; ?></td>
-                <td><?php echo $equipos['serial'];  ?></td>
-                <td><?php echo $equipos['codigo'];  ?></td>
-                <td><?php echo $equipos['sede'];  ?></td>
-                <td><?php echo $equipos['fecha'];    ?></td>
+                <td><?php echo $equipos['detalle'];?></td>
+                <td><?php echo $equipos['idnivel']; ?></td>
+                <td><?php echo $equipos['idasignado']; ?></td>
+                <td><?php echo $equipos['fecope'];  ?></td>
+                <td><?php echo $equipos['fecrea'];  ?></td>
+                <td><?php echo $equipos['estado'];  ?></td>
                 <td>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarequipo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#codactivo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>

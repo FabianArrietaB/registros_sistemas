@@ -16,7 +16,7 @@
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Codigo Interno</span>
-                                    <input type="text" id="codact" name="codact" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" id="codactu" name="codactu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                         </div>

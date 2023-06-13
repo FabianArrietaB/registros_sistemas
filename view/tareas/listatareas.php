@@ -15,9 +15,7 @@
         t.tar_fecrea  AS fecrea,
         t.tar_estado  AS estado
     FROM tareas AS t
-    WHERE t.id_usuario = '$idusuario'
-    AND t.id_asignado = 4
-    AND t.tar_estado = 0 ";
+    WHERE t.id_usuario = '$idusuario'";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->

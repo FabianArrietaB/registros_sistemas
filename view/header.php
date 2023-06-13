@@ -4,7 +4,6 @@ if (!empty($_SESSION["user_estado"])) {
   header("location:../index.php");
 }
 ?>
-
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">

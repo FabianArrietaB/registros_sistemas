@@ -2,7 +2,7 @@
    session_start();
    $datos = array(
    'idoperador' => $_SESSION['usuario']['id'],
-   "tipeqi"     => $_POST['tipeqi'],
+   "idtipequ"   => $_POST['idtipequ'],
    "idsede"     => $_POST['idsede'],
    "idarea"     => $_POST['idarea'],
    "marca"      => $_POST['marca'],
@@ -14,6 +14,8 @@
    "capdis"     => $_POST['capdis'],
    "grafica"    => $_POST['grafica'],
    "serial"     => $_POST['serial'],
+   "nomequ"     => $_POST['nomequ'],
+   "mac"        => $_POST['mac'],
    "fecha"      => $_POST['fecha'],
    );
 

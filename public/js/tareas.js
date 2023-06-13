@@ -1,4 +1,8 @@
 $(document).ready(function(){
+    $('#tablalistatareas').load('tareas/listatareas.php');
+});
+
+$(document).ready(function(){
     $('#pendientesbtn').click(function(){
         ocultar();
         $('#tareaspendientes').load('tareas/tareaspendientes.php');

@@ -15,34 +15,31 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="inicio.php">INICIO</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active"" href="vacaciones.php">HISTORIAL</a>
-                    </li>
                     <?php } else if ($_SESSION['usuario']['rol'] == 4) { ?>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="inicio.php">INICIO</a>
+                        <a class="nav-link active" href="inicio.php">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="equipos.php">EQUIPOS</a>
+                        <a class="nav-link active" href="equipos.php">EQUIPOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="mantenimientos.php">MANTENIMIENTOS</a>
+                        <a class="nav-link active" href="mantenimientos.php">MANTENIMIENTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="tareas.php">TAREAS</a>
+                        <a class="nav-link active" href="tareas.php">TAREAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="historial.php">HISTORIAL</a>
+                        <a class="nav-link active" href="historial.php">HISTORIAL</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="usuarios.php">USUARIOS</a>
+                        <a class="nav-link active" href="usuarios.php">USUARIOS</a>
                     </li>
                     <?php } ?>
                 </ul>
             </div>
         </div>
-        <a href="">Usuario:</a>
-        <button class="mr-sm-2 btn btn-primary" type="button"><?php echo $_SESSION['usuario']['nombre'] ?></button>
+        <span class="navbar-brand" href="#">Usuario:</span>
+        <a class="mr-sm-2 btn btn-primary" type="button"><?php echo $_SESSION['usuario']['nombre'] ?></a>
         <a href="../controllers/usuarios/salir.php" class="btn btn-danger" type="submit">
             <i class="fa-solid fa-power-off fa-2x"></i>
         </a>

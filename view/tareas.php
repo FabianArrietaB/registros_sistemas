@@ -68,6 +68,7 @@
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php
+include "tareas/soluciontarea.php";
 require('footer.php');
 ?>
 <!-- carga ficheros javascript -->
