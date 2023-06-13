@@ -29,15 +29,11 @@
                         <a class="nav-link active"" href="mantenimientos.php">MANTENIMIENTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="inventario.php">ACTIVIDADES</a>
+                        <a class="nav-link active"" href="tareas.php">TAREAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active"" href="personas.php">TAREAS PENDIENTES</a>
+                        <a class="nav-link active"" href="historial.php">HISTORIAL</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active"" href="vacaciones.php">HISTORIAL</a>
-                    </li>
-                    
                     <li class="nav-item">
                         <a class="nav-link active"" href="usuarios.php">USUARIOS</a>
                     </li>

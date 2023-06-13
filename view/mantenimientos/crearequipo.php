@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <select name="idsede" id="idsedeu" class="form-control input-sm">
+                                    <select name="idsede" id="idsede" class="form-control input-sm">
                                         <option selected >Selecione</option>
                                         <option value="1">CERAMICASAS</option>
                                         <option value="2">FERRECASAS</option>

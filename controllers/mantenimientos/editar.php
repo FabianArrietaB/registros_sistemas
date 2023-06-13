@@ -2,13 +2,22 @@
     session_start();
     $datos = Array(
         'idoperador' => $_SESSION['usuario']['id'],
-        "idusuario"  => $_POST['idusuario'],
-        "usuario"    => $_POST['usuariou'],
-        "password"   => md5($_POST['passwordu']),
-        "idrol"      => $_POST['idrolu'],
+        "idtipequ"   => $_POST['idtipequu'],
+        "idsede"     => $_POST['idsedeu'],
         "idarea"     => $_POST['idareau'],
+        "marca"      => $_POST['marcau'],
+        "modelo"     => $_POST['modelou'],
+        "tipram"     => $_POST['tipramu'],
+        "ram"        => $_POST['ramu'],
+        "procesa"    => $_POST['procesau'],
+        "tipdis"     => $_POST['tipdisu'],
+        "capdis"     => $_POST['capdisu'],
+        "grafica"    => $_POST['graficau'],
+        "fecha"      => $_POST['fechau'],
+        "serial"     => $_POST['serialu'],
+        "idequipo"   => $_POST['idequipo'],
     );
-    include "../../models/usuarios.php";
-    $Usuarios = new Usuarios();
-    echo $Usuarios->editarusuario($datos);
+    include "../../models/mantenimientos.php";
+    $Equipos = new Equipos();
+    echo $Equipos->editarequipo($datos);
 ?>

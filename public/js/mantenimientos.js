@@ -12,11 +12,9 @@ function detalleequipo(idequipo){
             respuesta = jQuery.parseJSON(respuesta);
             //console.log(respuesta)
             $('#idequipo').val(respuesta['idequipo']);
-            $('#idpersonau').val(respuesta['idpersona']);
-            $('#idtipequu').val(respuesta['idtipequ']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
-            $('#areau').val(respuesta['area']);
+            $('#idtipequu').val(respuesta['idtipequ']);
             $('#marcau').val(respuesta['marca']);
             $('#modelou').val(respuesta['modelo']);
             $('#tipramu').val(respuesta['tipram']);
@@ -25,6 +23,7 @@ function detalleequipo(idequipo){
             $('#tipdisu').val(respuesta['tipdis']);
             $('#capdisu').val(respuesta['capdis']);
             $('#graficu').val(respuesta['grafic']);
+            $('#serialu').val(respuesta['serial']);
             $('#fechau').val(respuesta['fecha']);
         }
     });
@@ -99,7 +98,7 @@ function editarequipo(){
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                //console.log(respuesta)
+                console.log(respuesta)
                 $('#tablaequipos').load('mantenimientos/tablaequipos.php');
                 Swal.fire({
                     icon: 'success',
@@ -116,7 +115,6 @@ function editarequipo(){
                     timer: 1500
                 });
             }
-        console.log(respuesta);
         }
     });
     return false;

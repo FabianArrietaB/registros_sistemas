@@ -53,7 +53,7 @@
                                             <div class="float-sm-right">&nbsp;
                                                 <span style="font-size: 20px">
                                                     <?php
-                                                        $sql=$conexion->query("SELECT * FROM equipos WHERE equ_tipeqi = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1"); $sql= mysqli_num_rows($sql); echo $sql;
                                                     ?>
                                                 </span>
                                             </div>
@@ -76,7 +76,7 @@
                                             <div class="float-sm-right">&nbsp;
                                                 <span style="font-size: 20px">
                                                     <?php
-                                                        $sql=$conexion->query("SELECT * FROM equipos WHERE equ_tipeqi = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2"); $sql= mysqli_num_rows($sql); echo $sql;
                                                     ?>
                                                 </span>
                                             </div>
@@ -99,7 +99,7 @@
                                             <div class="float-sm-right">&nbsp;
                                                 <span style="font-size: 20px">
                                                     <?php
-                                                        $sql=$conexion->query("SELECT * FROM equipos WHERE equ_tipeqi = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3"); $sql= mysqli_num_rows($sql); echo $sql;
                                                     ?>
                                                 </span>
                                             </div>

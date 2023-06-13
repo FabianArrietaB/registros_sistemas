@@ -16,7 +16,7 @@
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Equipo</span>
-                                    <select name="tipeqi" id="tipeqiu" class="form-control input-sm">
+                                    <select name="idtipequu" id="idtipequu" class="form-control input-sm">
                                         <option selected >Selecione</option>
                                         <option value="1">Portatil</option>
                                         <option value="2">Escritorio</option>
@@ -26,7 +26,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <select name="idsede" id="idsedeu" class="form-control input-sm">
+                                    <select name="idsedeu" id="idsedeu" class="form-control input-sm">
                                         <option selected >Selecione</option>
                                         <option value="1">CERAMICASAS</option>
                                         <option value="2">FERRECASAS</option>
@@ -34,18 +34,6 @@
                                         <option value="4">MAYORISTA</option>
                                     </select>
                                     <span class="input-group-text" id="inputGroup-sizing-default">Sede</span>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
-                                    <input type="text" id="marcau" name="marcau" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
-                                    <input type="text" id="modelou" name="modelou" class="form-control input-sm">
                                 </div>
                             </div>
                             <div class="col-4">
@@ -65,8 +53,22 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
+                                    <input type="text" id="marcau" name="marcau" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="modelou" name="modelou" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
+                                </div>
+                            </div>
+                            
+                            <div class="col-4">
+                                <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Ram</span>
                                     <select name="tipramu" id="tipramu" class="form-control input-sm">
+                                        <option selected >Selecione</option>
                                         <option value="1">DDR2</option>
                                         <option value="2">DDR3</option>
                                         <option value="3">DDR4</option>
@@ -81,18 +83,19 @@
                             </div>
                             <div class="col-5">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Procesador</span>
                                     <input type="text" id="procesau" name="procesau" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Procesador</span>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Disco</span>
                                     <select name="tipdisu" id="tipdisu" class="form-control input-sm">
+                                        <option selected >Selecione</option>
                                         <option value="1">HDD</option>
                                         <option value="2">SSD</option>
                                         <option value="3">M2</option>
-                                    </select>
+                                </select>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -103,14 +106,26 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Registro</span>
-                                    <input type="text" id="fechau" name="fechau" class="form-control input-sm">
+                                    <input type="text" id="graficau" name="graficau" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Grafica</span>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha Registro</span>
+                                    <input type="date" id="fechau" name="fechau" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="serialu" name="serialu" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
                                 </div>
                             </div>
                         </div>
                     </fieldset>
                     <div class="card-footer text-center">
-                        <button class="btn btn-success" data-bs-dismiss="modal">Editar</button>
+                        <button class="btn btn-success" data-bs-dismiss="modal">Actualizar</button>
                     </div>
                 </div>
             </div>

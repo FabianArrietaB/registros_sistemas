@@ -19,6 +19,7 @@
                 e.equ_tipdis  AS tipdis,
                 e.equ_capdis  AS capdis,
                 e.equ_fecope  AS fecha,
+                e.equ_serial  AS serial,
                 e.equ_grafica AS grafic
                 FROM equipos AS e
                 INNER JOIN areas AS a ON a.id_area = e.id_area
@@ -39,6 +40,7 @@
                 'tipdis'    => $equipos['tipdis'],
                 'capdis'    => $equipos['capdis'],
                 'grafic'    => $equipos['grafic'],
+                'serial'    => $equipos['serial'],
                 'fecha'     => $equipos['fecha'],
             );
             return $datos;
@@ -50,6 +52,26 @@
             $query = $conexion->prepare($sql);
             $query->bind_param("iiiissssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafica'], $datos['serial'], $datos['fecha']);
             $respuesta = $query->execute();
+            return $respuesta;
+        }
+
+        public function editarequipo($datos){
+            $conexion = Conexion::conectar();
+            $sql = "UPDATE equipos SET id_operador = ?, id_tipequ = ?, id_sede = ?, id_area = ?,  equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_fecope = ? WHERE id_equipo = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param('iiiissssssssssi', $datos['idoperador'], $datos['idtipequ'], $datos['idsede'], $datos['idarea'],  $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafica'], $datos['serial'], $datos['fecha'], $datos['idequipo']);
+            $respuesta = $query->execute();
+            $query->close();
+            return $respuesta;
+        }
+
+        public function agregaractivo($datos){
+            $conexion = Conexion::conectar();
+            $sql = "UPDATE equipos SET equ_codact = ? WHERE id_equipo = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param('si', $datos['codact'], $datos['idequipo']);
+            $respuesta = $query->execute();
+            $query->close();
             return $respuesta;
         }
     }

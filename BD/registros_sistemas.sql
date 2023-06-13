@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2023 a las 19:59:11
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 13-06-2023 a las 03:20:02
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -51,13 +51,17 @@ INSERT INTO `areas` (`id_area`, `are_nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `auditorias`
+-- Estructura de tabla para la tabla `bitacora`
 --
 
-CREATE TABLE `auditorias` (
-  `id_auditoria` int(11) NOT NULL,
-  `id_operador` int(11) NOT NULL,
-  `id_accion` int(11) NOT NULL
+CREATE TABLE `bitacora` (
+  `id_bitacora` int(20) NOT NULL,
+  `id_usuario` int(20) NOT NULL,
+  `bit_datos` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bit_datos`)),
+  `bit_tabla` varchar(20) NOT NULL,
+  `bit_antes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bit_antes`)),
+  `bit_despues` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bit_despues`)),
+  `bit_fecope` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -91,7 +95,7 @@ CREATE TABLE `equipos` (
 
 INSERT INTO `equipos` (`id_equipo`, `id_operador`, `id_sede`, `id_area`, `id_tipequ`, `equ_marca`, `equ_modelo`, `equ_tipram`, `equ_ram`, `equ_proce`, `equ_tipdis`, `equ_capdis`, `equ_grafica`, `equ_codact`, `equ_serial`, `equ_fecope`) VALUES
 (1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', '000384', 'PF3LY21H', '2023-06-10'),
-(2, 1, 1, 1, 2, 'power group', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'no tiene', '', '11GEHMP0218C39', '2020-01-01');
+(2, 1, 1, 1, 2, 'power group', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'no tiene', '000358', '11GEHMP0218C39', '2020-01-01');
 
 -- --------------------------------------------------------
 
@@ -266,6 +270,24 @@ INSERT INTO `sedes` (`id_sede`, `sed_nombre`, `sed_direccion`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tareas`
+--
+
+CREATE TABLE `tareas` (
+  `id_tarea` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `id_nivel` int(11) NOT NULL,
+  `id_asignado` int(11) DEFAULT NULL,
+  `tar_detalle` varchar(45) NOT NULL,
+  `tar_fecope` date NOT NULL,
+  `tar_fecupt` date NOT NULL,
+  `tar_fecrea` date NOT NULL,
+  `tar_estado` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -303,10 +325,10 @@ ALTER TABLE `areas`
   ADD PRIMARY KEY (`id_area`);
 
 --
--- Indices de la tabla `auditorias`
+-- Indices de la tabla `bitacora`
 --
-ALTER TABLE `auditorias`
-  ADD PRIMARY KEY (`id_auditoria`);
+ALTER TABLE `bitacora`
+  ADD PRIMARY KEY (`id_bitacora`);
 
 --
 -- Indices de la tabla `equipos`
@@ -339,6 +361,12 @@ ALTER TABLE `sedes`
   ADD PRIMARY KEY (`id_sede`);
 
 --
+-- Indices de la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  ADD PRIMARY KEY (`id_tarea`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -353,6 +381,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `areas`
   MODIFY `id_area` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `bitacora`
+--
+ALTER TABLE `bitacora`
+  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
@@ -383,6 +417,12 @@ ALTER TABLE `roles`
 --
 ALTER TABLE `sedes`
   MODIFY `id_sede` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `tareas`
+--
+ALTER TABLE `tareas`
+  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
