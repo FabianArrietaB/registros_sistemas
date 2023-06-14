@@ -29,6 +29,9 @@
                         <a class="nav-link active" href="tareas.php">TAREAS</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" href="compras.php">COMPRAS</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active" href="historial.php">HISTORIAL</a>
                     </li>
                     <li class="nav-item">

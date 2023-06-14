@@ -1,4 +1,4 @@
-<!-- Vista Admin y Supervisro -->
+<!-- Vista Admin-->
 <?php
     include "header.php";
     include "navbar.php";
@@ -158,6 +158,100 @@
                         </div>
                     </div>
                 </div>
+                <div class="row student text-center" style="align-items: center;">
+                    <!-- Numero Equipos -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info  mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Metropolis</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Portatiles -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info  mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Mayorista</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Escritorio -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info  mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Ferrecasas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Impresoras -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Ceramicasas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -169,7 +263,7 @@
 ?>
 <!-- carga ficheros javascript -->
 <script src="../public/js/tareas.js"></script>
-<!-- Vista Alumno -->
+<!-- Vista Supervisor -->
 <?php } else if($_SESSION['usuario']['rol'] == 3) {
 include "../models/conexion.php";
 $con = new Conexion();
@@ -204,6 +298,222 @@ $conexion = $con->conectar();
             </div>
             <div class="card-body">
                 <div id="tablalistatareas"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- fin del contenido principal -->
+<!-- por ultimo se carga el footer -->
+<?php
+include "tareas/nuevatarea.php";
+include "footer.php";
+?>
+<!-- carga ficheros javascript -->
+<script src="../public/js/tareas.js"></script>
+<!-- Vista Coordinador -->
+<?php } else if($_SESSION['usuario']['rol'] == 2) {
+include "../models/conexion.php";
+$con = new Conexion();
+$conexion = $con->conectar();
+?>
+<!-- inicio del contenido principal -->
+<div class="container-fluid">
+    <div class="page-content">
+        <div class="card border-primary">
+            <div class="card-header text-center">
+                <div class="title">
+                    <h2>INFORMACION</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row student text-center" style="align-items: center;">
+                    <!-- Numero Equipos -->
+                    <div class="col-sm-3">
+                        <div class="card border-warning text-white bg-danger mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-microchip fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right text-center">Total de Equipos</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Portatiles -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-warning mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-laptop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right text-center">Total de Portatiles</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Escritorio -->
+                    <div class="col-sm-3">
+                        <div class="card border-success text-white bg-primary mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right text-center">Total de Escritorio</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Impresoras -->
+                    <div class="col-sm-3">
+                        <div class="card border-info text-white bg-success mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-print fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right text-center">Total de Impresoras</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row student text-center" style="align-items: center;">
+                    <!-- Numero Equipos -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info  mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Metropolis</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Portatiles -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info  mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Mayorista</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Escritorio -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info  mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Ferrecasas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Numero Impresoras -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <i class="fa-solid fa-desktop fa-3x"></i>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="float-sm-right">Total de Equipos Ceramicasas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -17,10 +17,9 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Equipo</span>
                                     <select name="idasignado" id="idasignado" class="form-control input-sm">
                                         <option selected >Selecione Encargado</option>
-                                        <option value="2">Eduardo</option>
                                         <option value="1">Fabian</option>
-                                        <option value="3">Jesus</option>
-                                        <option value="4">Todos</option>
+                                        <option value="2">Jesus</option>
+                                        <option value="3">Todos</option>
                                     </select>
                                 </div>
                             </div>

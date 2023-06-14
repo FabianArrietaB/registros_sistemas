@@ -15,9 +15,7 @@
         t.tar_fecrea  AS fecrea,
         t.tar_estado  AS estado
     FROM tareas AS t
-    WHERE t.id_usuario = '$idusuario'
-    AND t.id_asignado = 4
-    AND t.tar_estado = 1 ";
+    WHERE t.tar_estado = 2 ";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -31,24 +29,42 @@
                 <th scope="col" >FECHA INI</th>
                 <th scope="col" >FECHA FIN</th>
                 <th scope="col" >ESTADO</th>
-                <th>
-                </th>
             </tr>
         </thead>
         <tbody>
         <?php
-            while ($equipos = mysqli_fetch_array($query)){
+            while ($tareas = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $equipos['detalle'];?></td>
-                <td><?php echo $equipos['idnivel']; ?></td>
-                <td><?php echo $equipos['idasignado']; ?></td>
-                <td><?php echo $equipos['fecope'];  ?></td>
-                <td><?php echo $equipos['fecrea'];  ?></td>
-                <td><?php echo $equipos['estado'];  ?></td>
+            <td><?php echo $tareas['detalle'];?></td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarequipo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#codactivo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
+                <?php if ($tareas['idnivel'] == 1) { ?>
+                    <h5><span class="badge text-bg-success">BASICO</span></h5>
+                <?php } else if ($tareas['idnivel'] == 2) { ?>
+                    <h5><span class="badge text-bg-warning">MEDIO</span></h5>
+                <?php } else if ($tareas['idnivel'] == 3) { ?>
+                    <h5><span class="badge text-bg-danger">URGENTE</span></h5>
+                <?php } ?>
+                </td>
+                <td>
+                <?php if ($tareas['idasignado'] == 1) { ?>
+                    <h5><span >Fabian</span></h5>
+                <?php } else if ($tareas['idasignado'] == 2) { ?>
+                    <h5><span >Jesus</span></h5>
+                <?php } else if ($tareas['idasignado'] == 3) { ?>
+                    <h5><span >Todos</span></h5>
+                <?php } ?>
+                </td>
+                <td><?php echo $tareas['fecope'];  ?></td>
+                <td><?php echo $tareas['fecrea'];  ?></td>
+                <td>
+                <?php if ($tareas['estado'] == 0) { ?>
+                    <h5><span class="badge text-bg-danger">ABIERTO</span></h5>
+                <?php } else if ($tareas['estado'] == 1) { ?>
+                    <h5><span class="badge text-bg-warning">OPERACION</span></h5>
+                <?php } else if ($tareas['estado'] == 2) { ?>
+                    <h5><span class="badge text-bg-success">FINALIZADA</span></h5>
+                <?php } ?>
                 </td>
             </tr>
         <?php } ?>

@@ -53,3 +53,80 @@ function creartarea(){
     });
     return false;
 }
+
+function detalletarea(idtarea){
+    $.ajax({
+        type: "POST",
+        data: "idtarea=" + idtarea,
+        url: "../controllers/tareas/detalle.php",
+        success: function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            console.log(respuesta)
+            $('#idtarea').val(respuesta['idtarea']);
+            $('#idasignadou').val(respuesta['idasignado']);
+            $('#idnivelu').val(respuesta['idnivel']);
+            $('#detalleu').val(respuesta['detalle']);
+            $('#fecopeu').val(respuesta['fecope']);
+            $('#estadou').val(respuesta['estado']);
+        }
+    });
+}
+
+function soluciontarea(){
+    $.ajax({
+        type: "POST",
+        data: $('#frmeditartarea').serialize(),
+        url: "../controllers/tareas/editartarea.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                console.log(respuesta)
+                $('#tareaspendientes').load('tareas/tareaspendientes.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Tarea Actualizada',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al Editar!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
+function finalizada(idtarea, estado){
+    $.ajax({
+        type:"POST",
+        data:"idtarea=" + idtarea +"&estado=" + estado,
+        url:"../controllers/tareas/finalizada.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta)
+                $('#tareasfinalizadas').load('tareas/tareasfinalizadas.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Operacion Exitosa',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'No se pudo realizar la operacion!',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        }
+    });
+}

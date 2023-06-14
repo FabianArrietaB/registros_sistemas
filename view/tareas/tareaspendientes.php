@@ -15,7 +15,7 @@
         t.tar_fecrea  AS fecrea,
         t.tar_estado  AS estado
     FROM tareas AS t
-    WHERE t.tar_estado = 0 ";
+    WHERE t.tar_estado = 0 OR t.tar_estado = 1 ";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -29,47 +29,47 @@
                 <th scope="col" >FECHA INI</th>
                 <th scope="col" >FECHA FIN</th>
                 <th scope="col" >ESTADO</th>
-                <th>
-                </th>
+                <th scope="col" >ACCIONES</th>
             </tr>
         </thead>
         <tbody>
         <?php
-            while ($equipos = mysqli_fetch_array($query)){
+            while ($tareas = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $equipos['detalle'];?></td>
+                <td><?php echo $tareas['detalle'];?></td>
                 <td>
-                <?php if ($equipos['idnivel'] == 1) { ?>
+                <?php if ($tareas['idnivel'] == 1) { ?>
                     <h5><span class="badge text-bg-success">BASICO</span></h5>
-                <?php } else if ($equipos['idnivel'] == 2) { ?>
+                <?php } else if ($tareas['idnivel'] == 2) { ?>
                     <h5><span class="badge text-bg-warning">MEDIO</span></h5>
-                <?php } else if ($equipos['idnivel'] == 3) { ?>
+                <?php } else if ($tareas['idnivel'] == 3) { ?>
                     <h5><span class="badge text-bg-danger">URGENTE</span></h5>
                 <?php } ?>
                 </td>
                 <td>
-                <?php if ($equipos['idasignado'] == 1) { ?>
+                <?php if ($tareas['idasignado'] == 1) { ?>
                     <h5><span >Fabian</span></h5>
-                <?php } else if ($equipos['idasignado'] == 2) { ?>
+                <?php } else if ($tareas['idasignado'] == 2) { ?>
                     <h5><span >Jesus</span></h5>
-                <?php } else if ($equipos['idasignado'] == 3) { ?>
+                <?php } else if ($tareas['idasignado'] == 3) { ?>
                     <h5><span >Todos</span></h5>
                 <?php } ?>
                 </td>
-                <td><?php echo $equipos['fecope'];  ?></td>
-                <td><?php echo $equipos['fecrea'];  ?></td>
+                <td><?php echo $tareas['fecope'];  ?></td>
+                <td><?php echo $tareas['fecrea'];  ?></td>
                 <td>
-                <?php if ($equipos['estado'] == 0) { ?>
+                <?php if ($tareas['estado'] == 0) { ?>
                     <h5><span class="badge text-bg-danger">ABIERTO</span></h5>
-                <?php } else if ($equipos['estado'] == 1) { ?>
+                <?php } else if ($tareas['estado'] == 1) { ?>
                     <h5><span class="badge text-bg-warning">OPERACION</span></h5>
-                <?php } else if ($equipos['estado'] == 2) { ?>
+                <?php } else if ($tareas['estado'] == 2) { ?>
                     <h5><span class="badge text-bg-success">FINALIZADA</span></h5>
-                <?php } ?></td>
+                <?php } ?>
+                </td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarequipo" onclick="detalleequipo('<?php echo $equipos['idtarea']?>')"><i class="fa-solid fa-check-to-slot fa-2x"></i></button> | 
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#codactivo" onclick="detalleequipo('<?php echo $equipos['idtarea']?>')"><i class="fa-solid fa-check-to-slot fa-2x"></i></button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editartarea" onclick="detalletarea('<?php echo $tareas['idtarea']?>')"><i class="fa-solid fa-check-to-slot fa-2x"></i></button> | 
+                    <button type="button" class="btn btn-success" onclick="finalizada(<?php echo $tareas['idtarea'] ?>, <?php echo $tareas['estado'] ?>)"><i class="fa-solid fa-check-to-slot fa-2x"></i></button>
                 </td>
             </tr>
         <?php } ?>
