@@ -8,6 +8,7 @@
         v.id_venta    AS idventa,
         v.id_sede     AS idsede,
         v.id_area     AS idarea,
+        a.are_nombre  AS area,
         V.ven_cantid  AS cantid,
         v.ven_nompro  AS nompro,
         v.ven_serial  AS serial,
@@ -17,6 +18,7 @@
         v.ven_feccom  AS feccom,
         v.ven_fecope  AS fecope
     FROM ventas AS v
+    INNER JOIN areas AS a ON a.id_area = v.id_area
     ORDER BY v.id_venta DESC";
     $query = mysqli_query($conexion, $sql);
 ?>
@@ -25,34 +27,40 @@
     <table class="table table-light text-center">
         <thead>
             <tr>
-                <th scope="col" >SEDE</th>
-                <th scope="col" >AREA</th>
-                <th scope="col" >CANTIDAD</th>
-                <th scope="col" >PRODUCTO</th>
-                <th scope="col" >SERIAL</th>
                 <th scope="col" >FACTURA</th>
                 <th scope="col" >PROVEEDOR</th>
+                <th scope="col" >SEDE</th>
+                <th scope="col" >AREA</th>
                 <th scope="col" >FECHA COMPRA</th>
                 <th>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarcompra"><i class="fa-solid fa-square-plus fa-lg"></i></button>
-                    </div>
+                         </div>
                 </th>
             </tr>
         </thead>
         <tbody>
         <?php
-            while ($equipos = mysqli_fetch_array($query)){
+            while ($compras = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $equipos['idsede'];?></td>
-                <td><?php echo $equipos['idarea'];?></td>
-                <td><?php echo $equipos['cantid'];?></td>
-                <td><?php echo $equipos['nompro'];?></td>
-                <td><?php echo $equipos['serial'];?></td>
-                <td><?php echo $equipos['numfac'];?></td>
-                <td><?php echo $equipos['proove'];?></td>
-                <td><?php echo $equipos['feccom'];?></td>
+                <td data-bs-toggle="modal" data-bs-target="#detallecompra" onclick="detallecompras('<?php echo $compras['idventa']?>')"><?php echo $compras['numfac'];?></td>
+                <td><?php echo $compras['proove'];?></td>
+                <td><?php echo $compras['area'];?></td>
+                <td>
+                <?php if ($compras['idsede'] == 1) { ?>
+                    <h5><span >CERAMICASAS</span></h5>
+                <?php } else if ($compras['idsede'] == 2) { ?>
+                    <h5><span >FERRECASAS</span></h5>
+                <?php } else if ($compras['idsede'] == 3) { ?>
+                    <h5><span >METROPOLIS</span></h5>
+                <?php } else if ($compras['idsede'] == 4) { ?>
+                    <h5><span >MAYORISTA</span></h5>
+                <?php } ?>
+                </td>
+                <td><?php echo $compras['feccom'];?></td>
+                <td>
+                
+                </td>
             </tr>
         <?php } ?>
         </tbody>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2023 a las 01:02:22
+-- Tiempo de generación: 15-06-2023 a las 01:19:21
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -40,7 +40,7 @@ INSERT INTO `areas` (`id_area`, `are_nombre`) VALUES
 (1, 'CAJA'),
 (2, 'COMERCIAL'),
 (3, 'CARTERA'),
-(4, 'CONTABILIADAD'),
+(4, 'CONTABILIDAD'),
 (5, 'COMPRAS'),
 (6, 'INVENTARIOS'),
 (7, 'TESORERIA'),
@@ -96,7 +96,7 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id_equipo`, `id_operador`, `id_sede`, `id_area`, `id_tipequ`, `equ_marca`, `equ_modelo`, `equ_tipram`, `equ_ram`, `equ_proce`, `equ_tipdis`, `equ_capdis`, `equ_grafica`, `equ_serial`, `equ_codact`, `equ_nomequ`, `equ_mac`, `equ_fecope`) VALUES
-(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000384', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
+(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000385', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
 (2, 1, 1, 1, 2, 'power group', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'NO TIENE', '11GEHMP0218C39', '000358', '', '', '2020-01-01');
 
 -- --------------------------------------------------------
@@ -292,7 +292,7 @@ CREATE TABLE `tareas` (
 --
 
 INSERT INTO `tareas` (`id_tarea`, `id_usuario`, `id_nivel`, `id_asignado`, `tar_detalle`, `tar_fecupt`, `tar_fecrea`, `tar_fecope`, `tar_estado`) VALUES
-(1, 3, 1, 1, 'REVISION SOFTWARE ', '0000-00-00', '0000-00-00', '2023-06-13', '0');
+(1, 3, 1, 1, 'REVISION SOFTWARE ', '2023-06-14', '2023-06-30', '2023-06-13', '2');
 
 -- --------------------------------------------------------
 
@@ -322,6 +322,34 @@ INSERT INTO `usuarios` (`id_usuario`, `id_operador`, `id_persona`, `id_rol`, `id
 (2, 1, 10, 4, 10, 'FARRIETA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-10 20:04:50'),
 (3, 1, 11, 3, 9, 'CBAUTISTA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56'),
 (4, 1, 75, 2, 4, 'YVENGAL', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas`
+--
+
+CREATE TABLE `ventas` (
+  `id_venta` int(11) NOT NULL,
+  `id_operador` int(11) NOT NULL,
+  `id_sede` int(11) NOT NULL,
+  `id_area` int(11) NOT NULL,
+  `ven_cantid` varchar(45) NOT NULL,
+  `ven_nompro` varchar(45) NOT NULL,
+  `ven_serial` varchar(45) DEFAULT NULL,
+  `ven_numfac` varchar(45) NOT NULL,
+  `ven_proove` varchar(45) NOT NULL,
+  `ven_detall` varchar(45) NOT NULL,
+  `ven_feccom` date NOT NULL,
+  `ven_fecope` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id_venta`, `id_operador`, `id_sede`, `id_area`, `ven_cantid`, `ven_nompro`, `ven_serial`, `ven_numfac`, `ven_proove`, `ven_detall`, `ven_feccom`, `ven_fecope`) VALUES
+(1, 1, 3, 4, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2601', 'JA COMPUTADORES', 'actualización equipo mt contador', '2023-05-04', '2023-06-15');
 
 --
 -- Índices para tablas volcadas
@@ -382,6 +410,12 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
+-- Indices de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD PRIMARY KEY (`id_venta`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -438,6 +472,12 @@ ALTER TABLE `tareas`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

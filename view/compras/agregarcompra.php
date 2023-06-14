@@ -1,7 +1,7 @@
 <!-- Formulario (Editar) -->
 <form id="frmagrecompra" method="post" onsubmit="return agregarcompra()">
     <div class="modal fade" id="agregarcompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -69,10 +69,16 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
                                     <textarea type="text" id="detall" name="detall" class="form-control input-sm" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha Compra</span>
+                                    <input type="date" id="feccom" name="feccom" class="form-control input-sm">
                                 </div>
                             </div>
                         </div>

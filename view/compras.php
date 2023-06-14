@@ -15,8 +15,17 @@
         <div class="col-12">
             <div class="card border-primary">
                 <div class="card-header text-center">
-                    <div class="title">
-                        <h2>LISTA COMPRAS</h2>
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="title">
+                                <h2>LISTA COMPRAS</h2>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="d-grid gap-2">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarcompra"><i class="fa-solid fa-square-plus fa-lg"></i></button>
+                            </div>
+                        </div>
                     </div>
                     <form method="GET">
                         <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">
@@ -31,6 +40,7 @@
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php
+    include "compras/detallecompra.php";
     include "compras/agregarcompra.php";
     include "footer.php";
 ?>
