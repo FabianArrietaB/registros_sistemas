@@ -5,9 +5,41 @@
 
         public function crearequipo($datos){
             $conexion = Conexion::conectar();
-            $sql = "INSERT INTO equipos (id_operador, id_sede, id_area, id_tipequ, equ_marca, equ_modelo, equ_tipram, equ_ram, equ_proce, equ_tipdis, equ_capdis, equ_grafica, equ_serial, equ_nomequ, equ_mac, equ_fecope) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO equipos (id_operador,
+                                        id_sede,
+                                        id_area,
+                                        id_tipequ,
+                                        equ_marca,
+                                        equ_modelo,
+                                        equ_tipram,
+                                        equ_ram,
+                                        equ_proce,
+                                        equ_tipdis,
+                                        equ_capdis,
+                                        equ_grafica,
+                                        equ_serial,
+                                        equ_nomequ,
+                                        equ_mac,
+                                        equ_fecope)
+            VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
-            $query->bind_param("iiiissssssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafic'], $datos['serial'], $datos['nomequ'], $datos['mac'], $datos['fecha']);
+            $query->bind_param("iiiissssssssssss",
+                                $datos['idoperador'],
+                                $datos['idsede'],
+                                $datos['idarea'],
+                                $datos['idtipequ'],
+                                $datos['marca'],
+                                $datos['modelo'],
+                                $datos['tipram'],
+                                $datos['ram'],
+                                $datos['procesa'],
+                                $datos['tipdis'],
+                                $datos['capdis'],
+                                $datos['grafic'],
+                                $datos['serial'],
+                                $datos['nomequ'],
+                                $datos['mac'],
+                                $datos['fecha']);
             $respuesta = $query->execute();
             return $respuesta;
         }
@@ -16,7 +48,9 @@
             $conexion = Conexion::conectar();
             $sql = "UPDATE equipos SET equ_codact = ? WHERE id_equipo = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('si', $datos['codact'], $datos['idequipo']);
+            $query->bind_param('si',
+             $datos['codact'],
+             $datos['idequipo']);
             $respuesta = $query->execute();
             $query->close();
             return $respuesta;
@@ -71,9 +105,42 @@
 
         public function editarequipo($datos){
             $conexion = Conexion::conectar();
-            $sql = "UPDATE equipos SET id_operador = ?, id_sede = ?, id_area = ?, id_tipequ = ?, equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_nomequ = ?, equ_mac = ?, equ_fecope = ? WHERE id_equipo = ?";
+            $sql = "UPDATE equipos SET id_operador = ?,
+                                        id_sede = ?,
+                                        id_area = ?,
+                                        id_tipequ = ?,
+                                        equ_marca = ?,
+                                        equ_modelo = ?,
+                                        equ_tipram = ?,
+                                        equ_ram = ?,
+                                        equ_proce = ?,
+                                        equ_tipdis = ?,
+                                        equ_capdis = ?,
+                                        equ_grafica = ?,
+                                        equ_serial = ?,
+                                        equ_nomequ = ?,
+                                        equ_mac = ?,
+                                        equ_fecope = ?
+                                        WHERE id_equipo = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('iiiissssssssssssi', $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafic'], $datos['serial'], $datos['nomequ'], $datos['mac'], $datos['fecha'], $datos['idequipo']);
+            $query->bind_param('iiiissssssssssssi',
+                                $datos['idoperador'],
+                                $datos['idsede'],
+                                $datos['idarea'],
+                                $datos['idtipequ'],
+                                $datos['marca'],
+                                $datos['modelo'],
+                                $datos['tipram'],
+                                $datos['ram'],
+                                $datos['procesa'],
+                                $datos['tipdis'],
+                                $datos['capdis'],
+                                $datos['grafic'],
+                                $datos['serial'],
+                                $datos['nomequ'],
+                                $datos['mac'],
+                                $datos['fecha'],
+                                $datos['idequipo']);
             $respuesta = $query->execute();
             $query->close();
             return $respuesta;
