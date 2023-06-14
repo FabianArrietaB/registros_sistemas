@@ -174,12 +174,12 @@ function eliminarusuario(idusuario){
 function cambiocontraseña(){
     $.ajax({
         type:"POST",
-        data:$('#frmActualizarContraseña').serialize(),
-        url:"../Controlador/usuarios/crud/actualizarContraseña.php",
+        data:$('#frmcontraseña').serialize(),
+        url:"../Controlador/usuarios/cambiarcontraseña.php",
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                $('#modalCambiarContraseña').modal('hide');
+                $('#contraseña').modal('hide');
                 Swal.fire(":D","Actualizado con exito!","success");
 
             }else{

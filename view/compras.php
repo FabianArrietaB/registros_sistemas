@@ -21,11 +21,13 @@
                                 <h2>LISTA COMPRAS</h2>
                             </div>
                         </div>
+                        <?php if($_SESSION['usuario']['rol'] == 4) {?>
                         <div class="col-4">
                             <div class="d-grid gap-2">
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#agregarcompra"><i class="fa-solid fa-square-plus fa-lg"></i></button>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
                     <form method="GET">
                         <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">

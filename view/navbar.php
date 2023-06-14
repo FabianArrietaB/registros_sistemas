@@ -9,11 +9,20 @@
                 <ul class="navbar-nav mr-auto">
                     <?php if ($_SESSION['usuario']['rol'] == 2) { ?>
                     <li class="nav-item">
+                        <a class="nav-link active" href="inicio.php">INICIO</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active"" href="equipos.php">EQUIPOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="compras.php">COMPRAS</a>
                     </li>
                     <?php } else if ($_SESSION['usuario']['rol'] == 3) { ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="inicio.php">INICIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="mantenimientos.php">MANTENIMIENTOS</a>
                     </li>
                     <?php } else if ($_SESSION['usuario']['rol'] == 4) { ?>
                     <li class="nav-item">
