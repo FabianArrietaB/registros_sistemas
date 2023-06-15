@@ -2,8 +2,7 @@
         <script src="./../public/bootstrap5/js/bootstrap.min.js"></script>
         <script src="./../public/bootstrap5/js/bootstrap.bundle.min.js"></script>
         <script src="./../public/bootstrap5/js/popper.min.js"></script>
-        <!-- chart -->
-        <script src="./../public/chart/chart.js"></script>
+        
         <!-- jquery -->
         <script src="./../public/pnotify/js/jquery.min.js"></script>
         <script src="../public//select2/select2.min.js"></script>
