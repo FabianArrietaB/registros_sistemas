@@ -51,7 +51,7 @@
             </div>
         </div>
         <span class="navbar-brand" href="#">Usuario:</span>
-        <a class="mr-sm-2 btn btn-primary" type="button"><?php echo $_SESSION['usuario']['nombre'] ?></a>
+        <a class="mr-sm-2 btn btn-primary" type="button" onclick="cambiarcontraseña()"><?php echo $_SESSION['usuario']['nombre'] ?></a>
         <a href="../controllers/usuarios/salir.php" class="btn btn-danger" type="submit">
             <i class="fa-solid fa-power-off fa-2x"></i>
         </a>
