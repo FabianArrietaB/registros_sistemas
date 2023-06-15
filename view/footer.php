@@ -11,7 +11,8 @@
         <script src="./../public/fontawesome/js/all.min.js"></script>
         <script src="./../public/fontawesome/js/fontawesome.min.js"></script>
         <!-- datatables -->
-
+        <!-- chart -->
+        <script src="/public/Chart.js-4.3.0/"></script>
         <!-- <script src="./.././../public/app/publico/js/lib/datatables-net/datatables.min.js"></script> -->
         <!-- sweet alert -->
         <script src="./../public/sweetalert2/sweetalert2.all.min.js"></script>

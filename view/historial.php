@@ -101,55 +101,63 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="col-12">
-                        <!-- inicio Tabla -->
-                        <div class="table-responsive">
-                            <table class="table table-light text-center">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" >MES</th>
-                                        <th scope="col" >VALOR</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    while ($ventas = mysqli_fetch_array($query)){
-                                ?>
-                                    <tr>
-                                        <td>
-                                        <?php if ($ventas['date'] == 1) { ?>
-                                            <h5><span >Enero</span></h5>
-                                        <?php } else if ($ventas['date'] == 2) { ?>
-                                            <h5><span >Febrero</span></h5>
-                                            <?php } else if ($ventas['date'] == 3) { ?>
-                                            <h5><span >Marzo</span></h5>
-                                            <?php } else if ($ventas['date'] == 4) { ?>
-                                            <h5><span >Abril</span></h5>
-                                            <?php } else if ($ventas['date'] == 5) { ?>
-                                            <h5><span >Mayo</span></h5>
-                                            <?php } else if ($ventas['date'] == 6) { ?>
-                                            <h5><span >Junio</span></h5>
-                                            <?php } else if ($ventas['date'] == 7) { ?>
-                                            <h5><span >Julio</span></h5>
-                                            <?php } else if ($ventas['date'] == 8) { ?>
-                                            <h5><span >Agosto</span></h5>
-                                            <?php } else if ($ventas['date'] == 9) { ?>
-                                            <h5><span >Septiembre</span></h5>
-                                            <?php } else if ($ventas['date'] == 10) { ?>
-                                            <h5><span >Octubre</span></h5>
-                                            <?php } else if ($ventas['date'] == 11) { ?>
-                                            <h5><span >Noviembre</span></h5>
-                                            <?php } else if ($ventas['date'] == 12) { ?>
-                                            <h5><span >Diciembre</span></h5>
+                    <div class="row student text-center" style="align-items: center;">
+                        <div class="col-4">
+                            <div class="card border-primary">
+                                <!-- inicio Tabla -->
+                                <div class="table-responsive">
+                                    <table class="table table-light text-center">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col" >MES</th>
+                                                <th scope="col" >VALOR</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                            while ($ventas = mysqli_fetch_array($query)){
+                                        ?>
+                                            <tr>
+                                                <td>
+                                                <?php if ($ventas['date'] == 1) { ?>
+                                                    <h5><span >Enero</span></h5>
+                                                <?php } else if ($ventas['date'] == 2) { ?>
+                                                    <h5><span >Febrero</span></h5>
+                                                    <?php } else if ($ventas['date'] == 3) { ?>
+                                                    <h5><span >Marzo</span></h5>
+                                                    <?php } else if ($ventas['date'] == 4) { ?>
+                                                    <h5><span >Abril</span></h5>
+                                                    <?php } else if ($ventas['date'] == 5) { ?>
+                                                    <h5><span >Mayo</span></h5>
+                                                    <?php } else if ($ventas['date'] == 6) { ?>
+                                                    <h5><span >Junio</span></h5>
+                                                    <?php } else if ($ventas['date'] == 7) { ?>
+                                                    <h5><span >Julio</span></h5>
+                                                    <?php } else if ($ventas['date'] == 8) { ?>
+                                                    <h5><span >Agosto</span></h5>
+                                                    <?php } else if ($ventas['date'] == 9) { ?>
+                                                    <h5><span >Septiembre</span></h5>
+                                                    <?php } else if ($ventas['date'] == 10) { ?>
+                                                    <h5><span >Octubre</span></h5>
+                                                    <?php } else if ($ventas['date'] == 11) { ?>
+                                                    <h5><span >Noviembre</span></h5>
+                                                    <?php } else if ($ventas['date'] == 12) { ?>
+                                                    <h5><span >Diciembre</span></h5>
+                                                <?php } ?>
+                                                </td>
+                                                <td><?php echo '$ '. $ventas['valtot']; ?></td>
+                                            </tr>
                                         <?php } ?>
-                                        </td>
-                                        <td><?php echo '$ '. $ventas['valtot']; ?></td>
-                                    </tr>
-                                <?php } ?>
-                                </tbody>
-                            </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- fin de la tabla -->
+                            </div>
                         </div>
-                        <!-- fin de la tabla -->
+                        <div class="col-8">
+                            <div class="card border-primary">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
