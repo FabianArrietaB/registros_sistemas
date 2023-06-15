@@ -283,7 +283,6 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="float-sm-right">Portatiles</div>
                             </div>
                         </div>
                     </div>
