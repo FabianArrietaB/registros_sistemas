@@ -1,5 +1,5 @@
 <?php
     include "../../models/compras.php";
-    $Historial = new Historial();
-    echo json_encode($Historial->datosventas($datos));
+    $Ventas = new Ventas();
+    echo json_encode($Ventas->datosventas($datos));
 ?>

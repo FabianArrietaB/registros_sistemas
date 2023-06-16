@@ -156,7 +156,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card border-primary">
-                                <canvas id="compras"></canvas>
+                                <canvas id="myCanvas"></canvas>
                             </div>
                         </div>
                     </div>
