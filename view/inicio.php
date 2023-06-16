@@ -588,16 +588,34 @@ $conexion = $con->conectar();
                 </div>
             </div>
         </div>
-        <div class="card border-primary">
-            <div class="card-header text-center">
-                <div class="row">
-                    <div class="col-12">
-                        <h4>Mis Reportes</h4>
+        <div class="row">
+            <div class="col-6">
+                <div class="card border-primary">
+                    <div class="card-header text-center">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>Mis Reportes</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="tablalistatareas"></div>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div id="tablalistatareas"></div>
+            <div class="col-6">
+                <div class="card border-primary">
+                    <div class="card-header text-center">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>Cronograma Mes</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="listaactividades"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

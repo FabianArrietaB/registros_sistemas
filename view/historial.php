@@ -102,15 +102,15 @@
                 </div>
                 <div class="card-body">
                     <div class="row student text-center" style="align-items: center;">
-                        <div class="col-4">
+                        <div class="col-12">
                             <div class="card border-primary">
                                 <!-- inicio Tabla -->
                                 <div class="table-responsive">
                                     <table class="table table-light text-center">
                                         <thead>
                                             <tr>
-                                                <th scope="col" >MES</th>
-                                                <th scope="col" >VALOR</th>
+                                                <th scope="col">MES</th>
+                                                <th scope="col">VALOR</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -152,11 +152,6 @@
                                     </table>
                                 </div>
                                 <!-- fin de la tabla -->
-                            </div>
-                        </div>
-                        <div class="col-8">
-                            <div class="card border-primary">
-                                <canvas id="myCanvas"></canvas>
                             </div>
                         </div>
                     </div>

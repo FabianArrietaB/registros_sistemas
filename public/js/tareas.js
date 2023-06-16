@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('#tablalistatareas').load('tareas/listatareas.php');
+    $('#listaactividades').load('tareas/cronograma.php');
 });
 
 $(document).ready(function(){
@@ -80,7 +81,7 @@ function soluciontarea(){
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                console.log(respuesta)
+                //console.log(respuesta)
                 $('#tareaspendientes').load('tareas/tareaspendientes.php');
                 Swal.fire({
                     icon: 'success',
@@ -111,7 +112,7 @@ function finalizada(idtarea, estado){
             respuesta = respuesta.trim();
             if(respuesta == 1){
                 //console.log(respuesta)
-                $('#tareasfinalizadas').load('tareas/tareasfinalizadas.php');
+                $('#tareaspendientes').load('tareas/tareaspendientes.php');
                 Swal.fire({
                     icon: 'success',
                     title: 'Operacion Exitosa',
