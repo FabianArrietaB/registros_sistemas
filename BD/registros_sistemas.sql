@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-06-2023 a las 01:19:21
+-- Tiempo de generación: 16-06-2023 a las 01:54:26
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -338,6 +338,7 @@ CREATE TABLE `ventas` (
   `ven_nompro` varchar(45) NOT NULL,
   `ven_serial` varchar(45) DEFAULT NULL,
   `ven_numfac` varchar(45) NOT NULL,
+  `ven_valor` varchar(45) DEFAULT NULL,
   `ven_proove` varchar(45) NOT NULL,
   `ven_detall` varchar(45) NOT NULL,
   `ven_feccom` date NOT NULL,
@@ -348,8 +349,10 @@ CREATE TABLE `ventas` (
 -- Volcado de datos para la tabla `ventas`
 --
 
-INSERT INTO `ventas` (`id_venta`, `id_operador`, `id_sede`, `id_area`, `ven_cantid`, `ven_nompro`, `ven_serial`, `ven_numfac`, `ven_proove`, `ven_detall`, `ven_feccom`, `ven_fecope`) VALUES
-(1, 1, 3, 4, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2601', 'JA COMPUTADORES', 'actualización equipo mt contador', '2023-05-04', '2023-06-15');
+INSERT INTO `ventas` (`id_venta`, `id_operador`, `id_sede`, `id_area`, `ven_cantid`, `ven_nompro`, `ven_serial`, `ven_numfac`, `ven_valor`, `ven_proove`, `ven_detall`, `ven_feccom`, `ven_fecope`) VALUES
+(1, 1, 3, 4, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2601', '429999.36', 'JA COMPUTADORES', 'actualización equipo mt contador', '2023-05-04', '2023-06-15'),
+(2, 1, 3, 1, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2602', '429999.36', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
+(3, 1, 3, 1, '2', 'DISCOS SSD 240GB', 'NO TIENE', 'FESM 2602', '350000.00', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15');
 
 --
 -- Índices para tablas volcadas
@@ -477,7 +480,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

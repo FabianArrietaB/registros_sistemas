@@ -156,14 +156,7 @@
                         </div>
                         <div class="col-8">
                             <div class="card border-primary">
-                                <div class="grafico-wrapper">
-                                    <div class="grafico-fuera">
-                                        <div id="grafico" class="grafico">
-                                            <div div class="column" data-name="C++" data-value="40"></div>
-                                            <div class="column" data-name="Unix Shell" data-value="80"></div>
-                                        </div>
-                                    </div>
-                                </div>
+                                <canvas id="compras"></canvas>
                             </div>
                         </div>
                     </div>
