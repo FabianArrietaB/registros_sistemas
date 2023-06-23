@@ -41,7 +41,23 @@
             $query = $conexion->prepare($sql);
             $query->bind_param('si', $datos['codact'], $datos['idequipo']);
             $respuesta = $query->execute();
-            $query->close();
+            if ( $respuesta > 0){
+                $hoy = date("Y-m-d");
+                $registro = 'MODIFICO';
+                $modulo = 'EQUIPOS';
+                $idequipo = $datos['idequipo'];
+                $equipo = "SELECT e.equ_codact as codact, e.id_sede as idsede, e.equ_serial as serial FROM equipos as e WHERE e.id_equipo ='$idequipo'";
+                $resultado = mysqli_query($conexion,$equipo);
+                $respuesta = mysqli_fetch_array($resultado);
+                $serial = $respuesta['serial'];
+                $sede = $respuesta['idsede'];
+                $codant = $respuesta['codact'];
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?, ?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = 'CODIGO ACTIVO '. $codant . ' POR ' . $datos['codact'] . ' AL EQUIPO CON SERIAL ' . $serial;
+                $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $sede);
+                $respuesta = $query->execute();
+            }
             return $respuesta;
         }
 
