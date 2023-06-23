@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2023 a las 01:54:26
+-- Tiempo de generación: 24-06-2023 a las 01:19:15
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 8.1.12
 
@@ -56,13 +56,28 @@ INSERT INTO `areas` (`id_area`, `are_nombre`) VALUES
 
 CREATE TABLE `bitacora` (
   `id_bitacora` int(20) NOT NULL,
-  `id_usuario` int(20) NOT NULL,
-  `bit_datos` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bit_datos`)),
-  `bit_tabla` varchar(20) NOT NULL,
-  `bit_antes` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bit_antes`)),
-  `bit_despues` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`bit_despues`)),
-  `bit_fecope` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `bit_idsede` int(11) DEFAULT NULL,
+  `bit_tipeve` varchar(50) DEFAULT NULL,
+  `bit_fecope` date DEFAULT NULL,
+  `bit_operador` int(11) DEFAULT NULL,
+  `bit_modulo` varchar(50) DEFAULT NULL,
+  `bit_detall` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `bitacora`
+--
+
+INSERT INTO `bitacora` (`id_bitacora`, `bit_idsede`, `bit_tipeve`, `bit_fecope`, `bit_operador`, `bit_modulo`, `bit_detall`) VALUES
+(1, 3, 'REGISTRO', '2023-06-23', 1, 'compras', 'LA FACTURA FAM 1520'),
+(2, 3, 'REGISTRO', '2023-06-23', 1, 'compras', 'LA FACTURA FMES 5021'),
+(3, 3, 'REGISTRO', '2023-06-23', 1, 'EQUIPOS', 'EL PORTATIL CON SERIAL LEV325487961 DE LA FACTURA FEMS 3745'),
+(4, 1, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000357 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(7, 3, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000356 POR 000356 AL EQUIPO CON SERIAL LEV325487961'),
+(8, 1, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000359 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(9, 3, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000357 POR 000357 AL EQUIPO CON SERIAL LEV325487961'),
+(10, 4, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000386 POR 000386 AL EQUIPO CON SERIAL PF3LY21H'),
+(11, 4, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000356 POR 000356 AL EQUIPO CON SERIAL PF3LY21H');
 
 -- --------------------------------------------------------
 
@@ -85,7 +100,7 @@ CREATE TABLE `equipos` (
   `equ_capdis` varchar(45) NOT NULL,
   `equ_grafica` varchar(45) NOT NULL,
   `equ_serial` varchar(45) NOT NULL,
-  `equ_codact` varchar(45) NOT NULL,
+  `equ_codact` varchar(45) DEFAULT NULL,
   `equ_nomequ` varchar(45) NOT NULL,
   `equ_mac` varchar(45) NOT NULL,
   `equ_fecope` date NOT NULL
@@ -96,8 +111,9 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id_equipo`, `id_operador`, `id_sede`, `id_area`, `id_tipequ`, `equ_marca`, `equ_modelo`, `equ_tipram`, `equ_ram`, `equ_proce`, `equ_tipdis`, `equ_capdis`, `equ_grafica`, `equ_serial`, `equ_codact`, `equ_nomequ`, `equ_mac`, `equ_fecope`) VALUES
-(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000385', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
-(2, 1, 1, 1, 2, 'power group', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'NO TIENE', '11GEHMP0218C39', '000358', '', '', '2020-01-01');
+(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000356', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
+(2, 1, 1, 1, 2, 'POWER GROUP', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'NO TIENE', '11GEHMP0218C39', '000359', '', '', '2020-01-01'),
+(5, 1, 3, 10, 1, 'LENOVO', 'IDEAPAD 3', '2', '8GB', 'INTEL CORE I3 10300', '3', '256GB', 'NO TIENE', 'LEV325487961', '000357', 'AUX SISTEMA', '00:17:C8:6D:9F:A2', '2023-06-23');
 
 -- --------------------------------------------------------
 
@@ -120,7 +136,7 @@ CREATE TABLE `mantenimientos` (
 --
 
 INSERT INTO `mantenimientos` (`id_mantenimiento`, `id_operador`, `id_area`, `id_equipo`, `id_usuario`, `mat_detalle`, `mat_fecope`) VALUES
-(1, 2, 9, 1, 2, 'MANTENIMIENTO PREVENTIVO', '2023-06-10');
+(1, 2, 9, 1, 64, 'MANTENIMIENTO PREVENTIVO', '2023-06-10');
 
 -- --------------------------------------------------------
 
@@ -292,7 +308,9 @@ CREATE TABLE `tareas` (
 --
 
 INSERT INTO `tareas` (`id_tarea`, `id_usuario`, `id_nivel`, `id_asignado`, `tar_detalle`, `tar_fecupt`, `tar_fecrea`, `tar_fecope`, `tar_estado`) VALUES
-(1, 3, 1, 1, 'REVISION SOFTWARE ', '2023-06-14', '2023-06-30', '2023-06-13', '2');
+(1, 3, 1, 1, 'REVISION SOFTWARE ', '2023-06-16', '0000-00-00', '2023-06-13', '0'),
+(2, 3, 2, 2, 'REVISION SOFTWARE LOGISTICA', '0000-00-00', '0000-00-00', '2023-06-16', '0'),
+(3, 3, 3, 1, 'MANTNIMIENTOS EQUIPOS', '0000-00-00', '0000-00-00', '2023-06-16', '0');
 
 -- --------------------------------------------------------
 
@@ -318,7 +336,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `id_operador`, `id_persona`, `id_rol`, `id_area`, `user_nombre`, `user_password`, `user_estado`, `user_fecope`, `user_fecupt`) VALUES
-(1, 1, 10, 4, 10, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-10 12:23:45'),
+(1, 1, 10, 4, 10, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-16 16:37:32'),
 (2, 1, 10, 4, 10, 'FARRIETA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-10 20:04:50'),
 (3, 1, 11, 3, 9, 'CBAUTISTA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56'),
 (4, 1, 75, 2, 4, 'YVENGAL', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56');
@@ -334,7 +352,7 @@ CREATE TABLE `ventas` (
   `id_operador` int(11) NOT NULL,
   `id_sede` int(11) NOT NULL,
   `id_area` int(11) NOT NULL,
-  `ven_cantid` varchar(45) NOT NULL,
+  `ven_cantid` varchar(45) NOT NULL DEFAULT '1',
   `ven_nompro` varchar(45) NOT NULL,
   `ven_serial` varchar(45) DEFAULT NULL,
   `ven_numfac` varchar(45) NOT NULL,
@@ -352,7 +370,9 @@ CREATE TABLE `ventas` (
 INSERT INTO `ventas` (`id_venta`, `id_operador`, `id_sede`, `id_area`, `ven_cantid`, `ven_nompro`, `ven_serial`, `ven_numfac`, `ven_valor`, `ven_proove`, `ven_detall`, `ven_feccom`, `ven_fecope`) VALUES
 (1, 1, 3, 4, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2601', '429999.36', 'JA COMPUTADORES', 'actualización equipo mt contador', '2023-05-04', '2023-06-15'),
 (2, 1, 3, 1, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2602', '429999.36', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
-(3, 1, 3, 1, '2', 'DISCOS SSD 240GB', 'NO TIENE', 'FESM 2602', '350000.00', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15');
+(3, 1, 3, 1, '2', 'DISCOS SSD 240GB', 'NO TIENE', 'FESM 2602', '350000.00', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
+(4, 1, 3, 10, '1', 'MEMORIA DDR4', 'NO TIENE', 'FEMS 5021', '250000', 'JA COMPUTADORES', '', '2023-06-22', '2023-06-23'),
+(12, 1, 3, 10, '1', 'EL PORTATIL', 'LEV325487961', 'FEMS 3745', '1680000', 'JA COMPUTADORES', 'DOTACIÓN ÁREA DE SISTEMAS', '2023-06-23', '2023-06-23');
 
 --
 -- Índices para tablas volcadas
@@ -432,13 +452,13 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
-  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimientos`
@@ -468,7 +488,7 @@ ALTER TABLE `sedes`
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -480,7 +500,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
