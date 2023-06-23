@@ -1,7 +1,7 @@
 <!-- Formulario (Editar) -->
 <form id="frmcrearequipo" method="post" onsubmit="return crearequipo()">
     <div class="modal fade" id="crearequipo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -58,11 +58,10 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
                                     <input type="text" id="modelo" name="modelo" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
                                 </div>
                             </div>
-                            
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Ram</span>
@@ -82,8 +81,8 @@
                             </div>
                             <div class="col-5">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Procesador</span>
                                     <input type="text" id="procesa" name="procesa" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Procesador</span>
                                 </div>
                             </div>
                             <div class="col-4">
@@ -105,8 +104,8 @@
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Grafica</span>
                                     <input type="text" id="grafic" name="grafic" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Grafica</span>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -117,8 +116,8 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
                                     <input type="text" id="serial" name="serial" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
                                 </div>
                             </div>
                             <div class="col-6">
@@ -129,8 +128,37 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">MAC</span>
                                     <input type="text" id="mac" name="mac" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">MAC</span>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset><!-- Formulario (Usuario) -->
+                    <fieldset class="group-border">
+                        <legend class="group-border">Informacion Factura</legend>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Factura</span>
+                                    <input type="text" id="numfac" name="numfac" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Proovedor</span>
+                                    <input type="text" id="proove" name="proove" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="valor" name="valor" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Valor Compra</span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
+                                    <textarea type="text" id="detall" name="detall" class="form-control input-sm" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>

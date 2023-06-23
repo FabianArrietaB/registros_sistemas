@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $('#tablalistatareas').load('tareas/listatareas.php');
-    $('#listaactividades').load('tareas/cronograma.php');
 });
 
 $(document).ready(function(){

@@ -1,11 +1,9 @@
 <?php
    session_start();
    $datos = array(
-      'idoperador' => $_SESSION['usuario']['id'],
-      'idequipo'   => $_POST['idequipo'],
-      'idtipequ'   => $_POST['idtipequu'],
       'idsede'     => $_POST['idsedeu'],
       'idarea'     => $_POST['idareau'],
+      'idtipequ'   => $_POST['idtipequu'],
       'marca'      => $_POST['marcau'],
       'modelo'     => $_POST['modelou'],
       'tipram'     => $_POST['tipramu'],
@@ -18,6 +16,7 @@
       'nomequ'     => $_POST['nomequu'],
       'mac'        => $_POST['macu'],
       'fecha'      => $_POST['fechau'],
+      'idequipo'   => $_POST['idequipo'],
    );
 
    include '../../models/mantenimientos.php';

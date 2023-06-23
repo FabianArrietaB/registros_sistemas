@@ -29,8 +29,33 @@
                         </div>
                         <?php } ?>
                     </div>
-                    <form method="GET">
-                        <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">
+                    <form method="post" id="formcompras">
+                        <div class="row">
+                            <div class="col-7">
+                                <div class="input-group mb-3">
+                                    <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha Inicio</span>
+                                    <input type="date" id="fec_ini" name="fec_ini" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Fecha Final</span>
+                                    <input type="date" id="fec_fin" name="fec_fin" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <div class="d-grid gap-2">
+                                    <div class="input-group mb-3">
+                                        <button type="submit" class="btn btn-primary">Filtrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="card-body">

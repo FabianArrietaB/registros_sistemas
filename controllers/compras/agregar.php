@@ -11,6 +11,7 @@
    "proove"     => $_POST['proove'],
    "detall"     => $_POST['detall'],
    "feccom"     => $_POST['feccom'],
+   "valor"      => $_POST['valor'],
    );
 
    include "../../models/compras.php";

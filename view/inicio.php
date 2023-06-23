@@ -576,46 +576,30 @@ $conexion = $con->conectar();
             <div class="card-header text-center">
                 <div class="row">
                     <div class="col-md-4">
-                        <button class="btn btn-lg btn-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#creartarea">
-                            <div class="row">
-                                <div class="col-3 text-center">
-                                    <i class="fa-solid fa-notes-medical fa-2x"></i>
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-lg btn-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#creartarea">
+                                <div class="row">
+                                    <div class="col-3 text-center">
+                                        <i class="fa-solid fa-notes-medical fa-2x"></i>
+                                    </div>
+                                    <div class="col-9 text-center pt-1"><strong>CREAR NUEVA TAREA</strong></div>
                                 </div>
-                                <div class="col-9 text-center pt-1"><strong>CREAR REPORTE</strong></div>
-                            </div>
-                        </button>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-6">
-                <div class="card border-primary">
-                    <div class="card-header text-center">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4>Mis Reportes</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="tablalistatareas"></div>
+        <div class="card border-primary">
+            <div class="card-header text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <h4>TAREAS ASIGNADAS</h4>
                     </div>
                 </div>
             </div>
-            <div class="col-6">
-                <div class="card border-primary">
-                    <div class="card-header text-center">
-                        <div class="row">
-                            <div class="col-12">
-                                <h4>Cronograma Mes</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="listaactividades"></div>
-                    </div>
-                </div>
+            <div class="card-body">
+                <div id="tablalistatareas"></div>
             </div>
         </div>
     </div>

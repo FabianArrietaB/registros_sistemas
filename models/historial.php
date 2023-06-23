@@ -1,7 +1,7 @@
 <?php
     include "conexion.php";
 
-    class Ventas. extends Conexion {
+    class Ventas extends Conexion {
 
         public function datosventas(){
             $conexion = Conexion::conectar();

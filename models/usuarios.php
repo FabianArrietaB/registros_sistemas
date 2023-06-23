@@ -80,15 +80,13 @@
 
         public function editarusuario($datos){
             $conexion = Conexion::conectar();
-            $sql = "UPDATE usuarios SET id_operador = ?,
-                                        id_rol = ?,
+            $sql = "UPDATE usuarios SET id_rol = ?,
                                         id_area = ?,
                                         user_nombre = ?,
                                         user_password = ?
                                         WHERE id_usuario = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('iiissi',
-                                $datos['idoperador'],
+            $query->bind_param('iissi',
                                 $datos['idrol'],
                                 $datos['idarea'],
                                 $datos['usuario'],

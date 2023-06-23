@@ -17,6 +17,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="compras.php">COMPRAS</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="historial.php">HISTORIAL</a>
+                    </li>
                     <?php } else if ($_SESSION['usuario']['rol'] == 3) { ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="inicio.php">INICIO</a>
@@ -42,6 +45,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="historial.php">HISTORIAL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="bitacora.php">BITACORA</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="usuarios.php">USUARIOS</a>

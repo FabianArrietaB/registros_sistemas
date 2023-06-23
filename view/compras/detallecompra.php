@@ -62,14 +62,20 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
-                                <textarea disabled type="text" id="detallu" name="detallu" class="form-control input-sm" rows="3"></textarea>
+                                <span class="input-group-text" id="inputGroup-sizing-default">Fecha Compra</span>
+                                <input disabled type="date" id="feccomu" name="feccomu" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Fecha Compra</span>
-                                <input disabled type="date" id="feccomu" name="feccomu" class="form-control input-sm">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Valor Compra</span>
+                                <input disabled type="text" id="valoru" name="valoru" class="form-control input-sm">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
+                                <textarea disabled type="text" id="detallu" name="detallu" class="form-control input-sm" rows="3"></textarea>
                             </div>
                         </div>
                     </div>

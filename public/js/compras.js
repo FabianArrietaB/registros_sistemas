@@ -2,6 +2,8 @@ $(document).ready(function(){
     $('#tablacompras').load('compras/listacompras.php');
 });
 
+
+
 function agregarcompra(){
     $.ajax({
         type: "POST",
@@ -50,6 +52,7 @@ function detallecompras(idventa){
             $('#serialu').val(respuesta['serial']);
             $('#numfacu').val(respuesta['numfac']);
             $('#prooveu').val(respuesta['proove']);
+            $('#valoru').val(respuesta['valor']);
             $('#detallu').val(respuesta['detall']);
             $('#feccomu').val(respuesta['feccom']);
             $('#fecopeu').val(respuesta['fecope']);

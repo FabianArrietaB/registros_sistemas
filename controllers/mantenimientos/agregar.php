@@ -12,11 +12,15 @@
    "procesa"    => $_POST['procesa'],
    "tipdis"     => $_POST['tipdis'],
    "capdis"     => $_POST['capdis'],
-   "grafica"    => $_POST['grafica'],
+   "grafic"     => $_POST['grafic'],
    "serial"     => $_POST['serial'],
    "nomequ"     => $_POST['nomequ'],
    "mac"        => $_POST['mac'],
    "fecha"      => $_POST['fecha'],
+   "numfac"     => $_POST['numfac'],
+   "proove"     => $_POST['proove'],
+   "valor"      => $_POST['valor'],
+   "detall"     => $_POST['detall'],
    );
 
    include "../../models/mantenimientos.php";

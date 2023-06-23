@@ -114,11 +114,11 @@ function editarequipo(){
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                console.log(respuesta)
+                //console.log(respuesta)
                 $('#tablaequipos').load('mantenimientos/tablaequipos.php');
                 Swal.fire({
                     icon: 'success',
-                    title: 'Equipo Actualizado Exitosamente',
+                    title: 'Equipo Actualizado',
                     showConfirmButton: false,
                     timer: 1500
                 });

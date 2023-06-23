@@ -3,6 +3,7 @@
     include "header.php";
     include "navbar.php";
     if(isset($_SESSION['usuario']) &&
+    $_SESSION['usuario']['rol'] == 2||
     $_SESSION['usuario']['rol'] == 3||
     $_SESSION['usuario']['rol'] == 4){
     include "../models/conexion.php";
@@ -49,7 +50,7 @@
                                                     $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas");
                                                     $data = mysqli_fetch_array($sql);
                                                     $precio = $data['precio'];
-                                                    echo '$'. $precio;
+                                                    echo '$ '. $precio;
                                                 ?>
                                             </span>
                                         </div>
@@ -72,7 +73,7 @@
                                                     $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
                                                     $data = mysqli_fetch_array($sql);
                                                     $precio = $data['precio'];
-                                                    echo '$'. $precio;
+                                                    echo '$ '. $precio;
                                                 ?>
                                             </span>
                                         </div>
