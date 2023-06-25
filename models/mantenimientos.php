@@ -37,24 +37,25 @@
 
         public function agregaractivo($datos){
             $conexion = Conexion::conectar();
-            $sql = "UPDATE equipos SET equ_codact = ? WHERE id_equipo = ?";
-            $query = $conexion->prepare($sql);
-            $query->bind_param('si', $datos['codact'], $datos['idequipo']);
-            $respuesta = $query->execute();
+            $idequipo = $datos['idequipo'];
+            $equipo = "SELECT e.equ_codact as codant, e.id_sede as idsede, e.equ_serial as serial FROM equipos as e WHERE e.id_equipo ='$idequipo'";
+            $resultado = mysqli_query($conexion,$equipo);
+            $respuesta = mysqli_fetch_array($resultado);
+            $serial = $respuesta['serial'];
+            $sede = $respuesta['idsede'];
+            $codant = $respuesta['codant'];
+            $hoy = date("Y-m-d");
+            $registro = 'MODIFICO';
+            $modulo = 'EQUIPOS';
             if ( $respuesta > 0){
-                $hoy = date("Y-m-d");
-                $registro = 'MODIFICO';
-                $modulo = 'EQUIPOS';
-                $idequipo = $datos['idequipo'];
-                $equipo = "SELECT e.equ_codact as codant, e.id_sede as idsede, e.equ_serial as serial FROM equipos as e WHERE e.id_equipo ='$idequipo'";
-                $resultado = mysqli_query($conexion,$equipo);
-                $respuesta = mysqli_fetch_array($resultado);
-                $serial = $respuesta['serial'];
-                $sede = $respuesta['idsede'];
                 $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?, ?, ?, ?, ?, ?)";
                 $query = $conexion->prepare($insertbitacora);
-                $detalle = 'CODIGO ACTIVO '. $respuesta['codant'] . ' POR ' . $datos['codact'] . ' AL EQUIPO CON SERIAL ' . $serial;
+                $detalle = 'CODIGO ACTIVO '. $codant . ' POR ' . $datos['codact'] . ' AL EQUIPO CON SERIAL ' . $serial;
                 $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $sede);
+                $respuesta = $query->execute();
+                $sql = "UPDATE equipos SET equ_codact = ? WHERE id_equipo = ?";
+                $query = $conexion->prepare($sql);
+                $query->bind_param('si', $datos['codact'], $datos['idequipo']);
                 $respuesta = $query->execute();
             }
             return $respuesta;
