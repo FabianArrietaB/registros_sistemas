@@ -24,6 +24,23 @@
             $query = $conexion->prepare($sql);
             $query->bind_param("iiiss", $datos['idoperador'], $datos['nivel'], $datos['idasignado'], $datos['detalle'], $datos['fecini']);
             $respuesta = $query->execute();
+            if ($respuesta > 0) {
+                $hoy = date("Y-m-d");
+                $registro = 'REGISTRO';
+                $modulo = 'TAREAS';
+                if ($datos['idasignado'] = 1) {
+                    $asignado = 'FABIAN';
+                } else if ($datos['idasignado'] = 2){
+                    $asignado = 'JESUS';
+                } else if ($datos['idasignado'] = 3){
+                    $asignado = 'TODOS';
+                }
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = 'LA TAREA PARA' . $asignado;
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
             return $respuesta;
         }
 
