@@ -3,23 +3,40 @@
 
     class Tareas extends Conexion {
 
-        public function finalizada($idtarea, $estado){
+        public function finalizada($idtarea, $estado, $idoperador){
             $conexion = Conexion::conectar();
-            if($estado == 1){
-                $estado = 2;
-            }else{
-                $estado = 1;
+            $estact = "SELECT t.tar_deatelle AS detalle FROM tareas as t WHERE t.id_tarea = '$idtarea'";
+            $resultado = mysqli_query($conexion, $estact);
+            $respuesta = mysqli_fetch_array($resultado);
+            TODO://VALIDACION DEL ESTADO
+            $dettar = $respuesta['detalle'];
+            $hoy = date("Y-m-d");
+            $registro = 'CAMBIO';
+            $modulo = 'TAREAS';
+            if ($respuesta > 0) {
+                if($estado == 1){
+                    $estado = 2;
+                }else{
+                    $estado = 1;
+                }
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = 'ES ESTADO DE LA TAREA ' . $dettar . ' DE EN' . '' . ' A FINALIZADO';
+                $query->bind_param("ssissi", $registro, $hoy, $idoperador, $modulo, $detalle, $sede);
+                $respuesta = $query->execute();
+                TODO://CAMBIO DE ESTADO
+                $sql = "UPDATE tareas SET tar_estado = ? WHERE id_tarea = ?";
+                $query = $conexion->prepare($sql);
+                $query->bind_param('si', $estado, $idtarea);
+                $respuesta = $query->execute();
+                $query->close();
             }
-            $sql = "UPDATE tareas SET tar_estado = ? WHERE id_tarea = ?";
-            $query = $conexion->prepare($sql);
-            $query->bind_param('si', $estado, $idtarea);
-            $respuesta = $query->execute();
-            $query->close();
             return $respuesta;
         }
 
         public function creartarea($datos){
             $conexion = Conexion::conectar();
+            TODO://REGISTRO DE TAREA
             $sql = "INSERT INTO tareas (id_usuario, id_nivel, id_asignado, tar_detalle, tar_fecope) VALUES( ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
             $query->bind_param("iiiss", $datos['idoperador'], $datos['nivel'], $datos['idasignado'], $datos['detalle'], $datos['fecini']);
@@ -28,6 +45,7 @@
                 $hoy = date("Y-m-d");
                 $registro = 'REGISTRO';
                 $modulo = 'TAREAS';
+                TODO://VALIDACION DEL ASIGNADO
                 if ($datos['idasignado'] = 1) {
                     $asignado = 'FABIAN';
                 } else if ($datos['idasignado'] = 2){
@@ -35,9 +53,18 @@
                 } else if ($datos['idasignado'] = 3){
                     $asignado = 'TODOS';
                 }
+                TODO://VALIDACION DEL NIVEL
+                if ($datos['nivel'] = 1) {
+                    $nivel = 'BASICO';
+                } else if ($datos['nivel'] = 2){
+                    $nivel = 'MEDIO';
+                } else if ($datos['nivel'] = 3){
+                    $nivel = 'URGENTE';
+                }
+                TODO://REGISTRO AUDITORIA
                 $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
                 $query = $conexion->prepare($insertbitacora);
-                $detalle = 'LA TAREA PARA' . $asignado;
+                $detalle = 'LA TAREA PARA ' . $asignado . ' DE NIVEL ' . $nivel;
                 $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
                 $respuesta = $query->execute();
             }
@@ -75,6 +102,7 @@
         }
 
         public function soluciontarea($datos){
+            
             $conexion = Conexion::conectar();
             $sql = "UPDATE tareas SET tar_fecrea = ?, tar_fecupt = ?, tar_estado = ? WHERE id_tarea = ?";
             $query = $conexion->prepare($sql);

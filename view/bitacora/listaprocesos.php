@@ -15,7 +15,7 @@
         b.bit_detall as detall
     FROM bitacora AS b
     INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador
-    INNER JOIN sedes AS s ON s.id_sede = b.bit_idsede
+    LEFT JOIN sedes AS s ON s.id_sede = b.bit_idsede
     ORDER BY b.id_bitacora DESC";
     $query = mysqli_query($conexion, $sql);
 ?>

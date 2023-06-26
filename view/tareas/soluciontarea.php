@@ -56,7 +56,7 @@
                         </div>
                     </fieldset>
                     <div class="card-footer text-center">
-                        <button class="btn btn-success" data-bs-dismiss="modal">Agregar</button>
+                        <button class="btn btn-success" data-bs-dismiss="modal">VERIFICADA</button>
                     </div>
                 </div>
             </div>
