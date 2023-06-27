@@ -5,12 +5,14 @@
 
         public function agregarcompra($datos){
             $conexion = Conexion::conectar();
+            //AGREGAR COMPRA A LA BD
             $sql = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_cantid, ven_nompro, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
             $hoy = date("Y-m-d");
             $query->bind_param("iiisssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['cantid'], $datos['nompro'], $datos['serial'], $datos['numfac'], $datos['valor'],  $datos['proove'],  $datos['detall'],  $datos['feccom'], $hoy);
             $respuesta = $query->execute();
             if ( $respuesta > 0){
+                //REGISTRO AUDITORIA
                 $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?, ?, ?, ?, ?, ?)";
                 $query = $conexion->prepare($insertbitacora);
                 $registro = 'REGISTRO';
