@@ -5,6 +5,7 @@
 
         public function finalizada($idtarea, $estado){
             $conexion = Conexion::conectar();
+            //CONSULTA DETALLE DE LA TAREA
             $estact = "SELECT t.tar_detalle AS detalle FROM tareas as t WHERE t.id_tarea = '$idtarea'";
             $resultado = mysqli_query($conexion, $estact);
             $respuesta = mysqli_fetch_array($resultado);
@@ -105,6 +106,7 @@
 
         public function soluciontarea($datos){
             $conexion = Conexion::conectar();
+            //CONSULTA DETALLE DE LA TAREA
             $idtarea = $datos['idtarea'];
             $estact = "SELECT t.tar_detalle AS detalle FROM tareas as t WHERE t.id_tarea = '$idtarea'";
             $resultado = mysqli_query($conexion, $estact);
