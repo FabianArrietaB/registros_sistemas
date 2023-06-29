@@ -10,7 +10,7 @@ function detalleequipo(idequipo){
         url: "../controllers/mantenimientos/detalle.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            console.log(respuesta)
+            //console.log(respuesta)
             $('#idequipo').val(respuesta['idequipo']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
@@ -38,7 +38,7 @@ function detalleactivo(idequipo){
         url: "../controllers/mantenimientos/detalle.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            console.log(respuesta)
+            //console.log(respuesta)
             $('#idequipo').val(respuesta['idequipo']);
             $('#codactu').val(respuesta['codact']);
         }
@@ -114,7 +114,7 @@ function editarequipo(){
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                console.log(respuesta)
+                //console.log(respuesta)
                 $('#tablaequipos').load('mantenimientos/tablaequipos.php');
                 Swal.fire({
                     icon: 'success',

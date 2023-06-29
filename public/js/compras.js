@@ -2,8 +2,6 @@ $(document).ready(function(){
     $('#tablacompras').load('compras/listacompras.php');
 });
 
-
-
 function agregarcompra(){
     $.ajax({
         type: "POST",
@@ -12,7 +10,7 @@ function agregarcompra(){
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                console.log(respuesta);
+                //console.log(respuesta);
                 $('#tablacompras').load('compras/listacompras.php');
                 $('#frmagrecompra')[0].reset();
                 Swal.fire({
@@ -42,7 +40,7 @@ function detallecompras(idventa){
         url: "../controllers/compras/detalle.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            console.log(respuesta)
+            //console.log(respuesta)
             $('#idventa').val(respuesta['idventa']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
