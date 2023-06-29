@@ -116,23 +116,16 @@
 
         public function editarequipo($datos){
             $conexion = Conexion::conectar();
-            //CONSULTA DATOS DEL EQUIPO
-            $idequipo = $datos['idequipo'];
-            $equipo = "SELECT e.id_sede as idsede, e.equ_serial as serial FROM equipos as e WHERE e.id_equipo ='$idequipo'";
-            $resultado = mysqli_query($conexion, $equipo);
-            $respuesta = mysqli_fetch_array($resultado);
-            $serial = $respuesta['serial'];
-            $sede = $respuesta['idsede'];
             $hoy = date("Y-m-d");
             $registro = 'MODIFICO';
             $modulo = 'EQUIPOS';
+            //REGISTRO AUDITORIA
+            $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";
+            $query = $conexion->prepare($insertbitacora);
+            $detalle = 'AL EQUIPO CON SERIAL ' . $datos['serial'];
+            $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $datos['idsede']);
+            $respuesta = $query->execute();
             if ( $respuesta > 0){
-                //REGISTRO AUDITORIA
-                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";
-                $query = $conexion->prepare($insertbitacora);
-                $detalle = 'AL EQUIPO CON SERIAL ' . $serial;
-                $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $sede);
-                $respuesta = $query->execute();
                 //REGISTRO ACTUALIZACION
                 $sql = "UPDATE equipos SET  id_sede = ?, id_area = ?, id_tipequ = ?, equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_nomequ = ?, equ_mac = ? WHERE id_equipo = ?";
                 $query = $conexion->prepare($sql);
