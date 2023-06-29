@@ -127,7 +127,6 @@
                 $sql = "UPDATE tareas SET tar_fecrea = ?, tar_fecupt = ?, tar_estado = ? WHERE id_tarea = ?";
                 $query = $conexion->prepare($sql);
                 $estado = 1;
-                $hoy = date("Y-m-d");
                 $query->bind_param('sssi', $datos['fecrea'], $hoy, $estado, $datos['idtarea']);
                 $respuesta = $query->execute();
                 $query->close();

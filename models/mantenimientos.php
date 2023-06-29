@@ -88,7 +88,6 @@
                 e.equ_mac     AS mac,
                 e.equ_fecope  AS fecha
                 FROM equipos AS e
-                INNER JOIN areas AS a ON a.id_area = e.id_area
                 WHERE e.id_equipo ='$idequipo'";
             $respuesta = mysqli_query($conexion,$sql);
             $equipos = mysqli_fetch_array($respuesta);
@@ -127,7 +126,7 @@
             $respuesta = $query->execute();
             if ( $respuesta > 0){
                 //REGISTRO ACTUALIZACION
-                $sql = "UPDATE equipos SET  id_sede = ?, id_area = ?, id_tipequ = ?, equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_nomequ = ?, equ_mac = ? WHERE id_equipo = ?";
+                $sql = "UPDATE equipos SET id_sede = ?, id_area = ?, id_tipequ = ?, equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_nomequ = ?, equ_mac = ? WHERE id_equipo = ?";
                 $query = $conexion->prepare($sql);
                 $query->bind_param('iiisssssssssssi', $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafic'], $datos['serial'], $datos['nomequ'], $datos['mac'], $datos['idequipo']);
                 $respuesta = $query->execute();
