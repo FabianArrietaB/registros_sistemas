@@ -136,7 +136,6 @@ function editarusuario(){
                     timer: 1500
                 });
             }
-        console.log(respuesta);
         }
     });
     return false;
