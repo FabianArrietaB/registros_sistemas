@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2023 a las 01:19:15
--- Versión del servidor: 10.4.27-MariaDB
--- Versión de PHP: 8.1.12
+-- Tiempo de generación: 01-07-2023 a las 03:02:50
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,7 +56,7 @@ INSERT INTO `areas` (`id_area`, `are_nombre`) VALUES
 
 CREATE TABLE `bitacora` (
   `id_bitacora` int(20) NOT NULL,
-  `bit_idsede` int(11) DEFAULT NULL,
+  `bit_idsede` int(11) DEFAULT 3,
   `bit_tipeve` varchar(50) DEFAULT NULL,
   `bit_fecope` date DEFAULT NULL,
   `bit_operador` int(11) DEFAULT NULL,
@@ -72,12 +72,69 @@ INSERT INTO `bitacora` (`id_bitacora`, `bit_idsede`, `bit_tipeve`, `bit_fecope`,
 (1, 3, 'REGISTRO', '2023-06-23', 1, 'compras', 'LA FACTURA FAM 1520'),
 (2, 3, 'REGISTRO', '2023-06-23', 1, 'compras', 'LA FACTURA FMES 5021'),
 (3, 3, 'REGISTRO', '2023-06-23', 1, 'EQUIPOS', 'EL PORTATIL CON SERIAL LEV325487961 DE LA FACTURA FEMS 3745'),
-(4, 1, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000357 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
-(7, 3, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000356 POR 000356 AL EQUIPO CON SERIAL LEV325487961'),
-(8, 1, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000359 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
-(9, 3, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000357 POR 000357 AL EQUIPO CON SERIAL LEV325487961'),
-(10, 4, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000386 POR 000386 AL EQUIPO CON SERIAL PF3LY21H'),
-(11, 4, 'MODIFICO', '2023-06-23', 1, 'EQUIPOS', 'CODIGO ACTIVO 000356 POR 000356 AL EQUIPO CON SERIAL PF3LY21H');
+(12, 4, 'MODIFICO', '2023-06-26', 1, 'EQUIPOS', 'CODIGO ACTIVO 000356 POR 000358 AL EQUIPO CON SERIAL PF3LY21H'),
+(13, 3, 'REGISTRO', '2023-06-26', 3, 'TAREAS', 'LA TAREA PARA FABIAN DE NIVEL URGENTE'),
+(15, 3, 'REGISTRO', '2023-06-26', 3, 'TAREAS', 'LA TAREA PARA FABIAN DE NIVEL BASICO'),
+(16, 3, 'REGISTRO', '2023-06-26', 3, 'TAREAS', 'LA TAREA PARA FABIAN DE NIVEL BASICO'),
+(17, 3, 'CAMBIO', '2023-06-28', 1, 'TAREAS', 'EL ESTADO DE LA TAREA mantenimientos equipos grupo metropolis DE ABIERTO A EN OPERACION'),
+(18, 3, 'CAMBIO', '2023-06-28', 1, 'TAREAS', 'EL ESTADO DE LA TAREA mantenimientos equipos grupo metropolis DE EN OPERACION A FINALIZADO'),
+(19, 3, 'CAMBIO', '2023-06-29', 1, 'TAREAS', 'EL ESTADO DE LA TAREA finalizacion pagina web DE ABIERTO A EN OPERACION'),
+(20, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(21, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(22, NULL, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL '),
+(23, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000360 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(24, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000360 POR 000359 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(25, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000360 AL EQUIPO CON SERIAL 11GEHMP0218C39');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `claves`
+--
+
+CREATE TABLE `claves` (
+  `id_clave` int(11) NOT NULL,
+  `id_tipo` int(11) NOT NULL,
+  `cla_equip` varchar(45) DEFAULT NULL,
+  `cla_user` varchar(45) DEFAULT NULL,
+  `cla_password` varchar(45) DEFAULT NULL,
+  `cla_nomwif` varchar(45) DEFAULT NULL,
+  `cla_clawif` varchar(45) DEFAULT NULL,
+  `cla_ip` varchar(45) DEFAULT NULL,
+  `cla_marca` varchar(45) DEFAULT NULL,
+  `cla_modelo` varchar(45) DEFAULT NULL,
+  `cla_patron` varchar(45) DEFAULT NULL,
+  `cla_serial` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `claves`
+--
+
+INSERT INTO `claves` (`id_clave`, `id_tipo`, `cla_equip`, `cla_user`, `cla_password`, `cla_nomwif`, `cla_clawif`, `cla_ip`, `cla_marca`, `cla_modelo`, `cla_patron`, `cla_serial`) VALUES
+(1, 1, 'SERVIDOR', 'Administrador', 'Metro_Casas2020..', '0', '0', '192.168.1.254', 'DELL', 'POWEREDGE R640', '0', '27M1FW2');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `correos`
+--
+
+CREATE TABLE `correos` (
+  `id_correo` int(11) NOT NULL,
+  `id_area` int(11) NOT NULL,
+  `cor_correo` varchar(255) NOT NULL,
+  `cor_password` varchar(45) NOT NULL,
+  `cor_estado` varchar(45) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `correos`
+--
+
+INSERT INTO `correos` (`id_correo`, `id_area`, `cor_correo`, `cor_password`, `cor_estado`) VALUES
+(1, 4, 'amena@metropolisdelacosta.com', 'amMetropolis2020..', '1'),
+(2, 3, 'analistafacturacion@metropolisdelacosta.com', 'afMetropolis2023..', '1');
 
 -- --------------------------------------------------------
 
@@ -111,9 +168,42 @@ CREATE TABLE `equipos` (
 --
 
 INSERT INTO `equipos` (`id_equipo`, `id_operador`, `id_sede`, `id_area`, `id_tipequ`, `equ_marca`, `equ_modelo`, `equ_tipram`, `equ_ram`, `equ_proce`, `equ_tipdis`, `equ_capdis`, `equ_grafica`, `equ_serial`, `equ_codact`, `equ_nomequ`, `equ_mac`, `equ_fecope`) VALUES
-(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000356', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
-(2, 1, 1, 1, 2, 'POWER GROUP', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'NO TIENE', '11GEHMP0218C39', '000359', '', '', '2020-01-01'),
+(1, 1, 4, 2, 1, 'LENOVO', '14ITL6', '2', '8GB', 'I3 1115G4', '3', '256GB', 'NO TIENE', 'PF3LY21H', '000358', 'BM EXTERNO01', '10-51-07-90-CD-CE', '2023-06-10'),
+(2, 1, 1, 1, 2, 'POWER GROUP', 'POWER 11GEH', '2', '4gb', 'PETIUM G4560', '1', '1TB', 'NO TIENE', '11GEHMP0218C39', '000360', '', '', '2020-01-01'),
 (5, 1, 3, 10, 1, 'LENOVO', 'IDEAPAD 3', '2', '8GB', 'INTEL CORE I3 10300', '3', '256GB', 'NO TIENE', 'LEV325487961', '000357', 'AUX SISTEMA', '00:17:C8:6D:9F:A2', '2023-06-23');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `folder`
+--
+
+CREATE TABLE `folder` (
+  `id_folder` int(11) NOT NULL,
+  `fol_nombre` varchar(45) NOT NULL,
+  `fol_password` varchar(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `folder`
+--
+
+INSERT INTO `folder` (`id_folder`, `fol_nombre`, `fol_password`) VALUES
+(1, 'BRILLA', 'Brilla2022'),
+(2, 'CAJA', 'Caja2022'),
+(3, 'CAPACITACIONES', 'LIBRE'),
+(4, 'CARTERA', 'Cartera2022'),
+(5, 'COMERCIAL', 'Comercial2022'),
+(6, 'COMPRAS', 'Compras2022'),
+(7, 'CONTABILIDAD', 'Contabilidad2022'),
+(8, 'INVENTARIOS', 'Inventarios2022'),
+(9, 'LOGISTICA', 'Logistica2022'),
+(10, 'MARKETING', 'Marketing2022'),
+(11, 'PROCESOS', 'Procesos2020'),
+(12, 'RRHH', 'Rrhh2022'),
+(13, 'SISTEMAS', 'Sistemas_2020'),
+(14, 'TESORERIA', 'Tesoreria'),
+(15, 'VENTAS', 'Ventas2022');
 
 -- --------------------------------------------------------
 
@@ -310,7 +400,10 @@ CREATE TABLE `tareas` (
 INSERT INTO `tareas` (`id_tarea`, `id_usuario`, `id_nivel`, `id_asignado`, `tar_detalle`, `tar_fecupt`, `tar_fecrea`, `tar_fecope`, `tar_estado`) VALUES
 (1, 3, 1, 1, 'REVISION SOFTWARE ', '2023-06-16', '0000-00-00', '2023-06-13', '0'),
 (2, 3, 2, 2, 'REVISION SOFTWARE LOGISTICA', '0000-00-00', '0000-00-00', '2023-06-16', '0'),
-(3, 3, 3, 1, 'MANTNIMIENTOS EQUIPOS', '0000-00-00', '0000-00-00', '2023-06-16', '0');
+(3, 3, 3, 1, 'MANTNIMIENTOS EQUIPOS', '0000-00-00', '0000-00-00', '2023-06-16', '0'),
+(9, 3, 3, 1, 'INSTALACION DISPOSITVOS SEDE FERRESUMINISTROS', '0000-00-00', '0000-00-00', '2023-06-26', '0'),
+(10, 3, 2, 2, 'finalizacion pagina web', '2023-06-29', '2023-06-30', '2023-06-26', '1'),
+(11, 3, 3, 3, 'mantenimientos equipos grupo metropolis', '2023-06-28', '2023-06-30', '2023-06-26', '2');
 
 -- --------------------------------------------------------
 
@@ -356,7 +449,7 @@ CREATE TABLE `ventas` (
   `ven_nompro` varchar(45) NOT NULL,
   `ven_serial` varchar(45) DEFAULT NULL,
   `ven_numfac` varchar(45) NOT NULL,
-  `ven_valor` varchar(45) DEFAULT NULL,
+  `ven_valor` decimal(45,0) DEFAULT NULL,
   `ven_proove` varchar(45) NOT NULL,
   `ven_detall` varchar(45) NOT NULL,
   `ven_feccom` date NOT NULL,
@@ -368,11 +461,11 @@ CREATE TABLE `ventas` (
 --
 
 INSERT INTO `ventas` (`id_venta`, `id_operador`, `id_sede`, `id_area`, `ven_cantid`, `ven_nompro`, `ven_serial`, `ven_numfac`, `ven_valor`, `ven_proove`, `ven_detall`, `ven_feccom`, `ven_fecope`) VALUES
-(1, 1, 3, 4, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2601', '429999.36', 'JA COMPUTADORES', 'actualización equipo mt contador', '2023-05-04', '2023-06-15'),
-(2, 1, 3, 1, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2602', '429999.36', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
-(3, 1, 3, 1, '2', 'DISCOS SSD 240GB', 'NO TIENE', 'FESM 2602', '350000.00', 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
-(4, 1, 3, 10, '1', 'MEMORIA DDR4', 'NO TIENE', 'FEMS 5021', '250000', 'JA COMPUTADORES', '', '2023-06-22', '2023-06-23'),
-(12, 1, 3, 10, '1', 'EL PORTATIL', 'LEV325487961', 'FEMS 3745', '1680000', 'JA COMPUTADORES', 'DOTACIÓN ÁREA DE SISTEMAS', '2023-06-23', '2023-06-23');
+(1, 1, 3, 4, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2601', 429999, 'JA COMPUTADORES', 'actualización equipo mt contador', '2023-05-04', '2023-06-15'),
+(2, 1, 3, 1, '2', 'MEMORIA DDR4', 'NO TIENE', 'FESM 2602', 429999, 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
+(3, 1, 3, 1, '2', 'DISCOS SSD 240GB', 'NO TIENE', 'FESM 2602', 350000, 'JA COMPUTADORES', 'actualización equipo mt caja 01 y 02', '2023-06-04', '2023-06-15'),
+(4, 1, 3, 10, '1', 'MEMORIA DDR4', 'NO TIENE', 'FEMS 5021', 250000, 'JA COMPUTADORES', '', '2023-06-22', '2023-06-23'),
+(12, 1, 3, 10, '1', 'EL PORTATIL', 'LEV325487961', 'FEMS 3745', 1680000, 'JA COMPUTADORES', 'DOTACIÓN ÁREA DE SISTEMAS', '2023-06-23', '2023-06-23');
 
 --
 -- Índices para tablas volcadas
@@ -391,10 +484,28 @@ ALTER TABLE `bitacora`
   ADD PRIMARY KEY (`id_bitacora`);
 
 --
+-- Indices de la tabla `claves`
+--
+ALTER TABLE `claves`
+  ADD PRIMARY KEY (`id_clave`);
+
+--
+-- Indices de la tabla `correos`
+--
+ALTER TABLE `correos`
+  ADD PRIMARY KEY (`id_correo`);
+
+--
 -- Indices de la tabla `equipos`
 --
 ALTER TABLE `equipos`
   ADD PRIMARY KEY (`id_equipo`);
+
+--
+-- Indices de la tabla `folder`
+--
+ALTER TABLE `folder`
+  ADD PRIMARY KEY (`id_folder`);
 
 --
 -- Indices de la tabla `mantenimientos`
@@ -452,13 +563,31 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT de la tabla `claves`
+--
+ALTER TABLE `claves`
+  MODIFY `id_clave` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `correos`
+--
+ALTER TABLE `correos`
+  MODIFY `id_correo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
 --
 ALTER TABLE `equipos`
   MODIFY `id_equipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT de la tabla `folder`
+--
+ALTER TABLE `folder`
+  MODIFY `id_folder` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `mantenimientos`
@@ -488,7 +617,7 @@ ALTER TABLE `sedes`
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tarea` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
