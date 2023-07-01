@@ -115,7 +115,7 @@ function detalleclave(idclave){
             $('#nonwifu').val(respuesta['nonwif']);
             $('#calwifu').val(respuesta['calwif']);
             $('#ipu').val(respuesta['ip']);
-            $('#modelou').val(respuesta['marca']);
+            $('#marcau').val(respuesta['marca']);
             $('#modelou').val(respuesta['modelo']);
             $('#patronu').val(respuesta['patron']);
             $('#serialu').val(respuesta['serial']);

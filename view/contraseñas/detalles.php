@@ -24,75 +24,66 @@
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <input disabled type="text" id="areau" name="areau" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                <input disabled type="text" id="equipou" name="equipou" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Area</span>
                             </div>
                         </div>
                         <div class="col-3">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Cantidad</span>
-                                    <input disabled type="text" id="cantidu" name="cantidu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input disabled type="text" id="usuariou" name="usuariou" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Producto</span>
-                                    <input disabled type="text" id="nomprou" name="nomprou" class="form-control input-sm">
+                                    <input disabled type="text" id="passwordu" name="passwordu" class="form-control input-sm">
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="input-group mb-3">
-                                    <input disabled type="text" id="marcau" name="marcau" class="form-control input-sm">
+                                    <input disabled type="text" id="nonwifu" name="nonwifu" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="input-group mb-3">
-                                    <input disabled type="text" id="modelou" name="modelou" class="form-control input-sm">
+                                    <input disabled type="text" id="calwifu" name="calwifu" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
-                                    <input disabled type="text" id="serialu" name="serialu" class="form-control input-sm">
+                                    <input disabled type="text" id="ipu" name="ipu" class="form-control input-sm">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Factura</span>
-                                    <input disabled type="text" id="numfacu" name="numfacu" class="form-control input-sm">
+                                    <input disabled type="text" id="marcau" name="marcau" class="form-control input-sm">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
-                                    <input disabled type="text" id="prooveu" name="prooveu" class="form-control input-sm">
+                                    <input disabled type="text" id="modelou" name="modelou" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
                                 </div>
                             </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Fecha Compra</span>
-                                <input disabled type="date" id="feccomu" name="feccomu" class="form-control input-sm">
+                                <input disabled type="text" id="patronu" name="patronu" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Valor Compra</span>
-                                <input disabled type="text" id="valoru" name="valoru" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
-                                <textarea disabled type="text" id="detallu" name="detallu" class="form-control input-sm" rows="3"></textarea>
+                                <input disabled type="text" id="serialu" name="serialu" class="form-control input-sm">
                             </div>
                         </div>
                     </div>
                 </fieldset>
-                <div class="card-footer text-center">
-                    <button class="btn btn-success" data-bs-dismiss="modal">Agregar</button>
-                </div>
             </div>
         </div>
     </div>
