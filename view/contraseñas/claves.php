@@ -39,7 +39,7 @@
             while ($claves = mysqli_fetch_array($query)){
         ?>
             <tr>
-            <td data-bs-toggle="modal" data-bs-target="#detalleclave" onclick="detalleclave('<?php echo $compras['idclave']?>')">
+            <td data-bs-toggle="modal" data-bs-target="#detalleclave" onclick="detalleclave('<?php echo $claves['idclave']?>')">
                 <?php if ($claves['idtipo'] == 1) { ?>
                     <h5><span >SERVIDOR</span></h5>
                 <?php } else if ($claves['idtipo'] == 2) { ?>

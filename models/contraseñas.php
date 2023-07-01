@@ -83,7 +83,7 @@
                 c.cla_patron AS patron,
                 c.cla_serial AS serial
                 FROM claves AS c
-                WHERE c.id_correo ='$idclave'";
+                WHERE c.id_clave ='$idclave'";
             $respuesta = mysqli_query($conexion,$sql);
             $clave = mysqli_fetch_array($respuesta);
             $datos = array(

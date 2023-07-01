@@ -108,7 +108,7 @@ function detalleclave(idclave){
             respuesta = jQuery.parseJSON(respuesta);
             console.log(respuesta)
             $('#idclave').val(respuesta['idclave']);
-            $('#idtipou').val(respuesta['password']);
+            $('#idtipou').val(respuesta['idtipo']);
             $('#equipou').val(respuesta['equipo']);
             $('#usuariou').val(respuesta['usuario']);
             $('#passwordu').val(respuesta['password']);

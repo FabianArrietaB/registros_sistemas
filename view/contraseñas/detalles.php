@@ -14,7 +14,7 @@
                         <input hidden type="text" id="idclave" name="idclave" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="col-6">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Sede</span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">TIPO EQUIPO</span>
                                 <select disabled name="idtipou" id="idtipou" class="form-control input-sm">
                                     <option value="1">SERVIDOR</option>
                                     <option value="2">ROUTER</option>
@@ -25,7 +25,7 @@
                         <div class="col-6">
                             <div class="input-group mb-3">
                                 <input disabled type="text" id="equipou" name="equipou" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Area</span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">NOMBRE EQUIPO</span>
                             </div>
                         </div>
                         <div class="col-3">
