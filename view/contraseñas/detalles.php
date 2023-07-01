@@ -1,5 +1,5 @@
 <!-- Formulario (Editar) -->
-<div class="modal fade" id="detallecompra" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="detalleclave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,18 +9,16 @@
             <div class="modal-body">
                 <!-- Formulario (Usuario) -->
                 <fieldset class="group-border">
-                    <legend class="group-border">Informacion Compra</legend>
+                    <legend class="group-border">Informacion General</legend>
                     <div class="row">
-                        <input hidden type="text" id="idventa" name="idventa" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <input hidden type="text" id="idclave" name="idclave" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                         <div class="col-6">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Sede</span>
-                                <select disabled name="idsede" id="idsedeu" class="form-control input-sm">
-                                    <option selected >Selecione Sede</option>
-                                    <option value="1">CERAMICASAS</option>
-                                    <option value="2">FERRECASAS</option>
-                                    <option value="3">METROPOLIS</option>
-                                    <option value="4">MAYORISTA</option>
+                                <select disabled name="idtipou" id="idtipou" class="form-control input-sm">
+                                    <option value="1">SERVIDOR</option>
+                                    <option value="2">ROUTER</option>
+                                    <option value="3">DVR</option>
                                 </select>
                             </div>
                         </div>

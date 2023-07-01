@@ -23,9 +23,9 @@
                 }
                 $hoy = date("Y-m-d");
                 //REGISTRO DEL EQUIPO Al MODULO COMPRA
-                $insertcompra = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_nompro, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?,?,?,?,?,?,?,?,?,?,?)";
+                $insertcompra = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_nompro, ven_marca, ven_modelo, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?,?,?,?,?,?,?,?,?,?,?)";
                 $query = $conexion->prepare($insertcompra);
-                $query->bind_param("iiissssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $equipo, $datos['serial'], $datos['numfac'], $datos['valor'], $datos['proove'], $datos['detall'], $datos['fecha'], $hoy);
+                $query->bind_param("iiissssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $equipo, $datos['marca'], $datos['modelo'], $datos['serial'], $datos['numfac'], $datos['valor'], $datos['proove'], $datos['detall'], $datos['fecha'], $hoy);
                 $respuesta = $query->execute();
                 //REGISTRO AUDITORIA
                 $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";

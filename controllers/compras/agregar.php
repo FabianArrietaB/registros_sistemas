@@ -6,6 +6,8 @@
    "idarea"     => $_POST['idarea'],
    "cantid"     => $_POST['cantid'],
    "nompro"     => $_POST['nompro'],
+   "marca"      => $_POST['marca'],
+   "modelo"     => $_POST['modelo'],
    "serial"     => $_POST['serial'],
    "numfac"     => $_POST['numfac'],
    "proove"     => $_POST['proove'],

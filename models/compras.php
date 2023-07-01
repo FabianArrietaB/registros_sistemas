@@ -6,10 +6,10 @@
         public function agregarcompra($datos){
             $conexion = Conexion::conectar();
             //AGREGAR COMPRA A LA BD
-            $sql = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_cantid, ven_nompro, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_cantid, ven_nompro, ven_marca, ven_modelo, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $query = $conexion->prepare($sql);
             $hoy = date("Y-m-d");
-            $query->bind_param("iiisssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['cantid'], $datos['nompro'], $datos['serial'], $datos['numfac'], $datos['valor'],  $datos['proove'],  $datos['detall'],  $datos['feccom'], $hoy);
+            $query->bind_param("iiisssssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['cantid'], $datos['nompro'], $datos['marca'], $datos['modelo'], $datos['serial'], $datos['numfac'], $datos['valor'],  $datos['proove'],  $datos['detall'],  $datos['feccom'], $hoy);
             $respuesta = $query->execute();
             if ( $respuesta > 0){
                 //REGISTRO AUDITORIA
@@ -33,6 +33,8 @@
                 a.are_nombre  AS area,
                 V.ven_cantid  AS cantid,
                 v.ven_nompro  AS nompro,
+                v.ven_marca   AS marca,
+                v.ven_modelo  AS modelo,
                 v.ven_serial  AS serial,
                 v.ven_numfac  AS numfac,
                 v.ven_valor   AS valor,
@@ -52,6 +54,8 @@
                 'area'       => $compras['area'],
                 'cantid'     => $compras['cantid'],
                 'nompro'     => $compras['nompro'],
+                'marca'      => $compras['marca'],
+                'modelo'     => $compras['modelo'],
                 'serial'     => $compras['serial'],
                 'numfac'     => $compras['numfac'],
                 'valor'      => $compras['valor'],

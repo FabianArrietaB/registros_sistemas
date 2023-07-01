@@ -47,6 +47,8 @@ function detallecompras(idventa){
             $('#areau').val(respuesta['area']);
             $('#cantidu').val(respuesta['cantid']);
             $('#nomprou').val(respuesta['nompro']);
+            $('#marcau').val(respuesta['marca']);
+            $('#modelou').val(respuesta['modelo']);
             $('#serialu').val(respuesta['serial']);
             $('#numfacu').val(respuesta['numfac']);
             $('#prooveu').val(respuesta['proove']);

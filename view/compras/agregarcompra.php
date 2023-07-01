@@ -39,31 +39,43 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Area</span>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Cantidad</span>
                                     <input type="text" id="cantid" name="cantid" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Producto</span>
                                     <input type="text" id="nompro" name="nompro" class="form-control input-sm">
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
-                                    <input type="text" id="serial" name="serial" class="form-control input-sm">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
+                                    <input type="text" id="marca" name="marca" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="modelo" name="modelo" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
+                                    <input type="text" id="serial" name="serial" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Factura</span>
                                     <input type="text" id="numfac" name="numfac" class="form-control input-sm">
                                 </div>
                             </div>
-                            <div class="col-7">
+                            <div class="col-4">
                                 <div class="input-group mb-3">
                                     <input type="text" id="proove" name="proove" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
