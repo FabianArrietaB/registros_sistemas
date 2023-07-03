@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-07-2023 a las 03:02:50
+-- Tiempo de generación: 03-07-2023 a las 20:00:31
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -81,10 +81,23 @@ INSERT INTO `bitacora` (`id_bitacora`, `bit_idsede`, `bit_tipeve`, `bit_fecope`,
 (19, 3, 'CAMBIO', '2023-06-29', 1, 'TAREAS', 'EL ESTADO DE LA TAREA finalizacion pagina web DE ABIERTO A EN OPERACION'),
 (20, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL 11GEHMP0218C39'),
 (21, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL 11GEHMP0218C39'),
-(22, NULL, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL '),
+(22, 3, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'AL EQUIPO CON SERIAL '),
 (23, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000360 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
 (24, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000360 POR 000359 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
-(25, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000360 AL EQUIPO CON SERIAL 11GEHMP0218C39');
+(25, 1, 'MODIFICO', '2023-06-30', 1, 'EQUIPOS', 'CODIGO ACTIVO 000359 POR 000360 AL EQUIPO CON SERIAL 11GEHMP0218C39'),
+(26, 3, 'CAMBIO', '2023-07-03', 1, 'CONTRASEÑAS', 'CONTRASEÑA amMetropolis2020.. POR AMMetropolis2023.. AL CORREO amena@metropolisdelacosta.com'),
+(27, 3, 'CAMBIO', '2023-07-03', 1, 'CONTRASEÑAS', 'CONTRASEÑA AMMetropolis2023.. POR amMetropolis2023.. AL CORREO amena@metropolisdelacosta.com'),
+(28, 3, 'CAMBIO', '2023-07-03', 1, 'CONTRASEÑAS', 'CONTRASEÑA amMetropolis2023.. POR amMetropolis2020.. AL CORREO amena@metropolisdelacosta.com'),
+(30, 4, 'REGISTRO', '2023-07-03', 1, 'CONTRASEÑAS', 'EL CORREO aroca@metropolisdelacosta.com EN LA SEDE MAYORISTA AREA COMERCIAL'),
+(31, 3, 'REGISTRO', '2023-07-03', 1, 'CONTRASEÑAS', 'EL CORREO auditoriainv@metropolisdelacosta.com EN LA SEDE METROPOLIS EN EL AREA INVENTARIOS'),
+(32, 3, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO amena@metropolisdelacosta.com'),
+(33, 3, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO amena@metropolisdelacosta.com'),
+(34, 3, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO amena@metropolisdelacosta.com EN LA SEDE METROPOLIS'),
+(35, NULL, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO  EN LA SEDE '),
+(36, 3, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO amena@metropolisdelacosta.com EN LA SEDE METROPOLIS'),
+(37, NULL, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO  EN LA SEDE '),
+(38, 4, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO aroca@metropolisdelacosta.com EN LA SEDE MAYORISTA'),
+(39, NULL, 'MODIFICO ', '2023-07-03', 1, 'CONTRASEÑAS', 'AL CORREO  EN LA SEDE ');
 
 -- --------------------------------------------------------
 
@@ -98,12 +111,12 @@ CREATE TABLE `claves` (
   `cla_equip` varchar(45) DEFAULT NULL,
   `cla_user` varchar(45) DEFAULT NULL,
   `cla_password` varchar(45) DEFAULT NULL,
-  `cla_nomwif` varchar(45) DEFAULT NULL,
-  `cla_clawif` varchar(45) DEFAULT NULL,
+  `cla_nomwif` varchar(45) DEFAULT 'NO APLICA',
+  `cla_clawif` varchar(45) DEFAULT 'NO APLICA',
   `cla_ip` varchar(45) DEFAULT NULL,
   `cla_marca` varchar(45) DEFAULT NULL,
   `cla_modelo` varchar(45) DEFAULT NULL,
-  `cla_patron` varchar(45) DEFAULT NULL,
+  `cla_patron` varchar(45) DEFAULT 'NO APLICA',
   `cla_serial` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -112,7 +125,7 @@ CREATE TABLE `claves` (
 --
 
 INSERT INTO `claves` (`id_clave`, `id_tipo`, `cla_equip`, `cla_user`, `cla_password`, `cla_nomwif`, `cla_clawif`, `cla_ip`, `cla_marca`, `cla_modelo`, `cla_patron`, `cla_serial`) VALUES
-(1, 1, 'SERVIDOR', 'Administrador', 'Metro_Casas2020..', '0', '0', '192.168.1.254', 'DELL', 'POWEREDGE R640', '0', '27M1FW2');
+(1, 1, 'SERVIDOR', 'Administrador', 'Metro_Casas2020..', 'NO APLICA', 'NO APLICA', '192.168.1.254', 'DELL', 'POWEREDGE R640', 'NO APLICA', '27M1FW2');
 
 -- --------------------------------------------------------
 
@@ -122,19 +135,23 @@ INSERT INTO `claves` (`id_clave`, `id_tipo`, `cla_equip`, `cla_user`, `cla_passw
 
 CREATE TABLE `correos` (
   `id_correo` int(11) NOT NULL,
+  `id_operador` int(11) NOT NULL,
+  `id_sede` int(11) DEFAULT NULL,
   `id_area` int(11) NOT NULL,
   `cor_correo` varchar(255) NOT NULL,
   `cor_password` varchar(45) NOT NULL,
-  `cor_estado` varchar(45) NOT NULL DEFAULT '1'
+  `cor_estado` varchar(45) NOT NULL DEFAULT '1',
+  `cor_fecha` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `correos`
 --
 
-INSERT INTO `correos` (`id_correo`, `id_area`, `cor_correo`, `cor_password`, `cor_estado`) VALUES
-(1, 4, 'amena@metropolisdelacosta.com', 'amMetropolis2020..', '1'),
-(2, 3, 'analistafacturacion@metropolisdelacosta.com', 'afMetropolis2023..', '1');
+INSERT INTO `correos` (`id_correo`, `id_operador`, `id_sede`, `id_area`, `cor_correo`, `cor_password`, `cor_estado`, `cor_fecha`) VALUES
+(1, 1, 3, 4, 'amena@metropolisdelacosta.com', 'amMetropolis2023..', '1', '2023-07-03'),
+(5, 1, 4, 2, 'aroca@metropolisdelacosta.com', 'arMetropolis2020..', '1', '2023-07-03'),
+(6, 1, 3, 6, 'auditoriainv@metropolisdelacosta.com', 'aiMetropolis2020..', '1', '2023-07-03');
 
 -- --------------------------------------------------------
 
@@ -415,8 +432,9 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `id_operador` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
-  `id_rol` int(11) NOT NULL,
+  `id_sede` int(11) DEFAULT NULL,
   `id_area` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL,
   `user_nombre` varchar(45) NOT NULL,
   `user_password` varchar(245) NOT NULL,
   `user_estado` varchar(45) NOT NULL DEFAULT '1',
@@ -428,11 +446,11 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `id_operador`, `id_persona`, `id_rol`, `id_area`, `user_nombre`, `user_password`, `user_estado`, `user_fecope`, `user_fecupt`) VALUES
-(1, 1, 10, 4, 10, 'ADMIN', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-16 16:37:32'),
-(2, 1, 10, 4, 10, 'FARRIETA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-10 20:04:50'),
-(3, 1, 11, 3, 9, 'CBAUTISTA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56'),
-(4, 1, 75, 2, 4, 'YVENGAL', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-06-13 16:10:56');
+INSERT INTO `usuarios` (`id_usuario`, `id_operador`, `id_persona`, `id_sede`, `id_area`, `id_rol`, `user_nombre`, `user_password`, `user_estado`, `user_fecope`, `user_fecupt`) VALUES
+(1, 1, 10, 3, 10, 4, 'ADMIN', 'd41d8cd98f00b204e9800998ecf8427e', '1', '2023-05-24 22:41:39', '2023-07-03 17:25:10'),
+(2, 1, 10, 3, 10, 4, 'FARRIETA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-07-03 17:06:12'),
+(3, 1, 11, 3, 9, 3, 'CBAUTISTA', '202cb962ac59075b964b07152d234b70', '1', '2023-05-24 22:41:39', '2023-07-03 17:06:14'),
+(4, 1, 75, 3, 4, 2, 'YVENGAL', 'd41d8cd98f00b204e9800998ecf8427e', '1', '2023-05-24 22:41:39', '2023-07-03 17:20:20');
 
 -- --------------------------------------------------------
 
@@ -563,7 +581,7 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `bitacora`
 --
 ALTER TABLE `bitacora`
-  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_bitacora` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `claves`
@@ -575,7 +593,7 @@ ALTER TABLE `claves`
 -- AUTO_INCREMENT de la tabla `correos`
 --
 ALTER TABLE `correos`
-  MODIFY `id_correo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_correo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `equipos`
