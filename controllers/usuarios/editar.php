@@ -5,6 +5,7 @@
         "idusuario"  => $_POST['idusuario'],
         "idrol"      => $_POST['idrolu'],
         "idarea"     => $_POST['idareau'],
+        "idsede"     => $_POST['idsedeu'],
         "usuario"    => $_POST['usuariou'],
         "password"   => md5($_POST['passwordu']),
     );

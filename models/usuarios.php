@@ -50,19 +50,20 @@
             $conexion = Conexion::conectar();
             $sql ="SELECT
                 u.id_usuario  AS idusuario,
-                p.id_persona  AS idpersona,
+                u.id_persona  AS idpersona,
                 p.per_nombre  AS nombre,
                 u.user_nombre AS usuario,
                 u.user_password AS password,
-                r.id_rol      AS idrol,
+                u.id_rol      AS idrol,
                 r.rol_nombre  AS rol,
-                a.id_area     AS idarea,
-                a.are_nombre  AS area,
+                u.id_area     AS idarea,
+                u.id_sede     AS idsede,
                 u.user_estado AS estado
                 FROM usuarios AS u
                 INNER JOIN roles AS r ON u.id_rol = r.id_rol
                 INNER JOIN personas AS p ON p.id_persona = u.id_persona
                 INNER JOIN areas AS a ON a.id_area = u.id_area
+                INNER JOIN sedes AS s ON s.id_sede = u.id_sede
                 WHERE u.id_usuario ='$idusuario'";
             $respuesta = mysqli_query($conexion,$sql);
             $usuario = mysqli_fetch_array($respuesta);
@@ -71,6 +72,7 @@
                 'idpersona' => $usuario['idpersona'],
                 'password'  => $usuario['password'],
                 'idarea'    => $usuario['idarea'],
+                'idsede'    => $usuario['idsede'],
                 'idrol'     => $usuario['idrol'],
                 'usuario'   => $usuario['usuario'],
                 'nombre'    => $usuario['nombre'],
@@ -81,13 +83,15 @@
         public function editarusuario($datos){
             $conexion = Conexion::conectar();
             $sql = "UPDATE usuarios SET id_rol = ?,
+                                        id_sede = ?,
                                         id_area = ?,
                                         user_nombre = ?,
                                         user_password = ?
                                         WHERE id_usuario = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('iissi',
+            $query->bind_param('iiissi',
                                 $datos['idrol'],
+                                $datos['idsede'],
                                 $datos['idarea'],
                                 $datos['usuario'],
                                 $datos['password'],

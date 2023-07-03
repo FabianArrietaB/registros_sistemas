@@ -18,17 +18,22 @@
             <tr>
                 <th scope="col" >NOMBRE</th>
                 <th scope="col" >CONTRASEÑA</th>
+                <th>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearfolder"><i class="fa-solid fa-square-plus fa-lg"></i></button>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
         <?php
-            while ($tareas = mysqli_fetch_array($query)){
+            while ($folder = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $tareas['nombre'];?></td>
-                <td><?php echo $tareas['password'];?></td>
+                <td><?php echo $folder['nombre'];?></td>
+                <td><?php echo $folder['password'];?></td>
                 <td>
-                    
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#folder" onclick="detallefolder('<?php echo $folder['idfolder']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>

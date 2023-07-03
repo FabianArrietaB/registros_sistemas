@@ -100,9 +100,10 @@ function detalleusuario(idusuario){
         url: "../controllers/usuarios/detalle.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            //console.log(respuesta)
+            console.log(respuesta)
             $('#idusuario').val(respuesta['idusuario']);
             $('#idpersona').val(respuesta['idpersona']);
+            $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
             $('#idrolu').val(respuesta['idrol']);
             $('#usuariou').val(respuesta['usuario']);

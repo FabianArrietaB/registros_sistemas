@@ -26,6 +26,7 @@ function ocultar(){
     return false;
 }
 
+//FUNCIONES CORREO
 function activarcorreo(idcorreo, estado){
     $.ajax({
         type:"POST",
@@ -55,19 +56,20 @@ function activarcorreo(idcorreo, estado){
     });
 }
 
-function cambiopassword(){
+function agregarcorreo(){
     $.ajax({
         type: "POST",
-        data: $('#formcambiocontra').serialize(),
-        url: "../controllers/contraseñas/password.php",
+        data: $('#formcrearcorreo').serialize(),
+        url: "../controllers/contraseñas/newcorreo.php",
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
                 //console.log(respuesta);
                 $('#listacorreos').load('contraseñas/correos.php');
+                $('#formcrearcorreo')[0].reset();
                 Swal.fire({
                     icon: 'success',
-                    title: 'Contraseña Actualizada Exitosamente',
+                    title: 'Correo Agregado Exitosamente',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -94,6 +96,55 @@ function detallecorreo(idcorreo){
             respuesta = jQuery.parseJSON(respuesta);
             console.log(respuesta)
             $('#idcorreo').val(respuesta['idcorreo']);
+            $('#idareau').val(respuesta['idarea']);
+            $('#idsedeu').val(respuesta['idsede']);
+            $('#correou').val(respuesta['correo']);
+            $('#passwordu').val(respuesta['password']);
+        }
+    });
+}
+
+function editarcorreo(){
+    $.ajax({
+        type: "POST",
+        data: $('#formeditarcorreo').serialize(),
+        url: "../controllers/contraseñas/editarcorreo.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                console.log(respuesta);
+                $('#listacorreos').load('contraseñas/correos.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Datos Actualizados Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
+//FUNCIONES FOLDER
+function detallefolder(idfolder){
+    $.ajax({
+        type: "POST",
+        data: "idfolder=" + idfolder,
+        url: "../controllers/contraseñas/detallefolder.php",
+        success: function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            console.log(respuesta)
+            $('#idfolder').val(respuesta['idfolder']);
+            $('#nombreu').val(respuesta['nombre']);
             $('#passwordu').val(respuesta['password']);
         }
     });

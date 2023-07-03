@@ -26,11 +26,14 @@
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <select name="idsede" id="idsede" class="form-control input-sm">
-                                        <option selected >Selecione</option>
-                                        <option value="1">CERAMICASAS</option>
-                                        <option value="2">FERRECASAS</option>
-                                        <option value="3">METROPOLIS</option>
-                                        <option value="4">MAYORISTA</option>
+                                        <option value="">Seleccione Una Sede</option>
+                                        <?php
+                                        $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s";
+                                        $respuesta = mysqli_query($conexion, $sql);
+                                        while($persona = mysqli_fetch_array($respuesta)) {
+                                        ?>
+                                        <option value="<?php echo $persona['idsede']?>"><?php echo $persona['sede'];?></option>
+                                        <?php }?>
                                     </select>
                                     <span class="input-group-text" id="inputGroup-sizing-default">Sede</span>
                                 </div>

@@ -9,10 +9,13 @@
         c.cor_correo  AS correo,
         c.id_area  AS idarea,
         a.are_nombre  AS area,
+        c.id_sede  AS idsede,
+        s.sed_nombre  AS sede,
         c.cor_password AS password,
         c.cor_estado AS estado
         FROM correos AS c
-        INNER JOIN areas AS a ON a.id_area = c.id_area";
+        INNER JOIN areas AS a ON a.id_area = c.id_area
+        INNER JOIN sedes AS s ON s.id_sede = c.id_sede";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -22,8 +25,14 @@
             <tr>
                 <th scope="col" >CORREO</th>
                 <th scope="col" >AREA</th>
+                <th scope="col" >SEDE</th>
                 <th scope="col" >CONTRASEÑA</th>
                 <th scope="col" >ESTADO</th>
+                <th>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newcorreo"><i class="fa-solid fa-square-plus fa-lg"></i></button>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +42,7 @@
             <tr>
                 <td><?php echo $correos['correo'];?></td>
                 <td><?php echo $correos['area'];?></td>
+                <td><?php echo $correos['sede'];?></td>
                 <td><?php echo $correos['password'];?></td>
                 <td>
                     <?php
@@ -56,7 +66,7 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#password" onclick="detallecorreo('<?php echo $correos['idcorreo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarcorreo" onclick="detallecorreo('<?php echo $correos['idcorreo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>

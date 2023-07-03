@@ -32,6 +32,11 @@
                 <th scope="col" >SERIAL</th>
                 <th scope="col" >USUARIO</th>
                 <th scope="col" >CONTRASEÑA</th>
+                <th>
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearclave"><i class="fa-solid fa-square-plus fa-lg"></i></button>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>

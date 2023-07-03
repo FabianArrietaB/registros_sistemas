@@ -85,8 +85,12 @@
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php
+include "contraseñas/newclave.php";
+include "contraseñas/newfolder.php";
+include "contraseñas/newcorreo.php";
 include "contraseñas/detalles.php";
-include "contraseñas/password.php";
+include "contraseñas/folder.php";
+include "contraseñas/editarcorreo.php";
 require('footer.php');
 ?>
 <!-- carga ficheros javascript -->

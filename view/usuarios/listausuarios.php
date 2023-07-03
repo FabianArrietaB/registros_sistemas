@@ -10,12 +10,14 @@
         u.user_nombre AS usuario,
         r.rol_nombre  AS rol,
         a.are_nombre  AS area,
+        s.sed_nombre  AS sede,
         u.user_estado AS estado,
         u.user_fecope AS fecha
         FROM usuarios AS u
         INNER JOIN roles AS r ON u.id_rol = r.id_rol
         INNER JOIN personas AS p ON p.id_persona = u.id_persona
         INNER JOIN areas AS a ON a.id_area = u.id_area
+        INNER JOIN sedes AS s ON s.id_sede = u.id_sede
         ORDER BY u.id_usuario ASC";
     $query = mysqli_query($conexion, $sql);
 ?>
@@ -26,6 +28,7 @@
             <tr>
                 <th scope="col" >Usuario</th>
                 <th scope="col" >Nombres</th>
+                <th scope="col" >Sede</th>
                 <th scope="col" >Area</th>
                 <th scope="col" >Rol</th>
                 <th scope="col" >Fecha</th>
@@ -44,6 +47,7 @@
             <tr>
                 <td><?php echo $usuarios['usuario'];?></td>
                 <td><?php echo $usuarios['nombre']; ?></td>
+                <td><?php echo $usuarios['sede']; ?></td>
                 <td><?php echo $usuarios['area']; ?></td>
                 <td><?php echo $usuarios['rol'];    ?></td>
                 <td><?php echo $usuarios['fecha'];  ?></td>
