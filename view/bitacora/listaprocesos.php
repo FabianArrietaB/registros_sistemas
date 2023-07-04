@@ -33,7 +33,7 @@
         ?>
             <tr>
                 <td>
-                    <?php echo 'El ' . $bitacora['fecha'] . ' por el usuario ' . $bitacora['nombre'] . ' se ' . $bitacora['evento'] . ' ' . $bitacora['detall'] . ' por el modulo ' . $bitacora['modulo']; ?>
+                    <?php echo 'EL <strong>' . $bitacora['fecha'] . '</strong> POR EL USUARIO <strong>' . $bitacora['nombre'] . ' ' . $bitacora['evento'] . ' ' . $bitacora['detall'] . '</strong> POR EL MODULO <strong>' . $bitacora['modulo'] . '</strong>'; ?>
                 </td>
             </tr>
         <?php } ?>

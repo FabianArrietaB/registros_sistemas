@@ -10,7 +10,7 @@
                 <div class="modal-body">
                     <!-- Formulario (Usuario) -->
                     <fieldset class="group-border">
-                        <legend class="group-border">Nueva Contraseña</legend>
+                        <legend class="group-border">Agregar Correo</legend>
                         <div class="row">
                             <div class="col-12">
                                 <div class="input-group mb-3">

@@ -33,7 +33,7 @@
                 <td><?php echo $folder['nombre'];?></td>
                 <td><?php echo $folder['password'];?></td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#folder" onclick="detallefolder('<?php echo $folder['idfolder']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarfolder" onclick="detallefolder('<?php echo $folder['idfolder']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>

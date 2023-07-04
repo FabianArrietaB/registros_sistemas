@@ -1,6 +1,6 @@
 <!-- Formulario (Editar) -->
-<form id="formcrearclave" method="post" onsubmit="return agregarclave()">
-    <div class="modal fade" id="crearclave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form id="formeditarclave" method="post" onsubmit="return editarclave()">
+    <div class="modal fade" id="editarclave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -10,12 +10,13 @@
                 <div class="modal-body">
                     <!-- Formulario (Usuario) -->
                     <fieldset class="group-border">
-                        <legend class="group-border">Agregar Informacion Equipo</legend>
+                        <legend class="group-border">Informacion General</legend>
                         <div class="row">
+                            <input hidden type="text" id="idclave" name="idclave" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">TIPO EQUIPO</span>
-                                    <select name="idtipo" id="idtipo" class="form-control input-sm">
+                                    <select name="idtipou" id="idtipou" class="form-control input-sm">
                                         <option value="1">SERVIDOR</option>
                                         <option value="2">ROUTER</option>
                                         <option value="3">DVR</option>
@@ -24,68 +25,68 @@
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="text" id="equipo" name="equipo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" id="equipou" name="equipou" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                     <span class="input-group-text" id="inputGroup-sizing-default">NOMBRE EQUIPO</span>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Usuario</span>
-                                    <input type="text" id="usuario" name="usuario" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" id="usuariou" name="usuariou" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
-                                    <input type="text" id="password" name="password" class="form-control input-sm">
+                                    <input type="text" id="passwordu" name="passwordu" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="input-group mb-3">
+                                    <input type="text" id="nonwifu" name="nonwifu" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Wifi</span>
-                                    <input type="text" id="nonwif" name="nonwif" class="form-control input-sm">
                                 </div>
                             </div>
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="input-group mb-3">
+                                    <input type="text" id="calwifu" name="calwifu" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Clave Wifi</span>
-                                    <input type="text" id="calwif" name="calwif" class="form-control input-sm">
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="input-group mb-3">
-                                    <input type="text" id="marca" name="marca" class="form-control input-sm">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
-                                </div>
-                            </div>
-                            <div class="col-3">
-                                <div class="input-group mb-3">
-                                    <input type="text" id="modelo" name="modelo" class="form-control input-sm">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
-                                </div>
-                            </div>
-                            <div class="col-5">
+                            <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">IP</span>
-                                    <input type="text" id="ip" name="ip" class="form-control input-sm">
+                                    <input type="text" id="ipu" name="ipu" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>
+                                    <input type="text" id="marcau" name="marcau" class="form-control input-sm">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="input-group mb-3">
+                                    <input type="text" id="modelou" name="modelou" class="form-control input-sm">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Modelo</span>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Patron</span>
-                                    <input type="text" id="patron" name="patron" class="form-control input-sm">
+                                    <input type="text" id="patronu" name="patronu" class="form-control input-sm">
                                 </div>
                             </div>
-                            <div class="col-5">
+                            <div class="col-3">
                                 <div class="input-group mb-3">
-                                    <input type="text" id="serial" name="serial" class="form-control input-sm">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Serial</span>
+                                    <input type="text" id="serialu" name="serialu" class="form-control input-sm">
                                 </div>
                             </div>
                         </div>
                     </fieldset>
                     <div class="card-footer text-center">
-                        <button class="btn btn-success" data-bs-dismiss="modal">Agregar</button>
+                        <button class="btn btn-success" data-bs-dismiss="modal">Actualizar</button>
                     </div>
                 </div>
             </div>

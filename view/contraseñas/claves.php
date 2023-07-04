@@ -44,7 +44,7 @@
             while ($claves = mysqli_fetch_array($query)){
         ?>
             <tr>
-            <td data-bs-toggle="modal" data-bs-target="#detalleclave" onclick="detalleclave('<?php echo $claves['idclave']?>')">
+            <td>
                 <?php if ($claves['idtipo'] == 1) { ?>
                     <h5><span >SERVIDOR</span></h5>
                 <?php } else if ($claves['idtipo'] == 2) { ?>
@@ -60,7 +60,7 @@
                 <td><?php echo $claves['usuario'];?></td>
                 <td><?php echo $claves['password'];?></td>
                 <td>
-                    
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarclave" onclick="detalleclave('<?php echo $claves['idclave']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>

@@ -10,7 +10,7 @@
                 <div class="modal-body">
                     <!-- Formulario (Usuario) -->
                     <fieldset class="group-border">
-                        <legend class="group-border">Nueva Contraseña</legend>
+                    <legend class="group-border">Editar Informacion Correo</legend>
                         <div class="row">
                         <input hidden type="text" id="idcorreo" name="idcorreo" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="col-12">
@@ -50,14 +50,14 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Correo</span>
-                                    <input type="text" id="passwordu" name="passwordu" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
+                                    <input type="text" id="passwordu" name="passwordu" class="form-control input-sm">
                                 </div>
                             </div>
                         </div>
                     </fieldset>
                     <div class="card-footer text-center">
-                        <button class="btn btn-success" data-bs-dismiss="modal">Cambiar</button>
+                        <button class="btn btn-success" data-bs-dismiss="modal">Actualizar</button>
                     </div>
                 </div>
             </div>

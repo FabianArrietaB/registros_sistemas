@@ -91,7 +91,7 @@ function detallecorreo(idcorreo){
     $.ajax({
         type: "POST",
         data: "idcorreo=" + idcorreo,
-        url: "../controllers/contraseñas/detallecontra.php",
+        url: "../controllers/contraseñas/detallecorreo.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
             console.log(respuesta)
@@ -135,6 +135,37 @@ function editarcorreo(){
 }
 
 //FUNCIONES FOLDER
+function agregarfolder(){
+    $.ajax({
+        type: "POST",
+        data: $('#formcrearfolder').serialize(),
+        url: "../controllers/contraseñas/newfolder.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                console.log(respuesta);
+                $('#listafolders').load('contraseñas/carpetas.php');
+                $('#formcrearfolder')[0].reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Carpeta Registrada Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
 function detallefolder(idfolder){
     $.ajax({
         type: "POST",
@@ -150,6 +181,68 @@ function detallefolder(idfolder){
     });
 }
 
+function editarfolder(){
+    $.ajax({
+        type: "POST",
+        data: $('#formeditarfolder').serialize(),
+        url: "../controllers/contraseñas/editarfolder.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                console.log(respuesta);
+                $('#listafolders').load('contraseñas/carpetas.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Datos Actualizados Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
+//FUNCIONES CLAVE
+function agregarclave(){
+    $.ajax({
+        type: "POST",
+        data: $('#formcrearclave').serialize(),
+        url: "../controllers/contraseñas/newclave.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#listaclaves').load('contraseñas/claves.php');
+                $('#formcrearclave')[0].reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Clave Registrada Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
 function detalleclave(idclave){
     $.ajax({
         type: "POST",
@@ -157,7 +250,7 @@ function detalleclave(idclave){
         url: "../controllers/contraseñas/detalleclave.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            console.log(respuesta)
+            //console.log(respuesta)
             $('#idclave').val(respuesta['idclave']);
             $('#idtipou').val(respuesta['idtipo']);
             $('#equipou').val(respuesta['equipo']);
@@ -172,4 +265,34 @@ function detalleclave(idclave){
             $('#serialu').val(respuesta['serial']);
         }
     });
+}
+
+function editarclave(){
+    $.ajax({
+        type: "POST",
+        data: $('#formeditarclave').serialize(),
+        url: "../controllers/contraseñas/editarclave.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#listaclaves').load('contraseñas/claves.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Datos Actualizados Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
 }

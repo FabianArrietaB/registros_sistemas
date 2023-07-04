@@ -53,26 +53,48 @@
 
         public function editarcorreo($datos){
             $conexion = Conexion::conectar();
+            //CONSULTA AREA
+            $idarea = $datos['idarea'];
+            $sqlarea = "SELECT a.are_nombre as area FROM areas as a WHERE a.id_area ='$idarea'";
+            $resarea = mysqli_query($conexion, $sqlarea);
+            $rwarea = mysqli_fetch_array($resarea);
+            $area = $rwarea['area'];
+            //CONSULTA SEDE
+            $idsede = $datos['idsede'];
+            $sqlsede = "SELECT s.sed_nombre as sede FROM sedes as s WHERE s.id_sede ='$idsede'";
+            $ressede = mysqli_query($conexion, $sqlsede);
+            $rwsede = mysqli_fetch_array($ressede);
+            $sede = $rwsede['sede'];
             $hoy = date("Y-m-d");
-            $sql = "UPDATE correos SET id_sede = ?,
-                                        id_area = ?,
-                                        cor_correo = ?,
-                                        cor_password = ?,
-                                        cor_fecha = ?
-                                        WHERE id_correo = ?";
-            $query = $conexion->prepare($sql);
-            $query->bind_param('iisssi',
-                                $datos['idsede'],
-                                $datos['idarea'],
-                                $datos['correo'],
-                                $datos['password'],
-                                $hoy,
-                                $datos['idcorreo']);
+            $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?, ?, ?, ?, ?, ?)";
+            $query = $conexion->prepare($insertbitacora);
+            $registro = 'MODIFICO';
+            $modulo = 'CONTRASEÑAS';
+            $hoy = date("Y-m-d");
+            $detalle = 'EL CORREO ' . $datos['correo'] . ' EN LA SEDE ' . $sede . ' EN EL AREA ' . $area;
+            $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $idsede);
             $respuesta = $query->execute();
+            if ( $respuesta > 0){
+                //REGISTRO AUDITORIA
+                $sql = "UPDATE correos SET id_sede = ?,
+                id_area = ?,
+                cor_correo = ?,
+                cor_password = ?,
+                cor_fecha = ?
+                WHERE id_correo = ?";
+                $query = $conexion->prepare($sql);
+                $query->bind_param('iisssi',
+                        $datos['idsede'],
+                        $datos['idarea'],
+                        $datos['correo'],
+                        $datos['password'],
+                        $hoy,
+                        $datos['idcorreo']);
+                $respuesta = $query->execute();
+            }
             $query->close();
             return $respuesta;
         }
-        
 
         public function detallecorreo($idcorreo){
             $conexion = Conexion::conectar();
@@ -100,23 +122,95 @@
         }
 
         //FUNCIONES FOLDER
-        public function detallefolder($idfoler){
+        public function agregarfolder($datos){
+            $conexion = Conexion::conectar();
+            //AGREGAR CLAVE A LA BD
+            $hoy = date("Y-m-d");
+            $sql = "INSERT INTO folder (id_operador, fol_nombre, fol_password, fol_fecope) VALUES( ?, ?, ?, ?)";
+            $query = $conexion->prepare($sql);
+            $query->bind_param("isss", $datos['idoperador'], $datos['nombre'], $datos['password'], $hoy);
+            $respuesta = $query->execute();
+            if ( $respuesta > 0){
+               //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $registro = 'REGISTRO';
+                $modulo = 'CONTRASEÑAS';
+                $detalle = 'LA CARPETA ' . $datos['nombre'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
+        }
+
+        public function detallefolder($idfolder){
             $conexion = Conexion::conectar();
             //CONSULTA DATOS DEL EQUIPO
             $sql ="SELECT
-                f.id_folder   AS idfoder,
-                f.fol_nombre  AS folder,
+                f.id_folder   AS idfolder,
+                f.fol_nombre  AS nombre,
                 f.fol_password  AS password
                 FROM folder AS f
-                WHERE f.id_folder ='$idfoler'";
-            $respuesta = mysqli_query($conexion,$sql);
+                WHERE f.id_folder ='$idfolder'";
+            $respuesta = mysqli_query($conexion, $sql);
             $folder = mysqli_fetch_array($respuesta);
             $datos = array(
-                'idfoder'  => $folder['idfoder'],
-                'folder'  => $folder['folder'],
+                'idfolder'  => $folder['idfolder'],
+                'nombre'    => $folder['nombre'],
                 'password'  => $folder['password'],
             );
             return $datos;
+        }
+
+        public function editarfolder($datos){
+            $conexion = Conexion::conectar();
+            $hoy = date("Y-m-d");
+            $sql = "UPDATE folder SET id_operador = ?,
+                                        fol_nombre = ?,
+                                        fol_password = ?
+                                        WHERE id_folder = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param('issi',
+                                $datos['idoperador'],
+                                $datos['nombre'],
+                                $datos['password'],
+                                $datos['idfolder']);
+            $respuesta = $query->execute();
+            $query->close();
+            if ( $respuesta > 0){
+                //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $registro = 'MODIFICO';
+                $modulo = 'CONTRASEÑAS';
+                $hoy = date("Y-m-d");
+                $detalle = 'LA CARPETA ' . $datos['nombre'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
+        }
+
+        //FUNCIONES CLAVE
+        public function agregarclave($datos){
+            $conexion = Conexion::conectar();
+            $registro = 'REGISTRO';
+            $modulo = 'CONTRASEÑAS';
+            $hoy = date("Y-m-d");
+            //AGREGAR CLAVE A LA BD
+            $sql = "INSERT INTO claves (id_operador, id_tipo, cla_equip, cla_user, cla_password, cla_nomwif, cla_clawif, cla_ip, cla_marca, cla_modelo, cla_patron, cla_serial, cla_fecope) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = $conexion->prepare($sql);
+            $query->bind_param("iisssssssssss", $datos['idoperador'], $datos['idtipo'], $datos['equipo'], $datos['usuario'], $datos['password'], $datos['nonwif'], $datos['calwif'], $datos['ip'], $datos['marca'],  $datos['modelo'], $datos['patron'], $datos['serial'], $hoy);
+            $respuesta = $query->execute();
+            if ( $respuesta > 0){
+               //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = 'LOS DETALLES DEL EQUIPO ' . $datos['equipo'] . ' CON SERIAL ' . $datos['serial'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
         }
 
         public function detalleclave($idclave){
@@ -141,19 +235,68 @@
             $clave = mysqli_fetch_array($respuesta);
             $datos = array(
                 'idclave'  => $clave['idclave'],
-                'idtipo'  => $clave['idtipo'],
-                'equipo'  => $clave['equipo'],
+                'idtipo'   => $clave['idtipo'],
+                'equipo'   => $clave['equipo'],
                 'usuario'  => $clave['usuario'],
                 'password' => $clave['password'],
-                'nonwif'  => $clave['nonwif'],
-                'calwif'  => $clave['calwif'],
-                'ip'  => $clave['ip'],
-                'marca'  => $clave['marca'],
-                'modelo'  => $clave['modelo'],
-                'patron'  => $clave['patron'],
-                'serial'  => $clave['serial'],
+                'nonwif'   => $clave['nonwif'],
+                'calwif'   => $clave['calwif'],
+                'ip'       => $clave['ip'],
+                'marca'    => $clave['marca'],
+                'modelo'   => $clave['modelo'],
+                'patron'   => $clave['patron'],
+                'serial'   => $clave['serial'],
             );
             return $datos;
+        }
+
+        public function editarclave($datos){
+            $conexion = Conexion::conectar();
+            $hoy = date("Y-m-d");
+            $sql = "UPDATE claves SET id_operador = ?,
+                                        id_tipo = ?,
+                                        cla_equip = ?,
+                                        cla_user = ?,
+                                        cla_password = ?,
+                                        cla_nomwif = ?,
+                                        cla_clawif = ?,
+                                        cla_ip = ?,
+                                        cla_marca = ?,
+                                        cla_modelo = ?,
+                                        cla_patron = ?,
+                                        cla_serial = ?,
+                                        cla_fecope = ?
+                                        WHERE id_clave = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param('iisssssssssssi',
+                                $datos['idoperador'],
+                                $datos['idtipo'],
+                                $datos['equipo'],
+                                $datos['usuario'],
+                                $datos['password'],
+                                $datos['nonwif'],
+                                $datos['calwif'],
+                                $datos['ip'],
+                                $datos['marca'],
+                                $datos['modelo'],
+                                $datos['patron'],
+                                $datos['serial'],
+                                $hoy,
+                                $datos['idclave']);
+            $respuesta = $query->execute();
+            $query->close();
+            if ( $respuesta > 0){
+                //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $registro = 'MODIFICO';
+                $modulo = 'CONTRASEÑAS';
+                $hoy = date("Y-m-d");
+                $detalle = 'LOS DETALLES DEL EQUIPO ' . $datos['equipo'] . ' CON SERIAL ' . $datos['serial'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
         }
 
     }
