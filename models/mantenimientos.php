@@ -113,6 +113,23 @@
             return $datos;
         }
 
+        public function detalleactivo($idequipo){
+            $conexion = Conexion::conectar();
+            //CONSULTA DATOS DEL EQUIPO
+            $sql ="SELECT
+                e.id_equipo   AS equipoid,
+                e.equ_codact  AS codact
+                FROM equipos AS e
+                WHERE e.id_equipo ='$idequipo'";
+            $respuesta = mysqli_query($conexion,$sql);
+            $equipos = mysqli_fetch_array($respuesta);
+            $datos = array(
+                'equipoid'  => $equipos['equipoid'],
+                'codact'    => $equipos['codact'],
+            );
+            return $datos;
+        }
+
         public function editarequipo($datos){
             $conexion = Conexion::conectar();
             $hoy = date("Y-m-d");
