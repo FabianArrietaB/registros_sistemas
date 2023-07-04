@@ -35,11 +35,11 @@ function detalleactivo(idequipo){
     $.ajax({
         type: "POST",
         data: "idequipo=" + idequipo,
-        url: "../controllers/mantenimientos/detalle.php",
+        url: "../controllers/mantenimientos/detact.php.php",
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
-            //console.log(respuesta)
-            $('#idequipo').val(respuesta['idequipo']);
+            console.log(respuesta)
+            $('#equipoid').val(respuesta['idequipo']);
             $('#codactu').val(respuesta['codact']);
         }
     });

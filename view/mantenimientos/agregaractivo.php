@@ -12,7 +12,7 @@
                     <fieldset class="group-border">
                         <legend class="group-border">Agregar Codigo</legend>
                         <div class="row">
-                            <input hidden type="text" id="idequipo" name="idequipo" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input type="text" id="equipoid" name="equipoid" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Codigo Interno</span>

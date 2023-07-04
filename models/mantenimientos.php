@@ -40,7 +40,7 @@
         public function agregaractivo($datos){
             $conexion = Conexion::conectar();
             //CONSULTA DATOS DEL EQUIPO
-            $idequipo = $datos['idequipo'];
+            $idequipo = $datos['equipoid'];
             $equipo = "SELECT e.equ_codact as codant, e.id_sede as idsede, e.equ_serial as serial FROM equipos as e WHERE e.id_equipo ='$idequipo'";
             $resultado = mysqli_query($conexion, $equipo);
             $respuesta = mysqli_fetch_array($resultado);
@@ -60,7 +60,7 @@
                 //REGISTRO CODIGO ACTIVO
                 $sql = "UPDATE equipos SET equ_codact = ? WHERE id_equipo = ?";
                 $query = $conexion->prepare($sql);
-                $query->bind_param('si', $datos['codact'], $datos['idequipo']);
+                $query->bind_param('si', $datos['codact'], $datos['equipoid']);
                 $respuesta = $query->execute();
             }
             return $respuesta;

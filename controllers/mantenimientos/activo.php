@@ -2,7 +2,7 @@
    session_start();
    $datos = array(
    'idoperador' => $_SESSION['usuario']['id'],
-   "idequipo"   => $_POST['idequipo'],
+   "equipoid"   => $_POST['equipoid'],
    "codact"     => $_POST['codactu'],
    );
 
