@@ -8,7 +8,6 @@ v.id_venta   as idventa,
 v.ven_numfac as numfac,
 v.ven_valor  as valor,
 v.ven_proove as proove,
-SUM(v.ven_valor) as valtot,
 v.ven_feccom as feccom
 FROM ventas AS v
 WHERE MONTH(v.ven_feccom) = '$idmes'";
@@ -36,10 +35,18 @@ if ($idmes == 1) {
     $mes = 'NOVIEMBRE';
 } else if ($idmes == 12) {
     $mes = 'DICIEMBRE';
-
 }
-$arrayDetalle = array();
 $query = mysqli_query($conexion, $sql);
+$arrayDetalle = array();
+
+$sqlvalor = "SELECT
+SUM(v.ven_valor)  as valortotal,
+v.ven_feccom as feccom
+FROM ventas AS v
+WHERE MONTH(v.ven_feccom) = '$idmes'";
+$rwvalor = mysqli_query($conexion, $sqlvalor);
+$valortotal = mysqli_fetch_array($rwvalor);
+
 foreach ($query as $row) {
     $arrayDetalle[] = $row;
 }
@@ -66,7 +73,7 @@ foreach ($query as $row) {
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label class="form-label">Valor Total</label>
-                                    <input type="text" id="nomalu" name="nomalu"  class="form-control input-sm" disabled value="<?php echo '$ '. $row['valtot']; ?>">
+                                    <input type="text" id="nomalu" name="nomalu"  class="form-control input-sm" disabled value="<?php echo '$ '. $valortotal['valortotal']; ?>">
                                 </div>
                             </div>
                         </div>
@@ -85,7 +92,6 @@ foreach ($query as $row) {
                                 </thead>
                                 <tbody">
                                 <?php
-                                   
                                     if (count($arrayDetalle) > 0) {
                                         foreach ($arrayDetalle as $c => $value) {
                                             ?>

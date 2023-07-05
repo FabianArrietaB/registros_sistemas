@@ -37,7 +37,7 @@
                 <div class="row student text-center" style="align-items: center;">
                     <!-- Valor Ventas -->
                     <div class="col-sm-3">
-                        <div class="card border-danger text-white bg-info mb-3">
+                        <div class="card border-danger text-white bg-primary mb-3">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -61,37 +61,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Valor Ventas -->
-                    <div class="col-sm-3">
-                        <div class="card border-danger text-white bg-warning mb-3">
-                            <div class="card-header">
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        <div class="float-sm-right">&nbsp;
-                                            <span style="font-size: 20px">
-                                                <?php
-                                                    $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
-                                                    $data = mysqli_fetch_array($sql);
-                                                    $precio = $data['precio'];
-                                                    if ($precio = 0) {
-                                                        echo '$ '. 0;
-                                                    }else {
-                                                        echo '$ '. $precio;
-                                                    }
-                                                    
-                                                ?>
-                                            </span>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <i class="fa-solid fa-sack-dollar fa-3x"></i>
-                                    </div>
-                                    <div class="float-sm-right">Total Gastos Mes Actual</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!-- Presupuesto -->
                     <div class="col-sm-3">
                         <div class="card border-danger text-white bg-info mb-3">
@@ -101,15 +70,10 @@
                                         <div class="float-sm-right">&nbsp;
                                             <span style="font-size: 20px">
                                                 <?php
-                                                    $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
+                                                    $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE())");
                                                     $data = mysqli_fetch_array($sql);
-                                                    $precio = $data['precio'];
-                                                    if ($precio = 0) {
-                                                        echo '$ '. 0;
-                                                    }else {
-                                                        echo '$ '. $precio;
-                                                    }
-                                                    
+                                                    $valor = $data['valor'];
+                                                    echo '$ '. $valor;
                                                 ?>
                                             </span>
                                         </div>
@@ -123,6 +87,32 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Valor Ventas -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-warning mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
+                                                    $data = mysqli_fetch_array($sql);
+                                                    $precio = $data['precio'];
+                                                    echo '$ '. $precio;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="fa-solid fa-sack-dollar fa-3x"></i>
+                                    </div>
+                                    <div class="float-sm-right">Total Gastos Mes Actual</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Diferencia -->
                     <div class="col-sm-3">
                         <div class="card border-danger text-white bg-danger mb-3">
@@ -132,7 +122,13 @@
                                         <div class="float-sm-right">&nbsp;
                                             <span style="font-size: 20px">
                                                 <?php
-                                                        echo '$ '. $precio;
+                                                    $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
+                                                    $data = mysqli_fetch_array($sql);
+                                                    $precio = $data['precio'];
+                                                    $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE())");
+                                                    $data = mysqli_fetch_array($sql);
+                                                    $valor = $data['valor'];
+                                                    echo '$ '. $valor - $precio;
                                                 ?>
                                             </span>
                                         </div>
