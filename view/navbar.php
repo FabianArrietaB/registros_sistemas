@@ -47,10 +47,10 @@ $idusuario = $_SESSION['usuario']['id'];
                         <a class="nav-link active" href="compras.php">COMPRAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="historial.php">HISTORIAL</a>
+                        <a class="nav-link active" href="contraseñas.php">CONTRASEÑAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="contraseñas.php">CONTRASEÑAS</a>
+                        <a class="nav-link active" href="historial.php">PRESUPUESTO</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="bitacora.php">BITACORA</a>

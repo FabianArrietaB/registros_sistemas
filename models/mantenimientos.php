@@ -73,6 +73,7 @@
                 e.id_equipo   AS idequipo,
                 e.id_sede     AS idsede,
                 e.id_area     AS idarea,
+                a.are_nombre  AS area,
                 e.id_tipequ   AS idtipequ,
                 e.equ_marca   AS marca,
                 e.equ_modelo  AS modelo,
@@ -88,6 +89,7 @@
                 e.equ_mac     AS mac,
                 e.equ_fecope  AS fecha
                 FROM equipos AS e
+                INNER JOIN areas as a ON a.id_area = e.id_area
                 WHERE e.id_equipo ='$idequipo'";
             $respuesta = mysqli_query($conexion,$sql);
             $equipos = mysqli_fetch_array($respuesta);
@@ -95,6 +97,7 @@
                 'idequipo'  => $equipos['idequipo'],
                 'idsede'    => $equipos['idsede'],
                 'idarea'    => $equipos['idarea'],
+                'area'      => $equipos['area'],
                 'idtipequ'  => $equipos['idtipequ'],
                 'marca'     => $equipos['marca'],
                 'modelo'    => $equipos['modelo'],

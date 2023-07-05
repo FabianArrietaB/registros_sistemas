@@ -1,3 +1,10 @@
+function detallecompras(date){
+    $('#conte-modal-compras').load('reportecompras.php?date='+date, function(){
+        $('#repcompras').modal("show");
+        $('.modal-backdrop').remove()
+    });
+}
+
 // var myCanvas = document.getElementById("myCanvas");
 // myCanvas.width = 300;
 // myCanvas.height = 300;

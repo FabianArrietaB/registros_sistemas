@@ -81,6 +81,7 @@ function detalleequipo(idequipo){
             $('#idequipo').val(respuesta['idequipo']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
+            $('#areau').val(respuesta['area']);
             $('#idtipequu').val(respuesta['idtipequ']);
             $('#marcau').val(respuesta['marca']);
             $('#modelou').val(respuesta['modelo']);

@@ -36,8 +36,8 @@
             <div class="card-body">
                 <div class="row student text-center" style="align-items: center;">
                     <!-- Valor Ventas -->
-                    <div class="col-sm-6">
-                        <div class="card border-danger text-white bg-primary mb-3">
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info mb-3">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-sm-4">
@@ -62,8 +62,8 @@
                         </div>
                     </div>
                     <!-- Valor Ventas -->
-                    <div class="col-sm-6">
-                        <div class="card border-danger text-white bg-primary mb-3">
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-warning mb-3">
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-sm-8">
@@ -73,7 +73,12 @@
                                                     $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
                                                     $data = mysqli_fetch_array($sql);
                                                     $precio = $data['precio'];
-                                                    echo '$ '. $precio;
+                                                    if ($precio = 0) {
+                                                        echo '$ '. 0;
+                                                    }else {
+                                                        echo '$ '. $precio;
+                                                    }
+                                                    
                                                 ?>
                                             </span>
                                         </div>
@@ -83,6 +88,60 @@
                                         <i class="fa-solid fa-sack-dollar fa-3x"></i>
                                     </div>
                                     <div class="float-sm-right">Total Gastos Mes Actual</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Presupuesto -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-info mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                    $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
+                                                    $data = mysqli_fetch_array($sql);
+                                                    $precio = $data['precio'];
+                                                    if ($precio = 0) {
+                                                        echo '$ '. 0;
+                                                    }else {
+                                                        echo '$ '. $precio;
+                                                    }
+                                                    
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="fa-solid fa-sack-dollar fa-3x"></i>
+                                    </div>
+                                    <div class="float-sm-right">Presupuesto Mes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Diferencia -->
+                    <div class="col-sm-3">
+                        <div class="card border-danger text-white bg-danger mb-3">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        <div class="float-sm-right">&nbsp;
+                                            <span style="font-size: 20px">
+                                                <?php
+                                                        echo '$ '. $precio;
+                                                ?>
+                                            </span>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="fa-solid fa-sack-dollar fa-3x"></i>
+                                    </div>
+                                    <div class="float-sm-right">Restante</div>
                                 </div>
                             </div>
                         </div>
@@ -112,6 +171,7 @@
                                             <tr>
                                                 <th scope="col">MES</th>
                                                 <th scope="col">VALOR</th>
+                                                <th scope="col">REPORTE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -147,6 +207,11 @@
                                                 <?php } ?>
                                                 </td>
                                                 <td><?php echo '$ '. $ventas['valtot']; ?></td>
+                                                <td>
+                                                    <div class="d-grid gap-2">
+                                                        <input type="button" class="btn btn-info" value="Reporte" onclick="detallecompras('<?php echo $ventas['date']?>')"></input>
+                                                    </div>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                         </tbody>
@@ -161,6 +226,7 @@
         </div>
     </div>
 </div>
+<div id="conte-modal-compras"></div>
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php
