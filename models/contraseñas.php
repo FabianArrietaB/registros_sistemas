@@ -87,7 +87,7 @@
                         $datos['idsede'],
                         $datos['idarea'],
                         $datos['correo'],
-                        $datos['password'],
+                        $datos['passw'],
                         $hoy,
                         $datos['idcorreo']);
                 $respuesta = $query->execute();
@@ -104,7 +104,7 @@
                 c.id_sede    AS idsede,
                 c.id_area    AS idarea,
                 c.cor_correo  AS correo,
-                c.cor_password AS password
+                c.cor_password AS passw
                 FROM correos AS c
                 INNER JOIN areas AS a ON a.id_area = c.id_area
                 INNER JOIN sedes AS s ON s.id_sede = c.id_sede
@@ -116,7 +116,7 @@
                 'idarea'    => $correos['idarea'],
                 'idsede'    => $correos['idsede'],
                 'correo'    => $correos['correo'],
-                'password'  => $correos['password'],
+                'passw'     => $correos['passw'],
             );
             return $datos;
         }
@@ -149,7 +149,7 @@
             $sql ="SELECT
                 f.id_folder   AS idfolder,
                 f.fol_nombre  AS nombre,
-                f.fol_password  AS password
+                f.fol_password  AS pass
                 FROM folder AS f
                 WHERE f.id_folder ='$idfolder'";
             $respuesta = mysqli_query($conexion, $sql);
@@ -157,7 +157,7 @@
             $datos = array(
                 'idfolder'  => $folder['idfolder'],
                 'nombre'    => $folder['nombre'],
-                'password'  => $folder['password'],
+                'pass'      => $folder['pass'],
             );
             return $datos;
         }
@@ -173,7 +173,7 @@
             $query->bind_param('issi',
                                 $datos['idoperador'],
                                 $datos['nombre'],
-                                $datos['password'],
+                                $datos['pass'],
                                 $datos['idfolder']);
             $respuesta = $query->execute();
             $query->close();

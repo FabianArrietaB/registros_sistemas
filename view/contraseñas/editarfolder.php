@@ -22,7 +22,7 @@
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Contraseña</span>
-                                    <input type="text" id="passwordu" name="passwordu" class="form-control input-sm">
+                                    <input type="text" id="passu" name="passu" class="form-control input-sm">
                                 </div>
                             </div>
                         </div>

@@ -99,7 +99,7 @@ function detallecorreo(idcorreo){
             $('#idareau').val(respuesta['idarea']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#correou').val(respuesta['correo']);
-            $('#passwordu').val(respuesta['password']);
+            $('#passwu').val(respuesta['passw']);
         }
     });
 }
@@ -176,7 +176,7 @@ function detallefolder(idfolder){
             console.log(respuesta)
             $('#idfolder').val(respuesta['idfolder']);
             $('#nombreu').val(respuesta['nombre']);
-            $('#passwordu').val(respuesta['password']);
+            $('#passu').val(respuesta['pass']);
         }
     });
 }

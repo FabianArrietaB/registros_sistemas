@@ -6,7 +6,7 @@
     "correo"     => $_POST['correou'],
     "idsede"     => $_POST['idsedeu'],
     "idarea"     => $_POST['idareau'],
-    "password"   => $_POST['passwordu'],
+    "passw"      => $_POST['passwu'],
    );
 
    include "../../models/contraseñas.php";

@@ -4,7 +4,7 @@
     'idoperador' => $_SESSION['usuario']['id'],
     "idfolder"   => $_POST['idfolder'],
     "nombre"     => $_POST['nombreu'],
-    "password"   => $_POST['passwordu'],
+    "pass"       => $_POST['passu'],
    );
 
    include "../../models/contraseñas.php";
