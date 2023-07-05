@@ -167,7 +167,13 @@
                                             <tr>
                                                 <th scope="col">MES</th>
                                                 <th scope="col">VALOR</th>
-                                                <th scope="col">REPORTE</th>
+                                                <th scope="col">
+                                                <?php if($_SESSION['usuario']['rol'] == 4) {?>
+                                                    <div class="d-grid gap-2">
+                                                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addpresupuesto"><i class="fa-solid fa-square-plus fa-lg"></i></button>
+                                                    </div>
+                                                <?php } ?>
+                                                </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -226,6 +232,7 @@
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php
+include "presupuesto/addpresupuesto.php";
 require('footer.php');
 ?>
 <!-- carga ficheros javascript -->

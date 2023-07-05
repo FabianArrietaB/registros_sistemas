@@ -1,6 +1,6 @@
 <?php
 $idmes = $_GET['date'];
-include "../models/conexion.php";
+include "../../models/conexion.php";
 $con = new Conexion();
 $conexion = $con->conectar();
 $sql = "SELECT
