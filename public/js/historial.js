@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('#tablapresupuesto').load('presupuesto/tablapresupuestos.php');
+});
+
 function detallecompras(date){
     $('#conte-modal-compras').load('presupuesto/reportecompras.php?date='+date, function(){
         $('#repcompras').modal("show");
@@ -13,7 +17,8 @@ function agregarpresupuesto(){
         success:function(respuesta){
             respuesta = respuesta.trim();
             if(respuesta == 1){
-                console.log(respuesta);
+                //console.log(respuesta);
+                $('#tablapresupuesto').load('presupuesto/tablapresupuestos.php');
                 $('#frmpresupuesto')[0].reset();
                 Swal.fire({
                     icon: 'success',
@@ -34,8 +39,6 @@ function agregarpresupuesto(){
     });
     return false;
 }
-
-// var myCanvas = document.getElementById("myCanvas");
 // myCanvas.width = 300;
 // myCanvas.height = 300;
   
