@@ -149,7 +149,28 @@
                 $respuesta = $query->execute();
                 $query->close();
             }
-        return $respuesta;
+            return $respuesta;
+        }
+
+        public function agregarmantenimiento($datos){
+            //REGISTRO DEL EQUIPO A LA BD
+            $conexion = Conexion::conectar();
+            $hoy = date("Y-m-d");
+            $sql = "INSERT INTO mantenimientos (id_operador, id_area, id_equipo, id_usuario, mat_detalle, mat_fecope) VALUES( ?,?,?,?,?,?)";
+            $query = $conexion->prepare($sql);
+            $query->bind_param("iiiiss", $datos['idoperador'], $datos['idarea'], $datos['idequipo'], $datos['idpersona'], $datos['detall'], $hoy);
+            $respuesta = $query->execute();
+            if ( $respuesta > 0){
+                $registro = 'REGISTRO';
+                $modulo = 'MANTENIMIENTOS';
+                //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?,?,?,?,?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = 'EL MANTENIMIENTO AL EQUIPO ' . $datos['nombre'] . ' CON SERIAL ' . $datos['serial'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
         }
     }
 

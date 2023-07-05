@@ -12,7 +12,6 @@
                         <legend class="group-border">Informacion Equipo</legend>
                         <div class="row">
                             <input hidden type="text" id="idequipo" name="idequipo" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <input hidden type="text" id="idpersona" name="idpersona" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>

@@ -15,7 +15,7 @@
             <div class="card border-primary">
                 <div class="card-header text-center">
                     <div class="title">
-                        <h2>LISTA EQUIPOS</h2>
+                        <h2>BITACORA DEL SISTEMA</h2>
                     </div>
                     <form method="GET">
                         <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">

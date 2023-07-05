@@ -24,7 +24,7 @@
     <table class="table table-light text-center">
         <thead>
             <tr>
-                <th scope="col" >OBSERVACION</th>
+                <th scope="col" >DETALLE DE EVENTOS</th>
             </tr>
         </thead>
         <tbody>

@@ -31,6 +31,7 @@
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php
+    include "mantenimientos/agregarmate.php";
     include "mantenimientos/detalleequipo.php";
     include "footer.php";
 ?>
