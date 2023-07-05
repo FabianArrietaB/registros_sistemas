@@ -62,6 +62,36 @@ function activarusuario(idusuario, estado){
     });
 }
 
+function cambiocontraseña(){
+    $.ajax({
+        type: "POST",
+        data: $('#frmcontraseña').serialize(),
+        url:"../controllers/usuarios/password.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#tablalistausuarios').load('usuarios/listausuarios.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cambio Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
 function agregarusuario(){
     $.ajax({
         type: "POST",
@@ -108,6 +138,19 @@ function detalleusuario(idusuario){
             $('#idrolu').val(respuesta['idrol']);
             $('#usuariou').val(respuesta['usuario']);
             $('#nombreu').val(respuesta['nombre']);
+        }
+    });
+}
+
+function detallepass(idusuario){
+    $.ajax({
+        type: "POST",
+        data: "idusuario=" + idusuario,
+        url: "../controllers/usuarios/detallepass.php",
+        success: function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            console.log(respuesta)
+            $('#usuarioid').val(respuesta['usuarioid']);
         }
     });
 }
@@ -169,23 +212,4 @@ function eliminarusuario(idusuario){
             }
         }
     });
-}
-
-function cambiocontraseña(){
-    $.ajax({
-        type:"POST",
-        data:$('#frmcontraseña').serialize(),
-        url:"../Controlador/usuarios/cambiarcontraseña.php",
-        success:function(respuesta){
-            respuesta = respuesta.trim();
-            if(respuesta == 1){
-                $('#contraseña').modal('hide');
-                Swal.fire(":D","Actualizado con exito!","success");
-
-            }else{
-                Swal.fire(":(","Error al Actualizar!" + respuesta,"Error");
-            }
-        }
-    });
-return false;
 }

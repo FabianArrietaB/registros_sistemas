@@ -12,7 +12,7 @@
                     <fieldset class="group-border">
                         <legend class="group-border">Nueva Contraseña</legend>
                         <div class="row">
-                            <input hidden type="text" id="idusuario" name="idusuario" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <input hidden type="text" id="usuarioid" name="usuarioid" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <input type="text" id="newpassword" name="newpassword" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">

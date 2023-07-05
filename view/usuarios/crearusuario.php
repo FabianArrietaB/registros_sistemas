@@ -48,6 +48,20 @@
                         </div>
                         <div class="col-12">
                             <div class="input-group mb-3">
+                                <select name="idsede" id="idsede" class="form-control input-sm">
+                                    <option selected >Selecione Sede</option>
+                                    <?php
+                                    $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s";
+                                    $respuesta = mysqli_query($conexion, $sql);
+                                    while($persona = mysqli_fetch_array($respuesta)) {
+                                    ?>
+                                    <option value="<?php echo $persona['idsede']?>"><?php echo $persona['sede'];?></option>
+                                    <?php }?>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group mb-3">
                                 <select name="idarea" id="idarea" class="form-control input-sm">
                                     <option selected >Selecione Area</option>
                                     <?php

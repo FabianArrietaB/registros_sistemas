@@ -1,3 +1,6 @@
+<?php
+$idusuario = $_SESSION['usuario']['id'];
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">SISTEMAS</a>
@@ -60,9 +63,13 @@
             </div>
         </div>
         <span class="navbar-brand" href="#">Usuario:</span>
-        <a class="mr-sm-2 btn btn-primary" type="button" onclick="cambiarcontraseña()"><?php echo $_SESSION['usuario']['nombre'] ?></a>
+        <a class="mr-sm-2 btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#contraseña" onclick="detallepass('<?php echo $idusuario?>')"><?php echo $_SESSION['usuario']['nombre'] ?></a>
         <a href="../controllers/usuarios/salir.php" class="btn btn-danger" type="submit">
             <i class="fa-solid fa-power-off fa-2x"></i>
         </a>
     </div>
 </nav>
+
+<?php
+    include "../view/usuarios/cambiarcontraseña.php";
+?>

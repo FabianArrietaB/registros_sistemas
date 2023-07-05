@@ -16,5 +16,6 @@
         <!-- <script src="./.././../public/app/publico/js/lib/datatables-net/datatables.min.js"></script> -->
         <!-- sweet alert -->
         <script src="./../public/sweetalert2/sweetalert2.all.min.js"></script>
+        <script src="./../public/js/usuarios/funciones.js"></script>
     </body>
 </html>
