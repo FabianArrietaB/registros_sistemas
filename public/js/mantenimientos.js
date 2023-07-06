@@ -78,7 +78,7 @@ function detalleequipo(idequipo){
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
             //console.log(respuesta)
-            $('#idequipo').val(respuesta['idequipo']);
+            $('#idequipou').val(respuesta['idequipo']);
             $('#idsedeu').val(respuesta['idsede']);
             $('#idareau').val(respuesta['idarea']);
             $('#areau').val(respuesta['area']);
@@ -107,7 +107,7 @@ function detalleactivo(idequipo){
         success: function(respuesta){
             respuesta = jQuery.parseJSON(respuesta);
             console.log(respuesta)
-            $('#equipoid').val(respuesta['equipoid']);
+            $('#actidequipo').val(respuesta['actidequipo']);
             $('#codactu').val(respuesta['codact']);
         }
     });

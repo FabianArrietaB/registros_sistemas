@@ -17,9 +17,11 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Equipo</span>
                                     <select name="idtipequ" id="idtipequ" class="form-control input-sm">
                                         <option selected >Selecione</option>
-                                        <option value="1">Portatil</option>
-                                        <option value="2">Escritorio</option>
-                                        <option value="3">Impresora</option>
+                                        <option value="1">PORTATIL</option>
+                                        <option value="2">ESCRITORIO</option>
+                                        <option value="3">IMPRESORA</option>
+                                        <option value="4">DVR</option>
+                                        <option value="5">MONITOR</option>
                                     </select>
                                 </div>
                             </div>

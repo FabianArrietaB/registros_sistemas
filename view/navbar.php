@@ -35,19 +35,19 @@ $idusuario = $_SESSION['usuario']['id'];
                         <a class="nav-link active" href="inicio.php">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="equipos.php">EQUIPOS</a>
+                        <a class="nav-link active" href="tareas.php">TAREAS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="mantenimientos.php">MANTENIMIENTOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="tareas.php">TAREAS</a>
+                        <a class="nav-link active" href="contraseñas.php">CONTRASEÑAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="equipos.php">EQUIPOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="compras.php">COMPRAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="contraseñas.php">CONTRASEÑAS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="historial.php">PRESUPUESTO</a>

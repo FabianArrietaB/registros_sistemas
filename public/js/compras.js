@@ -53,9 +53,17 @@ function detallecompras(idventa){
             $('#numfacu').val(respuesta['numfac']);
             $('#prooveu').val(respuesta['proove']);
             $('#valoru').val(respuesta['valor']);
+			$('#valundu').val(respuesta['valund']);
             $('#detallu').val(respuesta['detall']);
             $('#feccomu').val(respuesta['feccom']);
             $('#fecopeu').val(respuesta['fecope']);
         }
+    });
+}
+
+function detallefactura(numfac){
+    $('#conte-modal-facturas').load('compras/detallefactura.php?numfac='+numfac, function(){
+        $('#repfactura').modal("show");
+        $('.modal-backdrop').remove()
     });
 }

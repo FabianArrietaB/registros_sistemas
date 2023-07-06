@@ -6,11 +6,12 @@
     $con = new Conexion(); // Conectar a la BD
     $conexion = $con->conectar();
     $sql = "SELECT
-    MONTH(v.ven_feccom) as date,
+    YEAR(v.ven_feccom) as año,
+    MONTH(v.ven_feccom) as mes,
     v.ven_valor as valor,
     SUM(v.ven_valor) as valtot
     from ventas as v
-    GROUP BY date"; // Consulta SQL
+    GROUP BY mes"; // Consulta SQL
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -151,6 +152,7 @@
                 <table class="table table-light text-center">
                     <thead>
                         <tr>
+                            <th scope="col">AÑOS</th>
                             <th scope="col">MES</th>
                             <th scope="col">VALOR</th>
                             <th scope="col">
@@ -167,37 +169,38 @@
                         while ($ventas = mysqli_fetch_array($query)){
                     ?>
                         <tr>
+                            <td><?php echo $ventas['año']; ?></td>
                             <td>
-                            <?php if ($ventas['date'] == 1) { ?>
+                            <?php if ($ventas['mes'] == 1) { ?>
                                 <h5><span >Enero</span></h5>
-                            <?php } else if ($ventas['date'] == 2) { ?>
+                            <?php } else if ($ventas['mes'] == 2) { ?>
                                 <h5><span >Febrero</span></h5>
-                                <?php } else if ($ventas['date'] == 3) { ?>
+                                <?php } else if ($ventas['mes'] == 3) { ?>
                                 <h5><span >Marzo</span></h5>
-                                <?php } else if ($ventas['date'] == 4) { ?>
+                                <?php } else if ($ventas['mes'] == 4) { ?>
                                 <h5><span >Abril</span></h5>
-                                <?php } else if ($ventas['date'] == 5) { ?>
+                                <?php } else if ($ventas['mes'] == 5) { ?>
                                 <h5><span >Mayo</span></h5>
-                                <?php } else if ($ventas['date'] == 6) { ?>
+                                <?php } else if ($ventas['mes'] == 6) { ?>
                                 <h5><span >Junio</span></h5>
-                                <?php } else if ($ventas['date'] == 7) { ?>
+                                <?php } else if ($ventas['mes'] == 7) { ?>
                                 <h5><span >Julio</span></h5>
-                                <?php } else if ($ventas['date'] == 8) { ?>
+                                <?php } else if ($ventas['mes'] == 8) { ?>
                                 <h5><span >Agosto</span></h5>
-                                <?php } else if ($ventas['date'] == 9) { ?>
+                                <?php } else if ($ventas['mes'] == 9) { ?>
                                 <h5><span >Septiembre</span></h5>
-                                <?php } else if ($ventas['date'] == 10) { ?>
+                                <?php } else if ($ventas['mes'] == 10) { ?>
                                 <h5><span >Octubre</span></h5>
-                                <?php } else if ($ventas['date'] == 11) { ?>
+                                <?php } else if ($ventas['mes'] == 11) { ?>
                                 <h5><span >Noviembre</span></h5>
-                                <?php } else if ($ventas['date'] == 12) { ?>
+                                <?php } else if ($ventas['mes'] == 12) { ?>
                                 <h5><span >Diciembre</span></h5>
                             <?php } ?>
                             </td>
                             <td><?php echo '$ '. $ventas['valtot']; ?></td>
                             <td>
                                 <div class="d-grid gap-2">
-                                    <input type="button" class="btn btn-info" value="Reporte" onclick="detallecompras('<?php echo $ventas['date']?>')"></input>
+                                    <input type="button" class="btn btn-info" value="Reporte" onclick="detallecompras('<?php echo $ventas['mes']?>')"></input>
                                 </div>
                             </td>
                         </tr>

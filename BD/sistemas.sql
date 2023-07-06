@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2023 a las 00:17:12
+-- Tiempo de generación: 06-07-2023 a las 04:04:48
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -273,23 +273,23 @@ INSERT INTO `personas` (`id_persona`, `id_operador`, `per_cladoc`, `per_docume`,
 --
 
 CREATE TABLE `presupuesto` (
-  `id_presupuesto` int(11) DEFAULT NULL,
+  `id_presupuesto` int(11) NOT NULL,
   `pre_valor` varchar(45) DEFAULT NULL,
-  `pre_fecope` date DEFAULT NULL
+  `pre_fecope` date DEFAULT NULL,
+  `id_operador` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `presupuesto`
 --
 
-INSERT INTO `presupuesto` (`id_presupuesto`, `pre_valor`, `pre_fecope`) VALUES
-(1, '4000000', '2023-01-01'),
-(2, '4000000', '2023-02-01'),
-(3, '4000000', '2023-03-01'),
-(4, '4000000', '2023-04-01'),
-(5, '4000000', '2023-05-01'),
-(6, '4000000', '2023-06-01'),
-(7, '4000000', '2023-07-01');
+INSERT INTO `presupuesto` (`id_presupuesto`, `pre_valor`, `pre_fecope`, `id_operador`) VALUES
+(1, '4000000', '2023-01-01', 1),
+(2, '4000000', '2023-02-01', 1),
+(3, '4000000', '2023-03-01', 1),
+(4, '4000000', '2023-04-01', 1),
+(5, '4000000', '2023-05-01', 1),
+(6, '4000000', '2023-06-01', 1);
 
 -- --------------------------------------------------------
 
@@ -456,6 +456,12 @@ ALTER TABLE `personas`
   ADD PRIMARY KEY (`id_persona`);
 
 --
+-- Indices de la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  ADD PRIMARY KEY (`id_presupuesto`);
+
+--
 -- Indices de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -536,6 +542,12 @@ ALTER TABLE `mantenimientos`
 --
 ALTER TABLE `personas`
   MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
+--
+-- AUTO_INCREMENT de la tabla `presupuesto`
+--
+ALTER TABLE `presupuesto`
+  MODIFY `id_presupuesto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`

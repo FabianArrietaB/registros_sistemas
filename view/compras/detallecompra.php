@@ -72,16 +72,22 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Proveedor</span>
                                 </div>
                             </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Fecha Compra</span>
                                 <input disabled type="date" id="feccomu" name="feccomu" class="form-control input-sm">
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-4">
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="inputGroup-sizing-default">Valor Compra</span>
+                                <span class="input-group-text" id="inputGroup-sizing-default">Valor Total</span>
                                 <input disabled type="text" id="valoru" name="valoru" class="form-control input-sm">
+                            </div>
+                        </div>
+						<div class="col-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="inputGroup-sizing-default">Valor Unidad</span>
+                                <input disabled type="text" id="valundu" name="valundu" class="form-control input-sm">
                             </div>
                         </div>
                         <div class="col-12">
@@ -92,9 +98,6 @@
                         </div>
                     </div>
                 </fieldset>
-                <div class="card-footer text-center">
-                    <button class="btn btn-success" data-bs-dismiss="modal">Agregar</button>
-                </div>
             </div>
         </div>
     </div>

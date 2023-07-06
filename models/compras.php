@@ -17,7 +17,7 @@
                 $query = $conexion->prepare($insertbitacora);
                 $registro = 'REGISTRO';
                 $modulo = 'COMPRAS';
-                $detalle = 'EL PRODUCTO' . $datos['nompro'] . 'CON SERIAL' . $datos['serial'] . 'DE LA FACTURA ' . $datos['numfac'];
+                $detalle = 'EL PRODUCTO ' . $datos['nompro'] . ' CON SERIAL ' . $datos['serial'] . ' DE LA FACTURA ' . $datos['numfac'];
                 $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $datos['idsede']);
                 $respuesta = $query->execute();
             }
@@ -31,13 +31,14 @@
                 v.id_sede     AS idsede,
                 v.id_area     AS idarea,
                 a.are_nombre  AS area,
-                V.ven_cantid  AS cantid,
+                v.ven_cantid  AS cantid,
                 v.ven_nompro  AS nompro,
                 v.ven_marca   AS marca,
                 v.ven_modelo  AS modelo,
                 v.ven_serial  AS serial,
                 v.ven_numfac  AS numfac,
-                v.ven_valor   AS valor,
+                v.ven_valor   AS valor, 
+                round(v.ven_valor / v.ven_cantid) AS valund,
                 v.ven_proove  AS proove,
                 v.ven_detall  AS detall,
                 v.ven_feccom  AS feccom,
@@ -59,6 +60,7 @@
                 'serial'     => $compras['serial'],
                 'numfac'     => $compras['numfac'],
                 'valor'      => $compras['valor'],
+				'valund'     => $compras['valund'],
                 'proove'     => $compras['proove'],
                 'detall'     => $compras['detall'],
                 'feccom'     => $compras['feccom'],

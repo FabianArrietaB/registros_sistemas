@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="input-group mb-3">
-                                    <select name="idarea" id="idarea" class="form-control input-sm">
+                                    <select name="matidarea" id="matidarea" class="form-control input-sm">
                                         <option selected >Selecione Area</option>
                                         <?php
                                         $sql="SELECT a.id_area as idarea, a.are_nombre as area FROM areas as a";
@@ -37,7 +37,7 @@
                     <fieldset class="group-border">
                         <legend class="group-border">Informacion Equipo</legend>
                         <div class="row">
-                        <input hidden type="text" id="nombre" name="nombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                        <input hidden type="text" id="matnombre" name="matnombre" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <select class="form-select input-sm" name="idequipo" id="idequipo" required>
@@ -47,25 +47,25 @@
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">MARCA</span>
-                                    <input type="text" id="marca" name="marca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" id="matmarca" name="matmarca" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">MODELO</span>
-                                    <input type="text" id="modelo" name="modelo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" id="matmodelo" name="matmodelo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">SERIAL</span>
-                                    <input type="text" id="serial" name="serial" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    <input type="text" id="matserial" name="matserial" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Descripcion</span>
-                                    <textarea type="text" id="detall" name="detall" class="form-control input-sm" rows="3"></textarea>
+                                    <textarea type="text" id="matdetall" name="matdetall" class="form-control input-sm" rows="3"></textarea>
                                 </div>
                             </div>
                         </div>

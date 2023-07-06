@@ -20,12 +20,16 @@
                     $equipo = 'EL EQUIPO ESCRITORIO';
                 } else if ($datos['idtipequ'] = 3){
                     $equipo = 'LA IMPRESORA';
+                } else if ($datos['idtipequ'] = 4){
+                    $equipo = 'EL DVR';
+                } else if ($datos['idtipequ'] = 5){
+                    $equipo = 'EL MONITOR';
                 }
                 $hoy = date("Y-m-d");
                 //REGISTRO DEL EQUIPO Al MODULO COMPRA
-                $insertcompra = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_nompro, ven_marca, ven_modelo, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?,?,?,?,?,?,?,?,?,?,?)";
+                $insertcompra = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_nompro, ven_marca, ven_modelo, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?)";
                 $query = $conexion->prepare($insertcompra);
-                $query->bind_param("iiissssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $equipo, $datos['marca'], $datos['modelo'], $datos['serial'], $datos['numfac'], $datos['valor'], $datos['proove'], $datos['detall'], $datos['fecha'], $hoy);
+                $query->bind_param("iiissssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $equipo, $datos['marca'], $datos['modelo'], $datos['serial'], $datos['numfac'], $datos['valor'], $datos['proove'], $datos['detall'], $datos['fecha'], $hoy);
                 $respuesta = $query->execute();
                 //REGISTRO AUDITORIA
                 $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";
@@ -40,7 +44,7 @@
         public function agregaractivo($datos){
             $conexion = Conexion::conectar();
             //CONSULTA DATOS DEL EQUIPO
-            $idequipo = $datos['equipoid'];
+            $idequipo = $datos['actidequipo'];
             $equipo = "SELECT e.equ_codact as codant, e.id_sede as idsede, e.equ_serial as serial FROM equipos as e WHERE e.id_equipo ='$idequipo'";
             $resultado = mysqli_query($conexion, $equipo);
             $respuesta = mysqli_fetch_array($resultado);
@@ -60,7 +64,7 @@
                 //REGISTRO CODIGO ACTIVO
                 $sql = "UPDATE equipos SET equ_codact = ? WHERE id_equipo = ?";
                 $query = $conexion->prepare($sql);
-                $query->bind_param('si', $datos['codact'], $datos['equipoid']);
+                $query->bind_param('si', $datos['codact'], $datos['actidequipo']);
                 $respuesta = $query->execute();
             }
             return $respuesta;
@@ -120,14 +124,14 @@
             $conexion = Conexion::conectar();
             //CONSULTA DATOS DEL EQUIPO
             $sql ="SELECT
-                e.id_equipo   AS equipoid,
+                e.id_equipo   AS actidequipo,
                 e.equ_codact  AS codact
                 FROM equipos AS e
                 WHERE e.id_equipo ='$idequipo'";
             $respuesta = mysqli_query($conexion,$sql);
             $equipos = mysqli_fetch_array($respuesta);
             $datos = array(
-                'equipoid'  => $equipos['equipoid'],
+                'actidequipo'  => $equipos['actidequipo'],
                 'codact'    => $equipos['codact'],
             );
             return $datos;

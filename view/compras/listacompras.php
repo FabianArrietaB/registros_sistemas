@@ -13,12 +13,14 @@
         v.ven_nompro  AS nompro,
         v.ven_serial  AS serial,
         v.ven_numfac  AS numfac,
+        SUM(v.ven_valor) as valtot,
         v.ven_proove  AS proove,
         v.ven_detall  AS detall,
         v.ven_feccom  AS feccom,
         v.ven_fecope  AS fecope
     FROM ventas AS v
     INNER JOIN areas AS a ON a.id_area = v.id_area
+    GROUP BY v.ven_numfac
     ORDER BY v.id_venta DESC";
     $query = mysqli_query($conexion, $sql);
 ?>
@@ -29,12 +31,11 @@
             <tr>
                 <th scope="col" >FACTURA</th>
                 <th scope="col" >PROVEEDOR</th>
-                <th scope="col" >SEDE</th>
-                <th scope="col" >AREA</th>
+                <th scope="col" >Valor</th>
                 <th scope="col" >FECHA COMPRA</th>
                 <th>
                     <div class="d-grid gap-2">
-                         </div>
+                    </div>
                 </th>
             </tr>
         </thead>
@@ -43,23 +44,14 @@
             while ($compras = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td data-bs-toggle="modal" data-bs-target="#detallecompra" onclick="detallecompras('<?php echo $compras['idventa']?>')"><?php echo $compras['numfac'];?></td>
+                <td><?php echo $compras['numfac'];?></td>
                 <td><?php echo $compras['proove'];?></td>
-                <td><?php echo $compras['area'];?></td>
-                <td>
-                <?php if ($compras['idsede'] == 1) { ?>
-                    <h5><span >CERAMICASAS</span></h5>
-                <?php } else if ($compras['idsede'] == 2) { ?>
-                    <h5><span >FERRECASAS</span></h5>
-                <?php } else if ($compras['idsede'] == 3) { ?>
-                    <h5><span >METROPOLIS</span></h5>
-                <?php } else if ($compras['idsede'] == 4) { ?>
-                    <h5><span >MAYORISTA</span></h5>
-                <?php } ?>
-                </td>
+                <td><?php echo $compras['valtot'];?></td>
                 <td><?php echo $compras['feccom'];?></td>
                 <td>
-                
+                    <div class="d-grid gap-2">
+                        <input type="button" class="btn btn-info" value="Reporte" onclick="detallefactura('<?php echo $compras['numfac']?>')"></input>
+                    </div>
                 </td>
             </tr>
         <?php } ?>
