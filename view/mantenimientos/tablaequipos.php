@@ -1,5 +1,9 @@
 <?php
     session_start();
+    $filtro = '';
+    if(isset($_GET['filtro'])){
+        $filtro = $_GET['filtro'];
+    }
     include "../../models/conexion.php";
     $con = new Conexion();
     $conexion = $con->conectar();
@@ -28,7 +32,7 @@
 ?>
 <!-- inicio Tabla -->
 <div class="table-responsive">
-    <table class="table table-light text-center">
+    <table class="table table-light text-center" id="equipos">
         <thead>
             <tr>
                 <th scope="col" >AREA</th>

@@ -19,7 +19,7 @@
                         <h2>LISTA MANTENIMIENTOS</h2>
                     </div>
                     <form method="GET">
-                        <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">
+                        <input class="form-control me-3" type="search" onkeyup="filtrar()" placeholder="Buscar" id="filtro" name="filtro">
                     </form>
                 </div>
                 <div class="card-body">

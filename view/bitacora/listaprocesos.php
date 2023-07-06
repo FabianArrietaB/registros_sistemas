@@ -20,7 +20,6 @@
     FROM bitacora AS b
     INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador
     LEFT JOIN sedes AS s ON s.id_sede = b.bit_idsede
-    WHERE b.bit_modulo LIKE '%$filtro%'|| s.sed_nombre LIKE '%$filtro%'|| u.user_nombre LIKE '%$filtro%'
     ORDER BY b.id_bitacora DESC";
     $query = mysqli_query($conexion, $sql);
 ?>
