@@ -11,6 +11,7 @@
     v.ven_valor as valor,
     SUM(v.ven_valor) as valtot
     from ventas as v
+    WHERE YEAR(v.ven_feccom) = YEAR(CURDATE())
     GROUP BY mes"; // Consulta SQL
     $query = mysqli_query($conexion, $sql);
 ?>
@@ -29,10 +30,14 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas WHERE YEAR(ven_feccom) = YEAR(CURDATE())");
                                         $data = mysqli_fetch_array($sql);
                                         $precio = $data['precio'];
+                                        if ($data == 0) {
+                                            echo 'No hay Datos';
+                                        } else {
                                         echo '$ '. $precio;
+                                        }
                                     ?>
                                 </span>
                             </div>
@@ -52,10 +57,10 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE())");
+                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = YEAR(CURDATE())");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
-                                            echo 'No hay presupuesto';
+                                            echo 'No hay Datos';
                                         } else {
                                             $valor = $data['valor'];
                                             echo '$ '. $valor;
@@ -82,10 +87,10 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = YEAR(CURDATE())");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
-                                            echo 'No hay Gastos';
+                                            echo 'No hay Datos';
                                         } else {
                                         $precio = $data['precio'];
                                         echo '$ '. $precio;
@@ -112,13 +117,13 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT SUM(ven_valor) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) ");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = YEAR(CURDATE())");
                                         $data = mysqli_fetch_array($sql);
                                         $precio = $data['precio'];
-                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE())");
+                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = YEAR(CURDATE())");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
-                                            echo 'No hay presupuesto';
+                                            echo 'No hay Datos';
                                         } else {
                                             $valor = $data['valor'];
                                             echo '$ '. $valor - $precio;

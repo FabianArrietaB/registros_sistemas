@@ -15,7 +15,8 @@
         c.cor_estado AS estado
         FROM correos AS c
         INNER JOIN areas AS a ON a.id_area = c.id_area
-        INNER JOIN sedes AS s ON s.id_sede = c.id_sede";
+        INNER JOIN sedes AS s ON s.id_sede = c.id_sede
+        ORDER BY c.cor_correo ASC";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
