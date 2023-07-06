@@ -6,9 +6,6 @@
     $con = new Conexion(); // Conectar a la BD
     $conexion = $con->conectar();
     $año = '2022';
-    if (isset($_GET['año']) ) {
-        $año = $_GET['año'];
-    }
     $sql = "SELECT
     YEAR(v.ven_feccom) as año,
     MONTH(v.ven_feccom) as mes,
@@ -158,7 +155,7 @@
                 </div>
             </div>
             <div class="table-responsive">
-                <table class="table table-light text-center">
+                <table class="table table-light text-center" id="presupuesto">
                     <thead>
                         <tr>
                             <th scope="col">AÑOS</th>

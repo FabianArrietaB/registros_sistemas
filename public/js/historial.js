@@ -39,6 +39,7 @@ function agregarpresupuesto(){
     });
     return false;
 }
+
 // myCanvas.width = 300;
 // myCanvas.height = 300;
   

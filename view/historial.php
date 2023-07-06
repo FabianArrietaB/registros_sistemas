@@ -38,7 +38,7 @@
                                             $respuesta = mysqli_query($conexion, $sql);
                                             while($año = mysqli_fetch_array($respuesta)) {
                                             ?>
-                                                <option value="<?php echo $año['año']?>"><?php echo $año['año'];?></option>
+                                             <option value="<?php echo $año['año']?>"><?php echo $año['año'];?></option>
                                             <?php }?>
                                         </select>
                                     </div>
