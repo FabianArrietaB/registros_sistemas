@@ -16,6 +16,7 @@
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">TIPO EQUIPO</span>
                                     <select name="idtipo" id="idtipo" class="form-control input-sm">
+                                        <option value="">SELECCIONAR DISPOSITIVO</option>
                                         <option value="1">SERVIDOR</option>
                                         <option value="2">ROUTER</option>
                                         <option value="3">DVR</option>

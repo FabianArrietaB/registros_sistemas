@@ -5,13 +5,17 @@
     $idusuario = $_SESSION['usuario']['id'];
     $con = new Conexion(); // Conectar a la BD
     $conexion = $con->conectar();
+    $año = '2022';
+    if (isset($_GET['año']) ) {
+        $año = $_GET['año'];
+    }
     $sql = "SELECT
     YEAR(v.ven_feccom) as año,
     MONTH(v.ven_feccom) as mes,
     v.ven_valor as valor,
     SUM(v.ven_valor) as valtot
     from ventas as v
-    WHERE YEAR(v.ven_feccom) = YEAR(CURDATE())
+    WHERE YEAR(v.ven_feccom) = '$año'
     GROUP BY mes"; // Consulta SQL
     $query = mysqli_query($conexion, $sql);
 ?>
@@ -30,7 +34,7 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas WHERE YEAR(ven_feccom) = YEAR(CURDATE())");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas WHERE YEAR(ven_feccom) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         $precio = $data['precio'];
                                         if ($data == 0) {
@@ -57,7 +61,7 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = YEAR(CURDATE())");
+                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
                                             echo 'No hay Datos';
@@ -87,7 +91,7 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = YEAR(CURDATE())");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
                                             echo 'No hay Datos';
@@ -117,10 +121,10 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = YEAR(CURDATE())");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         $precio = $data['precio'];
-                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = YEAR(CURDATE())");
+                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
                                             echo 'No hay Datos';
