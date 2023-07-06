@@ -1,5 +1,9 @@
 <?php
     session_start();
+    $filtro = '';
+    if(isset($_GET['filtro'])){
+        $filtro = $_GET['filtro'];
+    }
     include "../../models/conexion.php";
     $con = new Conexion();
     $conexion = $con->conectar();
@@ -16,12 +20,13 @@
     FROM bitacora AS b
     INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador
     LEFT JOIN sedes AS s ON s.id_sede = b.bit_idsede
+    WHERE b.bit_modulo LIKE '%$filtro%'|| s.sed_nombre LIKE '%$filtro%'|| u.user_nombre LIKE '%$filtro%'
     ORDER BY b.id_bitacora DESC";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
 <div class="table-responsive">
-    <table class="table table-light text-center">
+    <table class="table table-light text-center" id="eventos">
         <thead>
             <tr>
                 <th scope="col" >DETALLE DE EVENTOS</th>
