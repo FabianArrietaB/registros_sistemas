@@ -25,7 +25,9 @@
                                 <span class="input-group-text" id="inputGroup-sizing-default">Total Equipos</span>
                                 <input type="text" class="form-control input-sm" disabled value="
                                 <?php
-                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3)"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3)");
+                                    $sql= mysqli_num_rows($sql);
+                                    echo $sql;
                                 ?>
                                 ">
                             </div>
@@ -77,213 +79,185 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="row student">
-                    <!-- EQUIPOS MAYORISTA -->
+                <div class="row student text-center">
                     <div class="col-3">
-                        <div class="card border-primary">
-                            <div class="card-header text-center">
-                                <div class="title">
-                                    <h2>MAYORISTA</h2>
+                        <div class="list-group">
+                            <li class="list-group-item list-group-item-action active">MAYORISTA</li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos</div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Equipos</span>
-                                        <input type="text" class="form-control" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-danger rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Portatiles</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Portatiles</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-warning rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos Escritorio</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Escritorio</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-success rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Impresoras</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Impresoras</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
-                                </div>
-                            </div>
+                                <span class="badge bg-primary rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 4"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
                         </div>
                     </div>
-                    <!-- EQUIPOS METROPOLIS -->
                     <div class="col-3">
-                        <div class="card border-primary">
-                            <div class="card-header text-center">
-                                <div class="title">
-                                    <h2>METROPOLIS</h2>
+                        <div class="list-group">
+                            <li class="list-group-item list-group-item-action active">METROPOLIS</li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos</div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Equipos</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-danger rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Portatiles</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Portatiles</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-warning rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos Escritorio</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Escritorio</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-success rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Impresoras</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Impresoras</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
-                                </div>
-                            </div>
+                                <span class="badge bg-primary rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 3"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
                         </div>
                     </div>
-                    <!-- EQUIPOS FERRECASAS -->
                     <div class="col-3">
-                        <div class="card border-primary">
-                            <div class="card-header text-center">
-                                <div class="title">
-                                    <h2>FERRECASAS</h2>
+                        <div class="list-group">
+                            <li class="list-group-item list-group-item-action active">FERRECASAS</li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos</div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Equipos</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-danger rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Portatiles</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Portatiles</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-warning rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos Escritorio</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Escritorio</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-success rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Impresoras</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Impresoras</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
-                                </div>
-                            </div>
+                                <span class="badge bg-primary rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 2"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
                         </div>
                     </div>
-                    <!-- EQUIPOS CERAMICASAS -->
                     <div class="col-3">
-                        <div class="card border-primary">
-                            <div class="card-header text-center">
-                                <div class="title">
-                                    <h2>FERRECASAS</h2>
+                        <div class="list-group">
+                            <li class="list-group-item list-group-item-action active">CERAMICASAS</li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos</div>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Equipos</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-danger rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ IN (1, 2, 3) AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Portatiles</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Portatiles</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-warning rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 1 AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Equipos Escritorio</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Escritorio</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
+                                <span class="badge bg-success rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 2 AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-start">
+                                <div class="ms-2 me-auto">
+                                <div class="fw-bold">Total Impresoras</div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Impresoras</span>
-                                        <input type="text" class="form-control input-sm" disabled value="
-                                        <?php
-                                            $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
-                                        ?>
-                                        ">
-                                    </div>
-                                </div>
-                            </div>
+                                <span class="badge bg-primary rounded-pill">
+                                    <?php
+                                        $sql=$conexion->query("SELECT * FROM equipos WHERE id_tipequ = 3 AND id_sede = 1"); $sql= mysqli_num_rows($sql); echo $sql;
+                                    ?>
+                                </span>
+                            </li>
                         </div>
                     </div>
                 </div>
