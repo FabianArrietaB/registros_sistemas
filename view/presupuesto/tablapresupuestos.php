@@ -1,7 +1,10 @@
 <!-- inicio Tabla -->
 <?php
     session_start();
-    $año = '2020'; //$_GET['year'];
+    $año = '';
+    if(isset($_GET['year'])){
+        $año = $_GET['year'];
+    }
     include "../../models/conexion.php";
     $idusuario = $_SESSION['usuario']['id'];
     $con = new Conexion(); // Conectar a la BD

@@ -40,3 +40,11 @@ function agregarpresupuesto(){
     return false;
 }
 
+function obteneraño(){
+    var año = $('#year').val();
+    $.ajax({
+        method: 'GET',
+    }).done(function(info) {
+        $('#tablapresupuesto').load('presupuesto/tablapresupuestos.php?year='+año);
+    })
+}

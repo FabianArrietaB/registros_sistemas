@@ -31,7 +31,7 @@
                         <div class="col-4">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Año</span>
-                                <select name="year" id="year" onchange="obtenerinput(this.value)" class="form-control input-sm">
+                                <select name="year" id="year" onchange="obteneraño()" class="form-control input-sm">
                                     <option value="">Seleccione</option>
                                     <?php
                                     $sql="SELECT DISTINCT YEAR(v.ven_feccom) as año FROM ventas as v";

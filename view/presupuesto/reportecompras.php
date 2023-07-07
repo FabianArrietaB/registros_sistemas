@@ -57,7 +57,7 @@ foreach ($query as $row) {
         <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Reporte Ventas</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Reporte Compras</h5>
                     <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
