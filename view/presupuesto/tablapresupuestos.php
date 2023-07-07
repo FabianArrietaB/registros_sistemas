@@ -217,7 +217,7 @@
                                 $sql = $conexion->query("SELECT p.pre_valor as valor FROM presupuesto AS p WHERE MONTH(pre_fecope) = $mes AND YEAR(pre_fecope) = '$año'");
                                 $data = mysqli_fetch_array($sql);
                                 if ($data == 0) {
-                                    echo 'No hay Datos';
+                                    echo 'No hay Presupuesto Asignado';
                                     $valor = 0;
                                 } else {
                                     $valor = $data['valor'];
