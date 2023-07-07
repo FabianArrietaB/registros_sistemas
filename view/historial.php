@@ -23,18 +23,17 @@
                 </div>
                 <form method="get">
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-10">
                             <div class="input-group mb-3">
                                 <input class="form-control me-3" type="search" onkeyup="filtrar()" placeholder="Buscar" id="filtro" name="filtro">
                             </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-2">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Año</span>
                                 <select name="year" id="year" onchange="obteneraño()" class="form-control input-sm">
-                                    <option value="">Seleccione</option>
                                     <?php
-                                    $sql="SELECT DISTINCT YEAR(v.ven_feccom) as año FROM ventas as v";
+                                    $sql="SELECT DISTINCT YEAR(v.ven_feccom) as año FROM ventas as v ORDER BY año DESC";
                                     $respuesta = mysqli_query($conexion, $sql);
                                     while($año = mysqli_fetch_array($respuesta)) {
                                     ?>

@@ -1,7 +1,7 @@
 <!-- inicio Tabla -->
 <?php
     session_start();
-    $año = '';
+    $año = date("Y");
     if(isset($_GET['year'])){
         $año = $_GET['year'];
     }
