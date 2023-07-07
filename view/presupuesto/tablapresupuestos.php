@@ -1,7 +1,7 @@
 <!-- inicio Tabla -->
 <?php
     session_start();
-    $año = $_GET['year'];
+    $año = '2022'; //$_GET['year'];
     include "../../models/conexion.php";
     $idusuario = $_SESSION['usuario']['id'];
     $con = new Conexion(); // Conectar a la BD
@@ -15,6 +15,7 @@
     WHERE YEAR(v.ven_feccom) = '$año'
     GROUP BY mes"; // Consulta SQL
     $query = mysqli_query($conexion, $sql);
+
 ?>
 <!-- inicio Tabla -->
 <div class="card-body">
@@ -37,7 +38,7 @@
                                         if ($data == 0) {
                                             echo 'No hay Datos';
                                         } else {
-                                        echo '$ '. $precio;
+                                        echo '$ '. number_format($precio,2);
                                         }
                                     ?>
                                 </span>
@@ -64,7 +65,7 @@
                                             echo 'No hay Datos';
                                         } else {
                                             $valor = $data['valor'];
-                                            echo '$ '. $valor;
+                                            echo '$ '. number_format($valor,2);
                                         }
                                     ?>
                                 </span>
@@ -94,7 +95,7 @@
                                             echo 'No hay Datos';
                                         } else {
                                         $precio = $data['precio'];
-                                        echo '$ '. $precio;
+                                        echo '$ '. number_format($precio,2);
                                         }
                                     ?>
                                 </span>
@@ -127,7 +128,7 @@
                                             echo 'No hay Datos';
                                         } else {
                                             $valor = $data['valor'];
-                                            echo '$ '. $valor - $precio;
+                                            echo '$ '. number_format($valor - $precio,2);
                                         }
                                     ?>
                                 </span>
@@ -158,9 +159,11 @@
                 <table class="table table-light text-center" id="presupuesto">
                     <thead>
                         <tr>
-                            <th scope="col">AÑOS</th>
+                            <th scope="col">AÑO</th>
                             <th scope="col">MES</th>
                             <th scope="col">VALOR</th>
+                            <th scope="col">PRESUPUESTO</th>
+                            <th scope="col">DIFERENCIA</th>
                             <th scope="col">
                             <?php if($_SESSION['usuario']['rol'] == 4) {?>
                                 <div class="d-grid gap-2">
@@ -203,7 +206,23 @@
                                 <h5><span >Diciembre</span></h5>
                             <?php } ?>
                             </td>
-                            <td><?php echo '$ '. $ventas['valtot']; ?></td>
+                            <td><?php echo '$ '. number_format($ventas['valtot'],2); ?></td>
+                            <td>
+                                <?php
+                                $mes = $ventas['mes'];
+                                $sql = $conexion->query("SELECT p.pre_valor as valor FROM presupuesto AS p WHERE MONTH(pre_fecope) = $mes");
+                                $data = mysqli_fetch_array($sql);
+                                if ($data == 0) {
+                                    echo 'No hay Datos';
+                                } else {
+                                    $valor = $data['valor'];
+                                    echo '$ '. number_format($valor,2);
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php echo '$ '. number_format($valor - $ventas['valtot'],2); ?>
+                            </td>
                             <td>
                                 <div class="d-grid gap-2">
                                     <input type="button" class="btn btn-info" value="Reporte" onclick="detallecompras('<?php echo $ventas['mes']?>')"></input>

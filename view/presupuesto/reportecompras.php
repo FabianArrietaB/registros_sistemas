@@ -74,7 +74,7 @@ foreach ($query as $row) {
                             <div class="col-6">
                                 <div class="mb-3">
                                     <label class="form-label">Valor Total</label>
-                                    <input type="text" class="form-control input-sm" disabled value="<?php echo '$ '. $valortotal['valortotal']; ?>">
+                                    <input type="text" class="form-control input-sm" disabled value="<?php echo '$ '. number_format($valortotal['valortotal'],2); ?>">
                                 </div>
                             </div>
                         </div>

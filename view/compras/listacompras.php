@@ -50,7 +50,7 @@
             <tr>
                 <td><?php echo $compras['numfac'];?></td>
                 <td><?php echo $compras['proove'];?></td>
-                <td><?php echo $compras['valtot'];?></td>
+                <td><?php echo '$ ' . number_format($compras['valtot'],2);?></td>
                 <td><?php echo $compras['feccom'];?></td>
                 <td>
                     <div class="d-grid gap-2">

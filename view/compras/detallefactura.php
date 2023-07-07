@@ -56,7 +56,7 @@ foreach ($query as $row) {
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Valor Total</span>
-                                    <input type="text" class="form-control input-sm" disabled value="<?php echo $valortotal['valortotal']; ?>">
+                                    <input type="text" class="form-control input-sm" disabled value="<?php echo number_format($valortotal['valortotal'],2); ?>">
                                 </div>
                             </div>
                         </div>
@@ -81,8 +81,8 @@ foreach ($query as $row) {
                                             <tr>
                                                 <td><?php echo $value['cantid']; ?></td>
                                                 <td><?php echo $value['produc']; ?></td>
-                                                <td><?php echo '$ '. round($value['valor'] / $value['cantid']); ?></td>
-                                                <td><?php echo '$ '. $value['valor']; ?></td>
+                                                <td><?php echo '$ '. number_format(round($value['valor'] / $value['cantid']),2); ?></td>
+                                                <td><?php echo '$ '. number_format($value['valor'],2); ?></td>
                                             </tr>
                                             <?php
                                         }
