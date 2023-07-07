@@ -1,11 +1,11 @@
 <!-- inicio Tabla -->
 <?php
     session_start();
+    $año = $_GET['year'];
     include "../../models/conexion.php";
     $idusuario = $_SESSION['usuario']['id'];
     $con = new Conexion(); // Conectar a la BD
     $conexion = $con->conectar();
-    $año = '2022';
     $sql = "SELECT
     YEAR(v.ven_feccom) as año,
     MONTH(v.ven_feccom) as mes,
