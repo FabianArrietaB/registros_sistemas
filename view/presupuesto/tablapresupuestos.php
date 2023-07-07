@@ -2,6 +2,7 @@
 <?php
     session_start();
     $año = date("Y");
+    $mesact = date("M");
     if(isset($_GET['year'])){
         $año = $_GET['year'];
     }
@@ -62,7 +63,7 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = '$año'");
+                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = '$mesact' AND YEAR(pre_fecope) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
                                             echo 'No hay Datos';
@@ -92,7 +93,7 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = '$año'");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = '$mesact' AND YEAR(ven_feccom) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
                                             echo 'No hay Datos';
@@ -122,10 +123,10 @@
                             <div class="float-sm-right">&nbsp;
                                 <span style="font-size: 20px">
                                     <?php
-                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = MONTH(CURRENT_DATE()) AND YEAR(ven_feccom) = '$año'");
+                                        $sql=$conexion->query("SELECT round(SUM(ven_valor)) as 'precio' from ventas where MONTH(ven_feccom) = '$mesact' AND YEAR(ven_feccom) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         $precio = $data['precio'];
-                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = MONTH(CURRENT_DATE()) AND YEAR(pre_fecope) = '$año'");
+                                        $sql=$conexion->query("SELECT pre_valor as 'valor' from presupuesto where MONTH(pre_fecope) = '$mesact' AND YEAR(pre_fecope) = '$año'");
                                         $data = mysqli_fetch_array($sql);
                                         if ($data == 0) {
                                             echo 'No hay Datos';
@@ -213,10 +214,11 @@
                             <td>
                                 <?php
                                 $mes = $ventas['mes'];
-                                $sql = $conexion->query("SELECT p.pre_valor as valor FROM presupuesto AS p WHERE MONTH(pre_fecope) = $mes");
+                                $sql = $conexion->query("SELECT p.pre_valor as valor FROM presupuesto AS p WHERE MONTH(pre_fecope) = $mes AND YEAR(pre_fecope) = '$año'");
                                 $data = mysqli_fetch_array($sql);
                                 if ($data == 0) {
                                     echo 'No hay Datos';
+                                    $valor = 0;
                                 } else {
                                     $valor = $data['valor'];
                                     echo '$ '. number_format($valor,2);
@@ -224,7 +226,14 @@
                                 ?>
                             </td>
                             <td>
-                                <?php echo '$ '. number_format($valor - $ventas['valtot'],2); ?>
+                                <?php
+                                    if ($valor >= 0) {
+                                        echo 'No hay Datos';
+                                    } else {
+                                        echo '$ '. number_format($valor - $ventas['valtot'],2);
+                                    }
+                                    
+                                ?>
                             </td>
                             <td>
                                 <div class="d-grid gap-2">
