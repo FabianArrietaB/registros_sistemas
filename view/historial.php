@@ -25,7 +25,7 @@
                     <div class="row">
                         <div class="col-10">
                             <div class="input-group mb-3">
-                                <input class="form-control me-3" type="search" onkeyup="filtrar()" placeholder="Buscar" id="filtro" name="filtro">
+                                
                             </div>
                         </div>
                         <div class="col-2">
