@@ -1,8 +1,8 @@
 <?php
     session_start();
-    $filtro = '';
-    if(isset($_GET['filtro'])){
-        $filtro = $_GET['filtro'];
+    $año = date("Y");
+    if(isset($_GET['year'])){
+        $año = $_GET['year'];
     }
     include "../../models/conexion.php";
     $con = new Conexion();
@@ -20,6 +20,7 @@
     FROM bitacora AS b
     INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador
     LEFT JOIN sedes AS s ON s.id_sede = b.bit_idsede
+    WHERE YEAR(b.bit_fecope) = '$año'
     ORDER BY b.id_bitacora DESC";
     $query = mysqli_query($conexion, $sql);
 ?>
