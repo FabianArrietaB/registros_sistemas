@@ -32,6 +32,7 @@
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="inputGroup-sizing-default">Año</span>
                                 <select name="year" id="year" onchange="obteneraño()" class="form-control input-sm">
+                                    <option value="<?php date("Y")?>">AÑO ACTUAL</option>
                                     <?php
                                     $sql="SELECT DISTINCT YEAR(v.ven_feccom) as año FROM ventas as v ORDER BY año DESC";
                                     $respuesta = mysqli_query($conexion, $sql);
