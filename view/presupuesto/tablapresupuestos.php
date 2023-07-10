@@ -2,7 +2,7 @@
 <?php
     session_start();
     $año = date("Y");
-    $mesact = date("M");
+    $mesact = date("m");
     if(isset($_GET['year'])){
         $año = $_GET['year'];
     }
@@ -227,12 +227,12 @@
                             </td>
                             <td>
                                 <?php
-                                    if ($valor >= 0) {
+
+                                    if ($valor == 0) {
                                         echo 'No hay Datos';
                                     } else {
                                         echo '$ '. number_format($valor - $ventas['valtot'],2);
                                     }
-                                    
                                 ?>
                             </td>
                             <td>

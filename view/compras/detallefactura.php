@@ -7,7 +7,7 @@ $sql = "SELECT
 v.id_venta   as idventa,
 v.ven_numfac as numfac,
 v.ven_cantid  as cantid,
-CONCAT(v.ven_nompro, v.ven_marca, v.ven_modelo) as produc,
+CONCAT(v.ven_nompro,' ',v.ven_marca,' ',v.ven_modelo) as produc,
 v.ven_serial  as serial,
 v.ven_valor  as valor,
 v.ven_proove as proove,
