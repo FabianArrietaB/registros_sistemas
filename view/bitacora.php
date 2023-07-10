@@ -29,7 +29,7 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-default">Año</span>
                                         <select name="year" id="year" onchange="obteneraño()" class="form-control input-sm">
-                                            <option value="<?php echo date('Y') ?>">Año Actual</option>
+                                            <option value="">Seleccione un Año</option>
                                             <?php
                                             $sql="SELECT DISTINCT YEAR(b.bit_fecope) as año FROM bitacora as b ORDER BY año DESC";
                                             $respuesta = mysqli_query($conexion, $sql);
@@ -44,7 +44,7 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-default">Usuario</span>
                                         <select name="operador" id="operador" onchange="onteneroperador()" class="form-control input-sm">
-                                            <option value="">Usuario</option>
+                                            <option value="">Seleccione un  Usuario</option>
                                             <?php
                                             $sql="SELECT DISTINCT b.bit_operador AS idoperador, u.user_nombre AS nombre FROM bitacora as b INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador ORDER BY idoperador ASC";
                                             $respuesta = mysqli_query($conexion, $sql);
@@ -59,7 +59,7 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="inputGroup-sizing-default">Modulo</span>
                                         <select name="modulo" id="modulo" onchange="obtnermodulo()" class="form-control input-sm">
-                                            <option value="">Modulo</option>
+                                            <option value="">Seleccione un Modulo</option>
                                             <?php
                                             $sql="SELECT DISTINCT b.bit_modulo AS modulo FROM bitacora as b ORDER BY modulo ASC";
                                             $respuesta = mysqli_query($conexion, $sql);
