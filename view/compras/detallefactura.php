@@ -104,9 +104,9 @@ foreach ($query as $row) {
                             </table>
                         </div>
                     </fieldset>
-                    <div class="card-footer">
+                    <!-- <div class="card-footer">
                         <button class="btn btn-success" data-bs-dismiss="modal">Imprimir</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

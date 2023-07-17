@@ -69,7 +69,7 @@
                 </td>
                 <td>
                 <?php if ($tareas['estado'] == 0) { ?> <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editartarea" onclick="detalletarea('<?php echo $tareas['idtarea']?>')"><i class="fa-solid fa-check-to-slot fa-2x"></i></button> <?php } ?>
-                    <?php if ($tareas['estado'] == 1) { ?> <button type="button" class="btn btn-success" onclick="finalizada(<?php echo $tareas['idtarea'] ?>, <?php echo $tareas['estado'] ?>)"><i class="fa-solid fa-check-to-slot fa-2x"></i></button> <?php } ?>
+                <?php if ($tareas['estado'] == 1) { ?> <button type="button" class="btn btn-success" onclick="finalizada(<?php echo $tareas['idtarea'] ?>, <?php echo $tareas['estado'] ?>)"><i class="fa-solid fa-check-to-slot fa-2x"></i></button> <?php } ?>
                 </td>
             </tr>
         <?php } ?>

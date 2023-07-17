@@ -4,7 +4,7 @@
     include "navbar.php";
     if(isset($_SESSION['usuario']) &&
     $_SESSION['usuario']['rol'] == 4 ||
-    $_SESSION['usuario']['rol'] == 3){
+    $_SESSION['usuario']['rol'] == 2){
     include "../models/conexion.php";
     $con = new Conexion();
     $conexion = $con->conectar();
@@ -274,7 +274,7 @@
 <!-- carga ficheros javascript -->
 <script src="../public/js/tareas.js"></script>
 <!-- Vista Supervisor -->
-<?php } else if($_SESSION['usuario']['rol'] == 3) {
+<?php } else if ($_SESSION['usuario']['rol'] == 3) {
 include "../models/conexion.php";
 $con = new Conexion();
 $conexion = $con->conectar();
