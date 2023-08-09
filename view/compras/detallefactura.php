@@ -7,13 +7,10 @@ $sql = "SELECT
 v.id_venta   as idventa,
 v.ven_numfac as numfac,
 v.ven_cantid  as cantid,
-<<<<<<< HEAD
 v.id_sede     as idsede,
 s.sed_nombre  as sede,
 v.id_area     as area,
 a.are_nombre  as area,
-=======
->>>>>>> c876d678ca8c6be9f1c2b13c99c2f809a75aa3a9
 CONCAT(v.ven_nompro,' ',v.ven_marca,' ',v.ven_modelo) as produc,
 v.ven_serial  as serial,
 v.ven_valor  as valor,
