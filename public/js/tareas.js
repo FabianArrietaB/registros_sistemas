@@ -3,6 +3,10 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
+    $('#tablacierreequipos').load('tareas/tablaequipos.php');
+});
+
+$(document).ready(function(){
     $('#pendientesbtn').click(function(){
         ocultar();
         $('#tareaspendientes').load('tareas/tareaspendientes.php');

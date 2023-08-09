@@ -8,6 +8,7 @@
     include "../models/conexion.php";
     $con = new Conexion();
     $conexion = $con->conectar();
+    
 ?>
 <!-- inicio del contenido principal -->
 <div class="container-fluid">
@@ -265,7 +266,19 @@
                 </div>
             </div>
         </div>
-        <!--INFORMACION POR SEDE -->
+        <!--INFORMACION CIERRE AÑO -->
+        <div class="card border-primary">
+            <div class="card-header text-center">
+                <div class="title">
+                    <h2>INFORMACION CIERRE AÑO</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row student text-center">
+                    <div id="tablacierreequipos"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- fin del contenido principal -->

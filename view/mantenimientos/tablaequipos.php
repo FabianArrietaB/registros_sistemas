@@ -11,6 +11,7 @@
     $sql = "SELECT
         e.id_equipo   AS idequipo,
         e.id_area     AS idarea,
+        e.id_tipequ   AS tipequ,
         e.id_sede     AS idsede,
         s.sed_nombre  AS sede,
         a.are_nombre  AS area,
@@ -37,6 +38,7 @@
             <tr>
                 <th scope="col" >AREA</th>
                 <th scope="col" >PRODUCTO</th>
+                <th scope="col" >DESCRIPCION</th>
                 <th scope="col" >SERIAL</th>
                 <th scope="col" >CODIGO ACTIVO</th>
                 <th scope="col" >SEDE</th>
@@ -71,7 +73,6 @@
                 }
                 echo $nomequipo . ' ' . $equipos['produc'];
                 ?>
-				</td>
                 <td><?php echo $equipos['serial'];  ?></td>
                 <td><?php echo $equipos['codigo'];  ?></td>
                 <td><?php echo $equipos['sede'];  ?></td>

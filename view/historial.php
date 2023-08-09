@@ -21,7 +21,7 @@
                         <h4>Gastos Totales</h4>
                     </div>
 					<div class="col-2">
-						<form method="get">    
+						<form method="get">
 						<div class="input-group mb-3">
 							<span class="input-group-text" id="inputGroup-sizing-default">Año</span>
 							<select name="year" id="year" onchange="obteneraño()" class="form-control input-sm">
