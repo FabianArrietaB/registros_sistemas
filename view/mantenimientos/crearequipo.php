@@ -22,6 +22,7 @@
                                         <option value="3">IMPRESORA</option>
                                         <option value="4">DVR</option>
                                         <option value="5">MONITOR</option>
+                                        <option value="6">CELULAR</option>
                                     </select>
                                 </div>
                             </div>

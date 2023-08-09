@@ -134,3 +134,31 @@ function finalizada(idtarea, estado){
         }
     });
 }
+
+function cierremes(){
+    $.ajax({
+        type : "POST",
+        url  : "../controllers/tareas/cierremes.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                console.log(respuesta);
+                $('#tablacierreequipos').load('tareas/tablaequipos.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cierre Realizado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al generar Cierre!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+}
