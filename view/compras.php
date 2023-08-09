@@ -3,7 +3,8 @@
     include "header.php";
     include "navbar.php";
     if(isset($_SESSION['usuario']) &&
-    $_SESSION['usuario']['rol'] == 2||
+    $_SESSION['usuario']['rol'] == 2 ||
+    $_SESSION['usuario']['rol'] == 3 ||
     $_SESSION['usuario']['rol'] == 4){
     include "../models/conexion.php";
     $idusuario = $_SESSION['usuario']['id'];

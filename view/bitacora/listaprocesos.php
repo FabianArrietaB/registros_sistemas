@@ -1,8 +1,16 @@
 <?php
     session_start();
-    $filtro = '';
-    if(isset($_GET['filtro'])){
-        $filtro = $_GET['filtro'];
+    $año = "";
+    $modulo = '';
+    $operador = '';
+    if(isset($_GET['year'])){
+        $año =  $_GET['year'];
+    }
+    if(isset($_GET['modulo'])){
+        $modulo =  $_GET['modulo'];
+    }
+    if(isset($_GET['operador'])){
+        $operador = $_GET['operador'];
     }
     include "../../models/conexion.php";
     $con = new Conexion();
@@ -20,6 +28,7 @@
     FROM bitacora AS b
     INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador
     LEFT JOIN sedes AS s ON s.id_sede = b.bit_idsede
+    WHERE YEAR(b.bit_fecope) = '$año' || b.bit_operador = '$operador' || b.bit_modulo = '$modulo'
     ORDER BY b.id_bitacora DESC";
     $query = mysqli_query($conexion, $sql);
 ?>

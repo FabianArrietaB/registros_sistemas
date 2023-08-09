@@ -14,8 +14,8 @@
         e.id_sede     AS idsede,
         s.sed_nombre  AS sede,
         a.are_nombre  AS area,
-        e.equ_marca   AS marca,
-        e.equ_modelo  AS modelo,
+		e.id_tipequ   AS tipequ,
+		CONCAT(e.equ_marca,' ',e.equ_modelo) as produc,
         e.equ_tipram  AS tipram,
         e.equ_ram     AS ram,
         e.equ_proce   AS procesa,
@@ -36,8 +36,7 @@
         <thead>
             <tr>
                 <th scope="col" >AREA</th>
-                <th scope="col" >MARCA</th>
-                <th scope="col" >MODELO</th>
+                <th scope="col" >PRODUCTO</th>
                 <th scope="col" >SERIAL</th>
                 <th scope="col" >CODIGO ACTIVO</th>
                 <th scope="col" >SEDE</th>
@@ -57,8 +56,22 @@
         ?>
             <tr>
                 <td><?php echo $equipos['area'];?></td>
-                <td><?php echo $equipos['marca']; ?></td>
-                <td><?php echo $equipos['modelo']; ?></td>
+                <td>
+				<?php
+                if ($equipos['tipequ'] == 1) {
+                    $nomequipo = 'EL PORTATIL';
+                } else if ($equipos['tipequ'] ==2){
+                    $nomequipo = 'EL EQUIPO ESCRITORIO';
+                } else if ($equipos['tipequ'] == 3){
+                    $nomequipo = 'LA IMPRESORA';
+                } else if ($equipos['tipequ'] == 4){
+                    $nomequipo = 'EL DVR';
+                } else if ($equipos['tipequ'] == 5){
+                    $nomequipo = 'EL MONITOR';
+                }
+                echo $nomequipo . ' ' . $equipos['produc'];
+                ?>
+				</td>
                 <td><?php echo $equipos['serial'];  ?></td>
                 <td><?php echo $equipos['codigo'];  ?></td>
                 <td><?php echo $equipos['sede'];  ?></td>

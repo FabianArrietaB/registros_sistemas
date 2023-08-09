@@ -49,19 +49,19 @@
                 $registro = 'REGISTRO';
                 $modulo = 'TAREAS';
                 //VALIDACION DEL ASIGNADO
-                if ($datos['idasignado'] = 1) {
+                if ($datos['idasignado'] == 1) {
                     $asignado = 'FABIAN';
-                } else if ($datos['idasignado'] = 2){
+                } else if ($datos['idasignado'] == 2){
                     $asignado = 'JESUS';
-                } else if ($datos['idasignado'] = 3){
+                } else if ($datos['idasignado'] == 3){
                     $asignado = 'TODOS';
                 }
                 //VALIDACION DEL NIVEL
-                if ($datos['nivel'] = 1) {
+                if ($datos['nivel'] == 1) {
                     $nivel = 'BASICO';
-                } else if ($datos['nivel'] = 2){
+                } else if ($datos['nivel'] == 2){
                     $nivel = 'MEDIO';
-                } else if ($datos['nivel'] = 3){
+                } else if ($datos['nivel'] == 3){
                     $nivel = 'URGENTE';
                 }
                 //REGISTRO AUDITORIA

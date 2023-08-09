@@ -26,3 +26,33 @@ function filtrar() {
         }
     }
 }
+
+function obteneraño(){
+    var año = $('#year').val();
+    //console.log(año)
+    $.ajax({
+        method: 'GET',
+    }).done(function(info) {
+        $('#tablaprocesos').load('bitacora/listaprocesos.php?year='+año);
+    })
+}
+
+function obtnermodulo(){
+    var modulo = $('#modulo').val();
+    //console.log(modulo)
+    $.ajax({
+        method: 'GET',
+    }).done(function(info) {
+        $('#tablaprocesos').load('bitacora/listaprocesos.php?modulo='+modulo);
+    })
+}
+
+function onteneroperador(){
+    var operador = $('#operador').val();
+    //console.log(operador)
+    $.ajax({
+        method: 'GET',
+    }).done(function(info) {
+        $('#tablaprocesos').load('bitacora/listaprocesos.php?operador='+operador);
+    })
+}

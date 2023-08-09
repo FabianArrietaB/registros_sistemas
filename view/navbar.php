@@ -21,7 +21,7 @@ $idusuario = $_SESSION['usuario']['id'];
                         <a class="nav-link active" href="compras.php">COMPRAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="historial.php">HISTORIAL</a>
+                        <a class="nav-link active" href="historial.php">PRESUPUESTO</a>
                     </li>
                     <?php } else if ($_SESSION['usuario']['rol'] == 3) { ?>
                     <li class="nav-item">
@@ -29,6 +29,12 @@ $idusuario = $_SESSION['usuario']['id'];
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="mantenimientos.php">MANTENIMIENTOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="compras.php">COMPRAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="historial.php">PRESUPUESTO</a>
                     </li>
                     <?php } else if ($_SESSION['usuario']['rol'] == 4) { ?>
                     <li class="nav-item">

@@ -25,28 +25,49 @@
                         </div>
                         <form method="get">
                             <div class="row">
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="input-group mb-3">
-                                        <input class="form-control me-3" type="search" onkeyup="filtrar()" placeholder="Buscar" id="filtro" name="filtro">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Año</span>
+                                        <select name="year" id="year" onchange="obteneraño()" class="form-control input-sm">
+                                            <option value="">Seleccione un Año</option>
+                                            <?php
+                                            $sql="SELECT DISTINCT YEAR(b.bit_fecope) as año FROM bitacora as b ORDER BY año DESC";
+                                            $respuesta = mysqli_query($conexion, $sql);
+                                            while($año = mysqli_fetch_array($respuesta)) {
+                                            ?>
+                                                <option value="<?php echo $año['año']?>"><?php echo $año['año'];?></option>
+                                            <?php }?>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Fecha Inicio</span>
-                                        <input type="date" id="fec_ini" name="fec_ini" class="form-control input-sm">
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Usuario</span>
+                                        <select name="operador" id="operador" onchange="onteneroperador()" class="form-control input-sm">
+                                            <option value="">Seleccione un  Usuario</option>
+                                            <?php
+                                            $sql="SELECT DISTINCT b.bit_operador AS idoperador, u.user_nombre AS nombre FROM bitacora as b INNER JOIN usuarios AS u ON u.id_usuario = b.bit_operador ORDER BY idoperador ASC";
+                                            $respuesta = mysqli_query($conexion, $sql);
+                                            while($usuario = mysqli_fetch_array($respuesta)) {
+                                            ?>
+                                                <option value="<?php echo $usuario['idoperador']?>"><?php echo $usuario['nombre'];?></option>
+                                            <?php }?>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="inputGroup-sizing-default">Fecha Final</span>
-                                        <input type="date" id="fec_fin" name="fec_fin" class="form-control input-sm">
-                                    </div>
-                                </div>
-                                <div class="col-1">
-                                    <div class="d-grid gap-2">
-                                        <div class="input-group mb-3">
-                                            <button type="submit" class="btn btn-primary">Filtrar</button>
-                                        </div>
+                                        <span class="input-group-text" id="inputGroup-sizing-default">Modulo</span>
+                                        <select name="modulo" id="modulo" onchange="obtnermodulo()" class="form-control input-sm">
+                                            <option value="">Seleccione un Modulo</option>
+                                            <?php
+                                            $sql="SELECT DISTINCT b.bit_modulo AS modulo FROM bitacora as b ORDER BY modulo ASC";
+                                            $respuesta = mysqli_query($conexion, $sql);
+                                            while($modulo = mysqli_fetch_array($respuesta)) {
+                                            ?>
+                                                <option value="<?php echo $modulo['modulo']?>"><?php echo $modulo['modulo'];?></option>
+                                            <?php }?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

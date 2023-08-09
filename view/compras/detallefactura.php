@@ -7,12 +7,18 @@ $sql = "SELECT
 v.id_venta   as idventa,
 v.ven_numfac as numfac,
 v.ven_cantid  as cantid,
-CONCAT(v.ven_nompro, v.ven_marca, v.ven_modelo) as produc,
+v.id_sede     as idsede,
+s.sed_nombre  as sede,
+v.id_area     as area,
+a.are_nombre  as area,
+CONCAT(v.ven_nompro,' ',v.ven_marca,' ',v.ven_modelo) as produc,
 v.ven_serial  as serial,
 v.ven_valor  as valor,
 v.ven_proove as proove,
 v.ven_feccom as feccom
 FROM ventas AS v
+INNER JOIN sedes AS s ON s.id_sede = v.id_sede
+INNER JOIN areas AS a ON a.id_area = v.id_area
 WHERE v.ven_numfac = '$numfac'";
 $query = mysqli_query($conexion, $sql);
 $arrayDetalle = array();
@@ -69,6 +75,8 @@ foreach ($query as $row) {
                                     <tr>
                                         <th scope="col" >Cantidad</th>
                                         <th scope="col" >Descripcion</th>
+										<th scope="col" >Sede</th>
+										<th scope="col" >Area</th>
                                         <th scope="col" >Valor Unidad</th>
                                         <th scope="col" >Valor Total</th>
                                     </tr>
@@ -81,6 +89,8 @@ foreach ($query as $row) {
                                             <tr>
                                                 <td><?php echo $value['cantid']; ?></td>
                                                 <td><?php echo $value['produc']; ?></td>
+												<td><?php echo $value['sede']; ?></td>
+												<td><?php echo $value['area']; ?></td>
                                                 <td><?php echo '$ '. number_format(round($value['valor'] / $value['cantid']),2); ?></td>
                                                 <td><?php echo '$ '. number_format($value['valor'],2); ?></td>
                                             </tr>
@@ -104,9 +114,9 @@ foreach ($query as $row) {
                             </table>
                         </div>
                     </fieldset>
-                    <div class="card-footer">
+                    <!-- <div class="card-footer">
                         <button class="btn btn-success" data-bs-dismiss="modal">Imprimir</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
