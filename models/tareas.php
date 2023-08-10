@@ -134,103 +134,104 @@
             return $respuesta;
         }
 
-        public function cierremes($datos){
+        public function cierremes                                                                                                                                                                      ($datos){
             $conexion = Conexion::conectar();
-            $sqlaño = "SELECT YEAR(CURDATE()) AS año";
-            $query1 = mysqli_query($conexion, $sqlaño);
-            $rw_año = mysqli_fetch_array($query1);
-            $año = $rw_año['año'];
+            //CONSULTA DE EQUIPOS
+            $año = date("Y");
+            //CERAMICASAS
+            $numesccer = "SELECT COUNT(id_tipequ) AS canesccer FROM equipos WHERE id_tipequ = 2 AND id_sede = 1 ";
+            $resnumesccer = mysqli_query($conexion, $numesccer);
+            $rwnumesccer = mysqli_fetch_array($resnumesccer);
+            $numporcer = "SELECT COUNT(id_tipequ) AS canporcer FROM equipos WHERE id_tipequ = 1 AND id_sede = 1";
+            $resnumporcer = mysqli_query($conexion, $numporcer);
+            $rwnumporcer = mysqli_fetch_array($resnumporcer);
+            $numimpcer = "SELECT COUNT(id_tipequ) AS canimpcer FROM equipos WHERE id_tipequ = 3 AND id_sede = 1";
+            $resnumimpcer = mysqli_query($conexion, $numimpcer);
+            $rwnumimpcer = mysqli_fetch_array($resnumimpcer);
+            $numcelcer = "SELECT COUNT(id_tipequ) AS cancelcer FROM equipos WHERE id_tipequ = 6 AND id_sede = 1";
+            $resnumcelcer = mysqli_query($conexion, $numcelcer);
+            $rwnumcelcer = mysqli_fetch_array($resnumcelcer);
+            //FERRECASAS
+            $numporfer = "SELECT COUNT(id_tipequ) AS canporfer FROM equipos WHERE id_tipequ = 1 AND id_sede = 2";
+            $resnumporfer = mysqli_query($conexion, $numporfer);
+            $rwnumporfer = mysqli_fetch_array($resnumporfer);
+            $numescfer = "SELECT COUNT(id_tipequ) AS canescfer FROM equipos WHERE id_tipequ = 2 AND id_sede = 2";
+            $resnumescfer = mysqli_query($conexion, $numescfer);
+            $rwnumescfer = mysqli_fetch_array($resnumescfer);
+            $numimpfer = "SELECT COUNT(id_tipequ) AS canimpfer FROM equipos WHERE id_tipequ = 3 AND id_sede = 2";
+            $resnumimpfer = mysqli_query($conexion, $numimpfer);
+            $rwnumimpfer = mysqli_fetch_array($resnumimpfer);
+            $numcelfer = "SELECT COUNT(id_tipequ) AS cancelfer FROM equipos WHERE id_tipequ = 6 AND id_sede = 2";
+            $resnumcelfer = mysqli_query($conexion, $numcelfer);
+            $rwnumcelfer = mysqli_fetch_array($resnumcelfer);
+            //METROPOLIS
+            $numescmet = "SELECT COUNT(id_tipequ) AS canescmet FROM equipos WHERE id_tipequ = 2 AND id_sede = 3";
+            $resnumescmet = mysqli_query($conexion, $numescmet);
+            $rwnumescmet = mysqli_fetch_array($resnumescmet);
+            $numpormet = "SELECT COUNT(id_tipequ) AS canpormet FROM equipos WHERE id_tipequ = 1 AND id_sede = 3";
+            $resnumpormet = mysqli_query($conexion, $numpormet);
+            $rwnumpormet = mysqli_fetch_array($resnumpormet);
+            $numimpmet = "SELECT COUNT(id_tipequ) AS canimpmet FROM equipos WHERE id_tipequ = 3 AND id_sede = 3";
+            $resnumimpmet = mysqli_query($conexion, $numimpmet);
+            $rwnumimpmet = mysqli_fetch_array($resnumimpmet);
+            $numcelmet = "SELECT COUNT(id_tipequ) AS cancelmet FROM equipos WHERE id_tipequ = 6 AND id_sede = 3";
+            $resnumcelmet = mysqli_query($conexion, $numcelmet);
+            $rwnumcelmet = mysqli_fetch_array($resnumcelmet);
+            //MAYORISTA
+            $numescmay = "SELECT COUNT(id_tipequ) AS canescmay FROM equipos WHERE id_tipequ = 2 AND id_sede = 4";
+            $resnumescmay = mysqli_query($conexion, $numescmay);
+            $rwnumescmay = mysqli_fetch_array($resnumescmay);
+            $numpormay = "SELECT COUNT(id_tipequ) AS canpormay FROM equipos WHERE id_tipequ = 1 AND id_sede = 4";
+            $resnumpormay = mysqli_query($conexion, $numpormay);
+            $rwnumpormay = mysqli_fetch_array($resnumpormay);
+            $numimpmay = "SELECT COUNT(id_tipequ) AS canimpmay FROM equipos WHERE id_tipequ = 3 AND id_sede = 4";
+            $resnumimpmay = mysqli_query($conexion, $numimpmay);
+            $rwnumimpmay = mysqli_fetch_array($resnumimpmay);
+            $numcelmay = "SELECT COUNT(id_tipequ) AS cancelmay FROM equipos WHERE id_tipequ = 6 AND id_sede = 4";
+            $resnumcelmay = mysqli_query($conexion, $numcelmay);
+            $rwnumcelmay = mysqli_fetch_array($resnumcelmay);
             $hoy = date("Y-m-d");
-            $modulo = 'TAREAS';
-            $registro = 'CIERRE';
-            // CONSULTA EQUIPOS CERAMICASAS
-            $sqlporcer = "SELECT COUNT(id_tipequ) AS canporcer FROM equipos WHERE id_tipequ = 1 AND id_sede = 1";
-            $query1 = mysqli_query($conexion, $sqlporcer);
-            $rw_porcer = mysqli_fetch_array($query1);
-            $porcer = $rw_porcer['canporcer'];
-            $sqlesccer = "SELECT COUNT(id_tipequ) AS canesccer FROM equipos WHERE id_tipequ = 2 AND id_sede = 1";
-            $query2 = mysqli_query($conexion, $sqlesccer);
-            $rw_esccer = mysqli_fetch_array($query2);
-            $esccer = $rw_esccer['canesccer'];
-            $sqlimpcer = "SELECT COUNT(id_tipequ) AS canimpcer FROM equipos WHERE id_tipequ = 3 AND id_sede = 1";
-            $query3 = mysqli_query($conexion, $sqlimpcer);
-            $rw_impcer = mysqli_fetch_array($query3);
-            $impcer = $rw_impcer['canimpcer'];
-            $sqlcelcer = "SELECT COUNT(id_tipequ) AS cancelcer FROM equipos WHERE id_tipequ = 6 AND id_sede = 1";
-            $query4 = mysqli_query($conexion, $sqlcelcer);
-            $rw_celcer = mysqli_fetch_array($query4);
-            $celcer = $rw_celcer['cancelcer'];
-            // CONSULTA EQUIPOS FERRECASAS
-            $sqlporfer = "SELECT COUNT(id_tipequ) AS canporfer FROM equipos WHERE id_tipequ = 1 AND id_sede = 2";
-            $query5 = mysqli_query($conexion, $sqlporfer);
-            $rw_porfer = mysqli_fetch_array($query5);
-            $porfer = $rw_porfer['canporfer'];
-            $sqlescfer = "SELECT COUNT(id_tipequ) AS canescfer FROM equipos WHERE id_tipequ = 2 AND id_sede = 2";
-            $query6 = mysqli_query($conexion, $sqlescfer);
-            $rw_escfer = mysqli_fetch_array($query6);
-            $escfer = $rw_escfer['canescfer'];
-            $sqlimpfer = "SELECT COUNT(id_tipequ) AS canimpfer FROM equipos WHERE id_tipequ = 3 AND id_sede = 2";
-            $query7 = mysqli_query($conexion, $sqlimpfer);
-            $rw_impfer = mysqli_fetch_array($query7);
-            $impfer = $rw_impfer['canimpfer'];
-            $sqlcelfer = "SELECT COUNT(id_tipequ) AS cancelfer FROM equipos WHERE id_tipequ = 6 AND id_sede = 2";
-            $query8 = mysqli_query($conexion, $sqlcelfer);
-            $rw_celfer = mysqli_fetch_array($query8);
-            $celfer = $rw_celfer['cancelfer'];
-            // CONSULTA EQUIPOS METROPOLIS
-            $sqlpormet = "SELECT COUNT(id_tipequ) AS canpormet FROM equipos WHERE id_tipequ = 1 AND id_sede = 3";
-            $query9 = mysqli_query($conexion, $sqlpormet);
-            $rw_pormet = mysqli_fetch_array($query9);
-            $pormet = $rw_pormet['canpormet'];
-            $sqlescmet = "SELECT COUNT(id_tipequ) AS canescmet FROM equipos WHERE id_tipequ = 2 AND id_sede = 3";
-            $query10 = mysqli_query($conexion, $sqlescmet);
-            $rw_escmet = mysqli_fetch_array($query10);
-            $escmet = $rw_escmet['canescmet'];
-            $sqlimpmet = "SELECT COUNT(id_tipequ) AS canimpmet FROM equipos WHERE id_tipequ = 3 AND id_sede = 3";
-            $query11 = mysqli_query($conexion, $sqlimpmet);
-            $rw_impmet = mysqli_fetch_array($query11);
-            $impmet = $rw_impmet['canimpmet'];
-            $sqlcelmet = "SELECT COUNT(id_tipequ) AS cancelmet FROM equipos WHERE id_tipequ = 6 AND id_sede = 3";
-            $query12 = mysqli_query($conexion, $sqlcelmet);
-            $rw_celmet = mysqli_fetch_array($query12);
-            $celmet = $rw_celmet['cancelmet'];
-            // CONSULTA EQUIPOS METROPOLIS
-            $sqlpormay = "SELECT COUNT(id_tipequ) AS canpormay FROM equipos WHERE id_tipequ = 1 AND id_sede = 4";
-            $query13 = mysqli_query($conexion, $sqlpormay);
-            $rw_pormay = mysqli_fetch_array($query13);
-            $pormay = $rw_pormay['canpormay'];
-            $sqlescmay = "SELECT COUNT(id_tipequ) AS canescmay FROM equipos WHERE id_tipequ = 2 AND id_sede = 4";
-            $query14 = mysqli_query($conexion, $sqlescmay);
-            $rw_escmay = mysqli_fetch_array($query14);
-            $escmay = $rw_escmay['canescmay'];
-            $sqlimpmay = "SELECT COUNT(id_tipequ) AS canimpmay FROM equipos WHERE id_tipequ = 3 AND id_sede = 4";
-            $query15 = mysqli_query($conexion, $sqlimpmay);
-            $rw_impmay = mysqli_fetch_array($query15);
-            $impmay = $rw_impmay['canimpmay'];
-            $sqlcelmay = "SELECT COUNT(id_tipequ) AS cancelmay FROM equipos WHERE id_tipequ = 6 AND id_sede = 4";
-            $query16 = mysqli_query($conexion, $sqlcelmay);
-            $rw_celmay = mysqli_fetch_array($query16);
-            $celmay = $rw_celmay['cancelmay'];
-            $inserthis = "INSERT INTO hisequipos (id_operador,
-                                            his_añocierre,
-                                            his_escceramicasas,
-                                            his_porceramicasas,
-                                            his_impceramicasas,
-                                            his_celceramicasas,
-                                            his_escferrecasas,
-                                            his_porferrecasas,
-                                            his_impferrecasas,
-                                            his_celferrecasas
-                                            his_escmetropolis,
-                                            his_pormetropolis,
-                                            his_impmetropolis,
-                                            his_celmetropolis,
-                                            his_escmayorista,
-                                            his_pormayorista,
-                                            his_impmayorista,
-                                            his_celmayorista,
-                                            his_fecope) VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $query = $conexion->prepare($inserthis);
+            //VALIDACION DEL ESTADO
+            $esccer = $rwnumesccer['canesccer'];
+            $porcer = $rwnumporcer['canporcer'];
+            $impcer = $rwnumimpcer['canimpcer'];
+            $celcer = $rwnumcelcer['cancelcer'];
+            $escfer = $rwnumescfer['canescfer'];
+            $porfer = $rwnumporfer['canporfer'];
+            $impfer = $rwnumimpfer['canimpfer'];
+            $celfer = $rwnumcelfer['cancelfer'];
+            $escmet = $rwnumescmet['canescmet'];
+            $pormet = $rwnumpormet['canpormet'];
+            $impmet = $rwnumimpmet['canimpmet'];
+            $celmet = $rwnumcelmet['cancelmet'];
+            $escmay = $rwnumescmay['canescmay'];
+            $pormay = $rwnumpormay['canpormay'];
+            $impmay = $rwnumimpmay['canimpmay'];
+            $celmay = $rwnumcelmay['cancelmay'];
+
+            //AGREGAR EQUIPOS A LA BD
+            $sql = "INSERT INTO hisequipos (
+                id_operador,
+                his_añocierre,
+                his_escceramicasas,
+                his_porceramicasas,
+                his_impceramicasas,
+                his_celceramicasas,
+                his_escferrecasas,
+                his_porferrecasas,
+                his_impferrecasas,
+                his_celferrecasas,
+                his_escmetropolis,
+                his_pormetropolis,
+                his_impmetropolis,
+                his_celmetropolis,
+                his_escmayorista,
+                his_pormayorista,
+                his_impmayorista,
+                his_celmayorista,
+                his_fecope)
+                VALUES( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = $conexion->prepare($sql);
             $query->bind_param("issssssssssssssssss",
                                 $datos['idoperador'],
                                 $año,
@@ -252,8 +253,18 @@
                                 $celmay,
                                 $hoy);
             $respuesta = $query->execute();
+            if ( $respuesta > 0){
+                //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $registro = 'REGISTRO';
+                $modulo = 'TAREAS';
+                $detalle = 'EL CIERRE DE CANTIDAD EQUIPOS DEL ' . $año;
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
             return $respuesta;
         }
-    }
 
+    }
 ?>

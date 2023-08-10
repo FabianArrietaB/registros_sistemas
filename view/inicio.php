@@ -272,13 +272,13 @@
                 <div class="row">
                     <div class="col-10">
                         <div class="title">
-                            <h2>LISTA COMPRAS</h2>
+                            <h2>EQUIPOS AL CIERRE AÑO</h2>
                         </div>
                     </div>
                     <?php if($_SESSION['usuario']['rol'] == 4) {?>
                     <div class="col-2">
                         <div class="d-grid gap-2">
-                            <input type="button" class="btn btn-danger" onclick="cierremes()" value="CIERRE MES">
+                            <input type="button" class="btn btn-danger" onclick="cierremes()" value="CIERRE AÑO">
                         </div>
                     </div>
                     <?php } ?>

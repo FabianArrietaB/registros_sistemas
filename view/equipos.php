@@ -32,6 +32,7 @@
 <!-- por ultimo se carga el footer -->
 <?php
     include "mantenimientos/agregaractivo.php";
+    include "mantenimientos/agregarcelular.php";
     include "mantenimientos/crearequipo.php";
     include "mantenimientos/editarequipo.php";
     include "footer.php";

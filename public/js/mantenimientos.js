@@ -144,6 +144,37 @@ function crearequipo(){
     return false;
 }
 
+function crearcelular(){
+    $.ajax({
+        type: "POST",
+        data: $('#frmcrearcelular').serialize(),
+        url: "../controllers/mantenimientos/agregarcel.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#tablaequipos').load('mantenimientos/tablaequipos.php');
+                $('#frmcrearcelular')[0].reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Equipo Agregado Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
 function agregaractivo(){
     $.ajax({
         type: "POST",

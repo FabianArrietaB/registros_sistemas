@@ -41,6 +41,34 @@
             return $respuesta;
         }
 
+        public function crearcelular($datos){
+            //REGISTRO DEL EQUIPO A LA BD
+            $conexion = Conexion::conectar();
+            $sql = "INSERT INTO equipos (id_operador, id_sede, id_area, id_tipequ, equ_marca, equ_modelo, equ_ram, equ_proce, equ_capdis, equ_serial, equ_imeis, equ_nomequ, equ_mac, equ_fecope) VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            $query = $conexion->prepare($sql);
+            $imeis = $datos['imei1'] . ' - ' . $datos['imei2'];
+            $query->bind_param("iiiissssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['ram'], $datos['procesa'], $datos['capdis'], $datos['serial'],  $imeis, $datos['nomequ'], $datos['mac'], $datos['fecha']);
+            $respuesta = $query->execute();
+            if ( $respuesta > 0){
+                $registro = 'REGISTRO';
+                $modulo = 'EQUIPOS';
+                $equipo = 'CELULAR';
+                $hoy = date("Y-m-d");
+                //REGISTRO DEL EQUIPO Al MODULO COMPRA
+                $insertcompra = "INSERT INTO ventas (id_operador, id_sede, id_area, ven_nompro, ven_marca, ven_modelo, ven_serial, ven_numfac, ven_valor, ven_proove, ven_detall, ven_feccom, ven_fecope) VALUES( ?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                $query = $conexion->prepare($insertcompra);
+                $query->bind_param("iiissssssssss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $equipo, $datos['marca'], $datos['modelo'], $datos['serial'], $datos['numfac'], $datos['valor'], $datos['proove'], $datos['detall'], $datos['fecha'], $hoy);
+                $respuesta = $query->execute();
+                //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = $equipo . ' CON SERIAL ' . $datos['serial'] . ' DE LA FACTURA ' . $datos['numfac'];
+                $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $datos['idsede']);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
+        }
+
         public function agregaractivo($datos){
             $conexion = Conexion::conectar();
             //CONSULTA DATOS DEL EQUIPO

@@ -24,11 +24,13 @@
         e.equ_capdis  AS capdis,
         e.equ_fecope  AS fecha,
         e.equ_codact  AS codigo,
+        e.equ_imeis   AS imeis,
         e.equ_serial  AS serial,
         e.equ_grafica AS grafic
     FROM equipos AS e
     INNER JOIN areas AS a ON a.id_area = e.id_area
-    INNER JOIN sedes AS s ON s.id_sede = e.id_sede";
+    INNER JOIN sedes AS s ON s.id_sede = e.id_sede
+    ORDER BY e.id_sede";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -38,16 +40,14 @@
             <tr>
                 <th scope="col" >AREA</th>
                 <th scope="col" >PRODUCTO</th>
-                <th scope="col" >DESCRIPCION</th>
                 <th scope="col" >SERIAL</th>
                 <th scope="col" >CODIGO ACTIVO</th>
                 <th scope="col" >SEDE</th>
                 <th scope="col" >FECHA REGISTRO</th>
                 <th>
                     <?php if($_SESSION['usuario']['rol'] == 4) {?>
-                    <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearequipo"><i class="fa-solid fa-square-plus fa-lg"></i></button>
-                    </div>
+                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearequipo"><i class="fa-solid fa-desktop fa-lg"></i></button>
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#addcel"><i class="fa-solid fa-mobile-retro fa-lg"></i></button>
                     <?php } ?>
                 </th>
             </tr>
@@ -70,6 +70,8 @@
                     $nomequipo = 'EL DVR';
                 } else if ($equipos['tipequ'] == 5){
                     $nomequipo = 'EL MONITOR';
+                } else if ($equipos['tipequ'] == 6){
+                    $nomequipo = 'EL CELULAR';
                 }
                 echo $nomequipo . ' ' . $equipos['produc'];
                 ?>
