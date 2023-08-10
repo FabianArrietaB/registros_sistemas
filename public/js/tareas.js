@@ -162,3 +162,10 @@ function cierremes(){
         }
     });
 }
+
+function detalleaño(idhistorial){
+    $('#conte-modal-cierre').load('tareas/detallecierre.php?idhistorial='+idhistorial, function(){
+        $('#cierreaño').modal("show");
+        $('.modal-backdrop').remove()
+    });
+}

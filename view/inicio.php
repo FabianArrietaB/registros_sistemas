@@ -292,6 +292,7 @@
         </div>
     </div>
 </div>
+<div id="conte-modal-cierre"></div>
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->
 <?php

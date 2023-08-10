@@ -45,7 +45,7 @@
             while ($equipos = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $equipos['añocierre'];?></td>
+                <td onclick="detalleaño('<?php echo $equipos['idhistorial']?>')"><?php echo $equipos['añocierre'];?></td>
                 <td><?php echo $equipos['esccer'] + $equipos['escfer'] + $equipos['escmet'] + $equipos['escmay'];?></td>
                 <td><?php echo $equipos['porcer'] + $equipos['porfer'] + $equipos['pormet'] + $equipos['pormay'];?></td>
                 <td><?php echo $equipos['impcer'] + $equipos['impfer'] + $equipos['impmet'] + $equipos['impmay'];?></td>
