@@ -42,7 +42,7 @@
                     //REGISTRO AUDITORIA
                     $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall, bit_idsede) VALUES (?,?,?,?,?,?)";
                     $query = $conexion->prepare($insertbitacora);
-                    $detalle = $equipo . ' CON SERIAL ' . $datos['serial'] . ' DE LA FACTURA ' . $datos['numfac'];
+                    $detalle = $equipo . ' CON SERIAL ' . $datos['serial'];
                     $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $datos['idsede']);
                     $respuesta = $query->execute();
                 }
