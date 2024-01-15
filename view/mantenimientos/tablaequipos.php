@@ -75,7 +75,13 @@
                 }
                 echo $nomequipo . ' ' . $equipos['produc'];
                 ?>
-                <td><?php echo $equipos['serial'];  ?></td>
+                <td><?php if ($equipos['tipequ'] == 6) {
+                        echo $equipos['imeis'];
+                    } else {
+                        echo $equipos['serial'];
+                }
+                ?>
+                </td>
                 <td><?php echo $equipos['codigo'];  ?></td>
                 <td><?php echo $equipos['sede'];  ?></td>
                 <td><?php echo $equipos['fecha'];    ?></td>
