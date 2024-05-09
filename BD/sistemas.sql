@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.2.0 (64 bit)
-MySQL - 10.4.28-MariaDB : Database - sistemas
+SQLyog Community v13.2.1 (64 bit)
+MySQL - 10.4.32-MariaDB : Database - sistemas
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 10.4.28-MariaDB : Database - sistemas
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`sistemas` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`sistemas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 
 USE `sistemas`;
 
@@ -408,18 +408,30 @@ DROP TABLE IF EXISTS `hisequipos`;
 CREATE TABLE `hisequipos` (
   `id_historial` int(11) NOT NULL AUTO_INCREMENT,
   `his_añocierre` varchar(45) DEFAULT NULL,
-  `his_escritorio` varchar(45) DEFAULT NULL,
-  `his_portatiles` varchar(45) DEFAULT NULL,
-  `his_impresoras` varchar(45) DEFAULT NULL,
-  `his_celulares` varchar(45) DEFAULT NULL,
+  `his_escceramicasas` varchar(45) DEFAULT NULL,
+  `his_porceramicasas` varchar(45) DEFAULT NULL,
+  `his_impceramicasas` varchar(45) DEFAULT NULL,
+  `his_celceramicasas` varchar(45) DEFAULT NULL,
+  `his_escferrecasas` varchar(45) DEFAULT NULL,
+  `his_porferrecasas` varchar(45) DEFAULT NULL,
+  `his_impferrecasas` varchar(45) DEFAULT NULL,
+  `his_celferrecasas` varchar(45) DEFAULT NULL,
+  `his_escmetropolis` varchar(45) DEFAULT NULL,
+  `his_pormetropolis` varchar(45) DEFAULT NULL,
+  `his_impmetropolis` varchar(45) DEFAULT NULL,
+  `his_celmetropolis` varchar(45) DEFAULT NULL,
+  `his_escmayorista` varchar(45) DEFAULT NULL,
+  `his_pormayorista` varchar(45) DEFAULT NULL,
+  `his_impmayorista` varchar(45) DEFAULT NULL,
+  `his_celmayorista` varchar(45) DEFAULT NULL,
   `his_fecope` date DEFAULT NULL,
   PRIMARY KEY (`id_historial`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `hisequipos` */
 
-insert  into `hisequipos`(`id_historial`,`his_añocierre`,`his_escritorio`,`his_portatiles`,`his_impresoras`,`his_celulares`,`his_fecope`) values 
-(1,'2022','38','9','7','30','2022-12-30');
+insert  into `hisequipos`(`id_historial`,`his_añocierre`,`his_escceramicasas`,`his_porceramicasas`,`his_impceramicasas`,`his_celceramicasas`,`his_escferrecasas`,`his_porferrecasas`,`his_impferrecasas`,`his_celferrecasas`,`his_escmetropolis`,`his_pormetropolis`,`his_impmetropolis`,`his_celmetropolis`,`his_escmayorista`,`his_pormayorista`,`his_impmayorista`,`his_celmayorista`,`his_fecope`) values 
+(1,'2022','3','0','2','2','5','0','2','2','25','7','7','20','2','2','2','9','2022-12-31');
 
 /*Table structure for table `mantenimientos` */
 
@@ -656,7 +668,7 @@ CREATE TABLE `usuarios` (
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id_usuario`,`id_operador`,`id_persona`,`id_sede`,`id_area`,`id_rol`,`user_nombre`,`user_password`,`user_estado`,`user_fecope`,`user_fecupt`) values 
-(1,1,10,3,10,4,'FARRIETA','202cb962ac59075b964b07152d234b70','1','2023-07-05 17:16:54','2023-07-05 17:16:54'),
+(1,1,10,3,10,4,'FARRIETA','766d856ef1a6b02f93d894415e6bfa0e','1','2023-07-05 17:16:54','2024-05-09 16:14:03'),
 (2,1,52,3,10,4,'JOROZCO','81dc9bdb52d04dc20036dbd8313ed055','1','2023-07-07 20:19:06','2023-07-17 15:49:23'),
 (3,1,11,3,8,3,'CBAUTISTA','81dc9bdb52d04dc20036dbd8313ed055','1','2023-07-07 20:19:49','2023-07-17 15:49:34'),
 (4,1,75,3,4,2,'YVENGAL','81dc9bdb52d04dc20036dbd8313ed055','1','2023-07-07 20:20:13','2023-07-17 15:49:43');
