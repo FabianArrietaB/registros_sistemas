@@ -317,7 +317,6 @@ $conexion = $con->conectar();
                             <button class="btn btn-lg btn-success btn-block mb-3" data-bs-toggle="modal" data-bs-target="#creartarea">
                                 <div class="row">
                                     <div class="col-3 text-center">
-                                        
                                     </div>
                                     <div class="col-9 text-center pt-1"><strong>CREAR NUEVA TAREA</strong></div>
                                 </div>
