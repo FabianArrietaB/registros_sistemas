@@ -17,6 +17,7 @@
       'serial'     => $_POST['serialu'],
       'nomequ'     => $_POST['nomequu'],
       'mac'        => $_POST['macu'],
+      'estado'     => $_POST['estado'],
    );
 
    include '../../models/mantenimientos.php';

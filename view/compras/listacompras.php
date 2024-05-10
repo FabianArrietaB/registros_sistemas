@@ -35,12 +35,9 @@
             <tr>
                 <th scope="col" >FACTURA</th>
                 <th scope="col" >PROVEEDOR</th>
-                <th scope="col" >Valor</th>
+                <th scope="col" >VALOR</th>
                 <th scope="col" >FECHA COMPRA</th>
-                <th>
-                    <div class="d-grid gap-2">
-                    </div>
-                </th>
+                <th scope="col" >DETALLE</th>
             </tr>
         </thead>
         <tbody>

@@ -19,7 +19,7 @@
                                     <select name="idsedecel" id="idsedecel" class="form-control input-sm">
                                         <option value="">Seleccione Una Sede</option>
                                         <?php
-                                        $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s";
+                                        $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s WHERE s.sed_estado = 1";
                                         $respuesta = mysqli_query($conexion, $sql);
                                         while($persona = mysqli_fetch_array($respuesta)) {
                                         ?>

@@ -18,20 +18,23 @@
                                     <span class="input-group-text" id="inputGroup-sizing-default">Tipo Equipo</span>
                                     <select name="idtipequu" id="idtipequu" class="form-control input-sm">
                                         <option selected >Selecione</option>
-                                        <option value="1">Portatil</option>
-                                        <option value="2">Escritorio</option>
-                                        <option value="3">Impresora</option>
+                                        <option value="1">PORTATIL</option>
+                                        <option value="2">ESCRITORIO</option>
+                                        <option value="3">IMPRESORA</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="input-group mb-3">
                                     <select name="idsedeu" id="idsedeu" class="form-control input-sm">
-                                        <option selected >Selecione</option>
-                                        <option value="1">CERAMICASAS</option>
-                                        <option value="2">FERRECASAS</option>
-                                        <option value="3">METROPOLIS</option>
-                                        <option value="4">MAYORISTA</option>
+                                    <option value="">Seleccione Una Sede</option>
+                                        <?php
+                                        $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s";
+                                        $respuesta = mysqli_query($conexion, $sql);
+                                        while($sede = mysqli_fetch_array($respuesta)) {
+                                        ?>
+                                        <option value="<?php echo $sede['idsede']?>"><?php echo $sede['sede'];?></option>
+                                        <?php }?>
                                     </select>
                                     <span class="input-group-text" id="inputGroup-sizing-default">Sede</span>
                                 </div>
@@ -44,9 +47,9 @@
                                         <?php
                                         $sql="SELECT a.id_area as idarea, a.are_nombre as area FROM areas as a";
                                         $respuesta = mysqli_query($conexion, $sql);
-                                        while($persona = mysqli_fetch_array($respuesta)) {
+                                        while($area = mysqli_fetch_array($respuesta)) {
                                         ?>
-                                        <option value="<?php echo $persona['idarea']?>"><?php echo $persona['area'];?></option>
+                                        <option value="<?php echo $area['idarea']?>"><?php echo $area['area'];?></option>
                                         <?php }?>
                                     </select>
                                 </div>
@@ -134,6 +137,19 @@
                                     <input type="text" id="macu" name="macu" class="form-control input-sm">
                                 </div>
                             </div>
+                            <div class="col-3"></div>
+                            <div class="col-6">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">ESTADO</span>
+                                    <select name="estado" id="estado" class="form-control input-sm">
+                                        <option selected >Selecione</option>
+                                        <option value="1">ASIGNADO</option>
+                                        <option value="2">ALMACENADO</option>
+                                        <option value="3">DESPRECIADO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-3"></div>
                         </div>
                     </fieldset>
                     <div class="card-footer text-center">
