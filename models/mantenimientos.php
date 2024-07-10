@@ -46,7 +46,6 @@
                     $query->bind_param("ssissi", $registro, $hoy, $datos['idoperador'], $modulo, $detalle, $datos['idsede']);
                     $respuesta = $query->execute();
                 }
-                
             }
             return $respuesta;
         }
@@ -138,7 +137,8 @@
                 e.equ_codact  AS codact,
                 e.equ_nomequ  AS nomequ,
                 e.equ_mac     AS mac,
-                e.equ_fecope  AS fecha
+                e.equ_fecope  AS fecha,
+                e.equ_estado estado
                 FROM equipos AS e
                 INNER JOIN areas as a ON a.id_area = e.id_area
                 WHERE e.id_equipo ='$idequipo'";
@@ -163,6 +163,7 @@
                 'nomequ'    => $equipos['nomequ'],
                 'mac'       => $equipos['mac'],
                 'fecha'     => $equipos['fecha'],
+                'estado'    => $equipos['estado'],
             );
             return $datos;
         }
@@ -197,9 +198,9 @@
             $respuesta = $query->execute();
             if ( $respuesta > 0){
                 //REGISTRO ACTUALIZACION
-                $sql = "UPDATE equipos SET id_sede = ?, id_area = ?, id_tipequ = ?, equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_nomequ = ?, equ_mac = ? WHERE id_equipo = ?";
+                $sql = "UPDATE equipos SET id_sede = ?, id_area = ?, id_tipequ = ?, equ_marca = ?, equ_modelo = ?, equ_tipram = ?, equ_ram = ?, equ_proce = ?, equ_tipdis = ?, equ_capdis = ?, equ_grafica = ?, equ_serial = ?, equ_nomequ = ?, equ_mac = ?, equ_estado = ? WHERE id_equipo = ?";
                 $query = $conexion->prepare($sql);
-                $query->bind_param('iiisssssssssssi', $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafic'], $datos['serial'], $datos['nomequ'], $datos['mac'], $datos['idequipo']);
+                $query->bind_param('iiisssssssssssii', $datos['idsede'], $datos['idarea'], $datos['idtipequ'], $datos['marca'], $datos['modelo'], $datos['tipram'], $datos['ram'], $datos['procesa'], $datos['tipdis'], $datos['capdis'], $datos['grafic'], $datos['serial'], $datos['nomequ'], $datos['mac'], $datos['estado'], $datos['idequipo']);
                 $respuesta = $query->execute();
                 $query->close();
             }

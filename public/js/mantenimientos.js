@@ -95,6 +95,7 @@ function detalleequipo(idequipo){
             $('#nomequu').val(respuesta['nomequ']);
             $('#macu').val(respuesta['mac']);
             $('#fechau').val(respuesta['fecha']);
+            $('#estado').val(respuesta['estado']);
         }
     });
 }

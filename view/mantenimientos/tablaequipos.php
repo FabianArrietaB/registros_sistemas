@@ -26,7 +26,8 @@
         e.equ_codact  AS codigo,
         e.equ_imeis   AS imeis,
         e.equ_serial  AS serial,
-        e.equ_grafica AS grafic
+        e.equ_grafica AS grafic,
+        e.equ_estado estado
     FROM equipos AS e
     INNER JOIN areas AS a ON a.id_area = e.id_area
     INNER JOIN sedes AS s ON s.id_sede = e.id_sede
@@ -44,6 +45,7 @@
                 <th scope="col" >CODIGO ACTIVO</th>
                 <th scope="col" >SEDE</th>
                 <th scope="col" >FECHA REGISTRO</th>
+                <th scope="col" >ESTADO</th>
                 <th>
                     <?php if($_SESSION['usuario']['rol'] == 4) {?>
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearequipo"><i class="fa-solid fa-desktop fa-lg"></i></button>
@@ -85,6 +87,15 @@
                 <td><?php echo $equipos['codigo'];  ?></td>
                 <td><?php echo $equipos['sede'];  ?></td>
                 <td><?php echo $equipos['fecha'];    ?></td>
+                <td>
+                    <?php if ($equipos['estado'] == 1) { ?>
+                        <span class="btn btn-success">ASIGNADO</span>
+                    <?php } else if ($equipos['estado'] == 2) { ?>
+                        <span class="btn btn-warning">ALMACENADO</span>
+                    <?php } else if ($equipos['estado'] == 3) { ?>
+                        <span class="btn btn-danger">DESPRECIADO</span>
+                    <?php } ?>
+                </td>
                 <td>
                 <?php if($_SESSION['usuario']['rol'] == 4) {?>
                     <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarequipo" onclick="detalleequipo('<?php echo $equipos['idequipo']?>')"><i class="fa-solid fa-pen-to-square fa-xl"></i></button> 

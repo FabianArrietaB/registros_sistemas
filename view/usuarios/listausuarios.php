@@ -73,8 +73,8 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editar" onclick="detalleusuario('<?php echo $usuarios['idusuario']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
-                    <button type="button" class="btn btn-danger"  onclick="eliminarusuario('<?php echo $usuarios['idusuario']?>')"><i class="fa-regular fa-trash-can fa-beat fa-xl"></i></button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editar" onclick="detalleusuario('<?php echo $usuarios['idusuario']?>')"><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+                    <button type="button" class="btn btn-danger"  onclick="eliminarusuario('<?php echo $usuarios['idusuario']?>')"><i class="fa-regular fa-trash-can fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>

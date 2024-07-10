@@ -16,7 +16,7 @@
         FROM correos AS c
         INNER JOIN areas AS a ON a.id_area = c.id_area
         INNER JOIN sedes AS s ON s.id_sede = c.id_sede
-        ORDER BY c.cor_correo ASC";
+        ORDER BY c.cor_estado DESC, c.cor_correo ASC";
     $query = mysqli_query($conexion, $sql);
 ?>
 <!-- inicio Tabla -->
@@ -67,7 +67,7 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarcorreo" onclick="detallecorreo('<?php echo $correos['idcorreo']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarcorreo" onclick="detallecorreo('<?php echo $correos['idcorreo']?>')"><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>
