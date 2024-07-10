@@ -268,7 +268,7 @@ function detallecredencial(idcredencial){
     });
 }
 
-function editarclave(){
+function editarcredencial(){
     $.ajax({
         type: "POST",
         data: $('#formeditarcredencial').serialize(),

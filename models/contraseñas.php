@@ -350,36 +350,24 @@
         public function editarcredencial($datos){
             $conexion = Conexion::conectar();
             $hoy = date("Y-m-d");
-            $sql = "UPDATE claves SET id_operador = ?,
-                                        id_tipo = ?,
-                                        cla_equip = ?,
-                                        cla_user = ?,
-                                        cla_password = ?,
-                                        cla_nomwif = ?,
-                                        cla_clawif = ?,
-                                        cla_ip = ?,
-                                        cla_marca = ?,
-                                        cla_modelo = ?,
-                                        cla_patron = ?,
-                                        cla_serial = ?,
-                                        cla_fecope = ?
-                                        WHERE id_clave = ?";
+            $sql = "UPDATE credenciales SET id_operador = ?,
+                                        id_sede = ?,
+                                        id_area = ?,
+                                        cre_dominio = ?,
+                                        cre_usuario = ?,
+                                        cre_password = ?,
+                                        cre_fecha = ?
+                                        WHERE id_credencial = ?";
             $query = $conexion->prepare($sql);
-            $query->bind_param('iisssssssssssi',
+            $query->bind_param('iiIsssi',
                                 $datos['idoperador'],
-                                $datos['idtipo'],
-                                $datos['equipo'],
+                                $datos['idsede'],
+                                $datos['idarea'],
+                                $datos['dominio'],
                                 $datos['usuario'],
                                 $datos['password'],
-                                $datos['nonwif'],
-                                $datos['calwif'],
-                                $datos['ip'],
-                                $datos['marca'],
-                                $datos['modelo'],
-                                $datos['patron'],
-                                $datos['serial'],
                                 $hoy,
-                                $datos['idclave']);
+                                $datos['idcredencial']);
             $respuesta = $query->execute();
             $query->close();
             if ( $respuesta > 0){
@@ -389,7 +377,7 @@
                 $registro = 'MODIFICO';
                 $modulo = 'CONTRASEÑAS';
                 $hoy = date("Y-m-d");
-                $detalle = 'LOS DETALLES DEL EQUIPO ' . $datos['equipo'] . ' CON SERIAL ' . $datos['serial'];
+                $detalle = 'LA CREDENCIAL DEL DOMINIO' . $datos['dominio'];
                 $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
                 $respuesta = $query->execute();
             }
