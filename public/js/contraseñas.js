@@ -11,6 +11,12 @@ $(document).ready(function(){
         $('#listafolders').show();
     });
 
+    $('#credencialbtn').click(function(){
+        ocultar();
+        $('#listacredenciales').load('contraseñas/credenciales.php');
+        $('#listacredenciales').show();
+    });
+
     $('#clavesbtn').click(function(){
         ocultar();
         $('#listaclaves').load('contraseñas/claves.php');
@@ -22,6 +28,7 @@ $(document).ready(function(){
 function ocultar(){
     $('#listacorreos').hide();
     $('#listafolders').hide();
+    $('#listacredenciales').hide();
     $('#listaclaves').hide();
     return false;
 }

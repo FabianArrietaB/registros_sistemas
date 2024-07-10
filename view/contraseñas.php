@@ -22,7 +22,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-3 text-center">
                             <a class="acard" type="button" id="correosbtn">
                                 <div class="card border-danger text-white bg-primary mb-3">
                                     <div class="card-header">
@@ -38,7 +38,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-3 text-center">
                             <a class="acard" type="button" id="carpetasbtn">
                                 <div class="card border-danger text-white bg-primary mb-3">
                                     <div class="card-header">
@@ -54,7 +54,23 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-4 text-center">
+                        <div class="col-sm-3 text-center">
+                            <a class="acard" type="button" id="credencialbtn">
+                                <div class="card border-danger text-white bg-primary mb-3">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                            <i class="fa-solid fa-key fa-3x"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="float-sm-right">Credenciales</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-sm-3 text-center">
                             <a class="acard" type="button" id="clavesbtn">
                                 <div class="card border-danger text-white bg-primary mb-3">
                                     <div class="card-header">
@@ -71,10 +87,10 @@
                             </a>
                         </div>
                     </div>
-                        
                     <div class="row">
                         <div id="listacorreos"></div>
                         <div id="listafolders"></div>
+                        <div id="listacredenciales"></div>
                         <div id="listaclaves"></div>
                     </div>
                 </div>
