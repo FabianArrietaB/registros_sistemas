@@ -218,6 +218,86 @@ function editarfolder(){
     return false;
 }
 
+//FUNCIONES CREDENCIALES
+function agregarcredencial(){
+    $.ajax({
+        type: "POST",
+        data: $('#formcrearcredencial').serialize(),
+        url: "../controllers/contraseñas/newcredencial.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#listacredenciales').load('contraseñas/credenciales.php');
+                $('#formcrearcredencial')[0].reset();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Credencial Registrada Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
+function detallecredencial(idcredencial){
+    $.ajax({
+        type: "POST",
+        data: "idcredencial=" + idcredencial,
+        url: "../controllers/contraseñas/detallecredencial.php",
+        success: function(respuesta){
+            respuesta = jQuery.parseJSON(respuesta);
+            //console.log(respuesta)
+            $('#idcredencial').val(respuesta['idcredencial']);
+            $('#creidsedeu').val(respuesta['idsede']);
+            $('#creidareau').val(respuesta['idarea']);
+            $('#credominiou').val(respuesta['dominio']);
+            $('#creusuariou').val(respuesta['usuario']);
+            $('#crepasswordu').val(respuesta['password']);
+        }
+    });
+}
+
+function editarclave(){
+    $.ajax({
+        type: "POST",
+        data: $('#formeditarcredencial').serialize(),
+        url: "../controllers/contraseñas/editarcredencial.php",
+        success:function(respuesta){
+            respuesta = respuesta.trim();
+            if(respuesta == 1){
+                //console.log(respuesta);
+                $('#listacredenciales').load('contraseñas/credenciales.php');
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Datos Actualizados Exitosamente',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Error al crear!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    });
+    return false;
+}
+
 //FUNCIONES CLAVE
 function agregarclave(){
     $.ajax({

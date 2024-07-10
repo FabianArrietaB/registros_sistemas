@@ -36,36 +36,36 @@
                 <th scope="col" >ESTADO</th>
                 <th>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newcorreo"><i class="fa-solid fa-square-plus fa-lg"></i></button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#newcredencial"><i class="fa-solid fa-square-plus fa-lg"></i></button>
                     </div>
                 </th>
             </tr>
         </thead>
         <tbody>
         <?php
-            while ($correos = mysqli_fetch_array($query)){
+            while ($credencial = mysqli_fetch_array($query)){
         ?>
             <tr>
-                <td><?php echo $correos['area'];?></td>
-                <td><?php echo $correos['sede'];?></td>
-                <td><?php echo $correos['dominio'];?></td>
-                <td><?php echo $correos['usuario'];?></td>
-                <td><?php echo $correos['password'];?></td>
+                <td><?php echo $credencial['area'];?></td>
+                <td><?php echo $credencial['sede'];?></td>
+                <td><?php echo $credencial['dominio'];?></td>
+                <td><?php echo $credencial['usuario'];?></td>
+                <td><?php echo $credencial['password'];?></td>
                 <td>
                     <?php
-                    if ($correos['estado'] == 0) {
+                    if ($credencial['estado'] == 0) {
                     ?>
                         <button class="btn btn-danger btn-sm" onclick="activarcorreo(
-                        <?php echo $correos['idcredencial'] ?>,
-                        <?php echo $correos['estado'] ?>)">
+                        <?php echo $credencial['idcredencial'] ?>,
+                        <?php echo $credencial['estado'] ?>)">
                         INACTIVO
                         </button>
                         <?php
-                    } else if ($correos['estado'] == 1) {
+                    } else if ($credencial['estado'] == 1) {
                         ?>
                         <button class="btn btn-success btn-sm" onclick="activarcorreo(
-                        <?php echo $correos['idcredencial'] ?>,
-                        <?php echo $correos['estado'] ?>)">
+                        <?php echo $credencial['idcredencial'] ?>,
+                        <?php echo $credencial['estado'] ?>)">
                         ACTIVO
                         </button>
                     <?php
@@ -73,7 +73,7 @@
                     ?>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarcorreo" onclick="detallecorreo('<?php echo $correos['idcredencial']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarcredencial" onclick="detallecredencial('<?php echo $credencial['idcredencial']?>')"><i class="fa-solid fa-pen-to-square fa-beat fa-xl"></i></button>
                 </td>
             </tr>
         <?php } ?>

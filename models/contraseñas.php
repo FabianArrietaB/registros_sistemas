@@ -299,6 +299,103 @@
             return $respuesta;
         }
 
+        //FUNCIONES CREDENCIALES
+        public function agregarcredencial($datos){
+            $conexion = Conexion::conectar();
+            $registro = 'REGISTRO';
+            $modulo = 'CONTRASEÑAS';
+            $hoy = date("Y-m-d");
+            //AGREGAR CLAVE A LA BD
+            $sql = "INSERT INTO credenciales (id_operador, id_sede, id_area, cre_dominio, cre_usuario, cre_password, cre_fecha) VALUES( ?, ?, ?, ?, ?, ?, ?)";
+            $query = $conexion->prepare($sql);
+            $query->bind_param("iiissss", $datos['idoperador'], $datos['idsede'], $datos['idarea'], $datos['dominio'], $datos['usuario'], $datos['password'], $hoy);
+            $respuesta = $query->execute();
+            if ( $respuesta > 0){
+               //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $detalle = 'LA CREDENCIAL DEL DOMINIO' . $datos['dominio'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
+        }
+
+        public function detallecredencial($idcredencial){
+            $conexion = Conexion::conectar();
+            $sql ="SELECT
+                c.id_credencial AS idcredencial,
+                c.cre_dominio   AS dominio,
+                c.cre_usuario   AS usuario,
+                c.cre_password  AS password,
+                c.id_operador   AS idoperador,
+                c.id_sede       AS idsede,
+                c.id_area       AS idarea,
+                c.cre_estado    AS estado
+                FROM credenciales AS c
+                WHERE c.id_credencial ='$idcredencial'";
+            $respuesta = mysqli_query($conexion,$sql);
+            $clave = mysqli_fetch_array($respuesta);
+            $datos = array(
+                'idcredencial'  => $clave['idcredencial'],
+                'dominio'       => $clave['cre_dominio'],
+                'usuario'       => $clave['usuario'],
+                'password'      => $clave['password'],
+                'idsede'        => $clave['idsede'],
+                'idarea'        => $clave['idarea'],
+            );
+            return $datos;
+        }
+
+        public function editarcredencial($datos){
+            $conexion = Conexion::conectar();
+            $hoy = date("Y-m-d");
+            $sql = "UPDATE claves SET id_operador = ?,
+                                        id_tipo = ?,
+                                        cla_equip = ?,
+                                        cla_user = ?,
+                                        cla_password = ?,
+                                        cla_nomwif = ?,
+                                        cla_clawif = ?,
+                                        cla_ip = ?,
+                                        cla_marca = ?,
+                                        cla_modelo = ?,
+                                        cla_patron = ?,
+                                        cla_serial = ?,
+                                        cla_fecope = ?
+                                        WHERE id_clave = ?";
+            $query = $conexion->prepare($sql);
+            $query->bind_param('iisssssssssssi',
+                                $datos['idoperador'],
+                                $datos['idtipo'],
+                                $datos['equipo'],
+                                $datos['usuario'],
+                                $datos['password'],
+                                $datos['nonwif'],
+                                $datos['calwif'],
+                                $datos['ip'],
+                                $datos['marca'],
+                                $datos['modelo'],
+                                $datos['patron'],
+                                $datos['serial'],
+                                $hoy,
+                                $datos['idclave']);
+            $respuesta = $query->execute();
+            $query->close();
+            if ( $respuesta > 0){
+                //REGISTRO AUDITORIA
+                $insertbitacora = "INSERT INTO bitacora (bit_tipeve, bit_fecope, bit_operador, bit_modulo, bit_detall) VALUES (?, ?, ?, ?, ?)";
+                $query = $conexion->prepare($insertbitacora);
+                $registro = 'MODIFICO';
+                $modulo = 'CONTRASEÑAS';
+                $hoy = date("Y-m-d");
+                $detalle = 'LOS DETALLES DEL EQUIPO ' . $datos['equipo'] . ' CON SERIAL ' . $datos['serial'];
+                $query->bind_param("ssiss", $registro, $hoy, $datos['idoperador'], $modulo, $detalle);
+                $respuesta = $query->execute();
+            }
+            return $respuesta;
+        }
+
     }
 
 ?>

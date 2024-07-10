@@ -104,9 +104,11 @@
 include "contraseñas/editarclave.php";
 include "contraseñas/editarfolder.php";
 include "contraseñas/editarcorreo.php";
+include "contraseñas/editarcredencial.php";
 include "contraseñas/newclave.php";
 include "contraseñas/newfolder.php";
 include "contraseñas/newcorreo.php";
+include "contraseñas/newcredencial.php";
 require('footer.php');
 ?>
 <!-- carga ficheros javascript -->
