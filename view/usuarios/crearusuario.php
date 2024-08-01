@@ -38,11 +38,10 @@
                                     <?php
                                     $sql="SELECT r.id_rol as idrol, r.rol_nombre as rol FROM roles as r";
                                     $respuesta = mysqli_query($conexion, $sql);
-                                    while($persona = mysqli_fetch_array($respuesta)) {
+                                    while($rol = mysqli_fetch_array($respuesta)) {
                                     ?>
-                                    <option value="<?php echo $persona['idrol']?>"><?php echo $persona['rol'];?></option>
+                                    <option value="<?php echo $rol['idrol']?>"><?php echo $rol['rol'];?></option>
                                     <?php }?>
-                                </select>
                                 </select>
                             </div>
                         </div>
@@ -51,11 +50,11 @@
                                 <select name="idsede" id="idsede" class="form-control input-sm">
                                     <option selected >Selecione Sede</option>
                                     <?php
-                                    $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s WHERE s.sed_estado = 1";
+                                    $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s";
                                     $respuesta = mysqli_query($conexion, $sql);
-                                    while($persona = mysqli_fetch_array($respuesta)) {
+                                    while($sede = mysqli_fetch_array($respuesta)) {
                                     ?>
-                                    <option value="<?php echo $persona['idsede']?>"><?php echo $persona['sede'];?></option>
+                                    <option value="<?php echo $sede['idsede']?>"><?php echo $sede['sede'];?></option>
                                     <?php }?>
                                 </select>
                             </div>
@@ -67,9 +66,9 @@
                                     <?php
                                     $sql="SELECT a.id_area as idarea, a.are_nombre as area FROM areas as a";
                                     $respuesta = mysqli_query($conexion, $sql);
-                                    while($persona = mysqli_fetch_array($respuesta)) {
+                                    while($area = mysqli_fetch_array($respuesta)) {
                                     ?>
-                                    <option value="<?php echo $persona['idarea']?>"><?php echo $persona['area'];?></option>
+                                    <option value="<?php echo $area['idarea']?>"><?php echo $area['area'];?></option>
                                     <?php }?>
                                 </select>
                             </div>

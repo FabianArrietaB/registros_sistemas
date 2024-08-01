@@ -12,37 +12,6 @@
                     <fieldset class="group-border">
                         <legend class="group-border">Informacion Equipo</legend>
                         <div class="row">
-                            <input hidden type="text" id="idtipequcel" name="idtipequcel" value="6" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Sede</span>
-                                    <select name="idsedecel" id="idsedecel" class="form-control input-sm">
-                                        <option value="">Seleccione Una Sede</option>
-                                        <?php
-                                        $sql="SELECT s.id_sede as idsede, s.sed_nombre as sede FROM sedes as s WHERE s.sed_estado = 1";
-                                        $respuesta = mysqli_query($conexion, $sql);
-                                        while($persona = mysqli_fetch_array($respuesta)) {
-                                        ?>
-                                        <option value="<?php echo $persona['idsede']?>"><?php echo $persona['sede'];?></option>
-                                        <?php }?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group mb-3">
-                                    <select name="idareacel" id="idareacel" class="form-control input-sm">
-                                        <option selected >Selecione Area</option>
-                                        <?php
-                                        $sql="SELECT a.id_area as idarea, a.are_nombre as area FROM areas as a";
-                                        $respuesta = mysqli_query($conexion, $sql);
-                                        while($persona = mysqli_fetch_array($respuesta)) {
-                                        ?>
-                                        <option value="<?php echo $persona['idarea']?>"><?php echo $persona['area'];?></option>
-                                        <?php }?>
-                                    </select>
-                                    <span class="input-group-text" id="inputGroup-sizing-default">Area</span>
-                                </div>
-                            </div>
                             <div class="col-4">
                                 <div class="input-group mb-3">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Marca</span>

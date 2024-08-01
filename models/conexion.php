@@ -12,16 +12,18 @@ class Conexion{
       return $conexion;
    }
 
-   // public function conectarbd(){
-   //    $servidor = "SERVIDOR";
-   //    $usuario = "si";
-   //    $password = ".Metropolis1943..";
-   //    # Puede ser 127.0.0.1 o el nombre de tu equipo; o la IP de un servidor remoto
-   //    $db = "METROCERAMICA";
-   //    $connectinfo = array( "Database"=>$db, "UID"=>$usuario, "PWD"=>$password);
-   //    $conexion = sqlsrv_connect($servidor, $connectinfo);
-   //    return $conexion;
-
-   // }
+   public function conectarBD(){
+      $servidor = "SERVIDOR";
+      $usuario  = "consulta";
+      $password = "Sistema2024";
+      $db       = "METROPOLIS_EXT";
+      try {
+         $conexion = new PDO("sqlsrv:server=$servidor;database=$db", $usuario, $password);
+         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      } catch (Exception $e) {
+         echo "Ocurrió un error con la base de datos: " . $e->getMessage();
+      }
+      return  $conexion;
+   }
 }
 ?>

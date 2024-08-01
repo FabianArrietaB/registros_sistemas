@@ -41,7 +41,6 @@
                                     <option value="<?php echo $rol['idrol']?>"><?php echo $rol['rol'];?></option>
                                     <?php }?>
                                 </select>
-                                </select>
                             </div>
                         </div>
                         <div class="col-12">
