@@ -6,11 +6,12 @@
                 <table class="table table-light text-center">
                     <thead>
                         <tr>
-                            <th scope="col" >Nombres</th>
-                            <th scope="col" >Bodega</th>
+                            <th scope="col" >NOMBRE</th>
+                            <th scope="col" >SEDE</th>
+                            <th scope="col" >ESTADO</th>
                         </tr>
                     </thead>
-                    <tbody id="usuarios">
+                    <tbody id="tablausuarios">
                     </tbody>
                 </table>
             </div>
