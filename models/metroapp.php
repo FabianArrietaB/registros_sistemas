@@ -35,5 +35,21 @@
             return $data;
         }
 
+        public function addremove($idusuario, $estado, $modulo){
+            $con = new Conexion();
+            if($estado == 1){
+                $estado = 0;
+            }else{
+                $estado = 1;
+            }
+            $sql = $con->conectarBD()->prepare("UPDATE usuario SET {$modulo} = ? WHERE id = ?");
+            $sql->execute(array($estado, $idusuario));
+            if($sql != null){
+                return 1;
+            }else{
+                return 0;
+            }
+        }
+
     }
 ?>
