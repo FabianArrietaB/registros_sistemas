@@ -3,7 +3,7 @@
     <div class="col-xs-12 col-sm-6 col-md-12">
         <div class="row student text-center" style="align-items: center">
             <div class="table-responsive">
-                <table class="table table-light text-center">
+                <table class="table table-light text-center"  id="productos">
                     <thead>
                         <tr>
                             <th scope="col" >#</th>
