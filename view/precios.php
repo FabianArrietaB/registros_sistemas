@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="title">
-                                <h2>INVENTARIO FOMPLUS</h2>
+                                <h2>LISTA PRECIOS FOMPLUS</h2>
                             </div>
                         </div>
                         <div class="col-5">

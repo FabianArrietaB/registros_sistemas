@@ -32,8 +32,7 @@
                         'COD_LINEA'     => $hoja->getCell("I$fila")->GetValue(),
                         'UNDMEDIDA'     => $hoja->getCell("J$fila")->GetValue(),
                         'ULTCOMPRA'     => $hoja->getCell("K$fila")->GetValue(),
-                        'VALORIVA'      => $hoja->getCell("L$fila")->GetValue(),
-                        'VALVENTA'      => $hoja->getCell("M$fila")->GetValue()
+                        'VALORIVA'      => $hoja->getCell("L$fila")->GetValue()
                 );
         }
 
@@ -49,8 +48,7 @@
                                                                 INV_LINEA,
                                                                 INV_UNDMED,
                                                                 INV_VALCOM,
-                                                                INV_PORIVA,
-                                                                INV_VALVEN)
+                                                                INV_PORIVA)
                                                         VALUES  (:REFERENCIA,
                                                                 :DESCRIPCION,
                                                                 :CODIGO,
@@ -59,8 +57,7 @@
                                                                 :COD_LINEA,
                                                                 :UNDMEDIDA,
                                                                 :ULTCOMPRA,
-                                                                :VALORIVA,
-                                                                :VALVENTA);");
+                                                                :VALORIVA);");
                 $stmt -> bindParam(":REFERENCIA",   $value['REFERENCIA'],       PDO::PARAM_STR);
                 $stmt -> bindParam(":DESCRIPCION",  $value['DESCRIPCION'],      PDO::PARAM_STR);
                 $stmt -> bindParam(":CODIGO",       $value['CODIGO'],           PDO::PARAM_STR);
@@ -70,7 +67,6 @@
                 $stmt -> bindParam(":UNDMEDIDA",    $value['UNDMEDIDA'],        PDO::PARAM_STR);
                 $stmt -> bindParam(":ULTCOMPRA",    $value['ULTCOMPRA'],        PDO::PARAM_STR);
                 $stmt -> bindParam(":VALORIVA",     $value['VALORIVA'],         PDO::PARAM_STR);
-                $stmt -> bindParam(":VALVENTA",     $value['VALVENTA'],         PDO::PARAM_STR);
 
                 /*en esta condicion verificamos que si
                 la cumple vaya contabilizando los productos */
