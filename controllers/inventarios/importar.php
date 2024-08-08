@@ -6,19 +6,20 @@
         //CONEXION A BASE DA DATOS
         $con = new Conexion();
         $conexion = $con->conectarFomplus();
-        // Ruta del archivo Excel
+        // CREANDO EL ARCHIVO
         $excel = $_FILES['files']['tmp_name'];
-        // Cargar el archivo Excel
+        // CARGANDO EL ARCHIVO
         $spreadsheet = IOFactory::load($excel);
-        // Seleccionar la primera hoja
+        // SELECCIONAR LA PRIMERA HOJA
         $hoja = $spreadsheet->getActiveSheet();
-        // Obtener el número total de filas y columnas
+        // TOTAL DE FILAS Y COLUMNAS
         $filas = $hoja->getHighestRow();
         $columnas = $hoja->getHighestColumn();
-        // Convertir la letra de la última columna a un índice numérico
+        // CREAR EL INDICE DEL ARCHIVO
         $index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($columnas);
-        // Iterar sobre las filas y columnas para leer los datos
+        //CONVIRTIENDO EN DATOS
         $data = array();
+        $data2 = array();
 
         for ($fila = 2; $fila <= $filas; $fila++) {
 

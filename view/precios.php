@@ -15,7 +15,7 @@
             <div class="card border-primary">
                 <div class="card-header text-center">
                     <div class="row">
-                        <div class="col-5">
+                        <div class="col-4">
                             <div class="title">
                                 <h2>INVENTARIO FOMPLUS</h2>
                             </div>
@@ -23,20 +23,17 @@
                         <div class="col-5">
                             <form action="#" id="form_file" enctype="multipart/form-data">
                                 <div class="input-group">
-                                    <input accept=".csv,.xlsx,.xls" id="files" name="files" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+                                    <input accept=".csv,.xlsx,.xls" id="precios" name="precios" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
                                     <button onclick="importar()" class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Cargar</button>
                                 </div>
                             </form>
                         </div>
-                        <div class="col-2">
-                            <a href="precios.php" class="btn btn-outline-primary" type="button">Precios</a>
+                        <div class="col-3">
+                            <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Escriba Referencia" aria-describedby="button-addon2">
                         </div>
                     </div>
-                    <form method="GET">
-                        <input class="form-control me-3" type="search" placeholder="Buscar" id="filtro" name="filtro">
-                    </form>
                     <div class="card-body">
-                        <div id="tblproductos"></div>
+                        <div id="tblprecios"></div>
                     </div>
                 </div>
             </div>
@@ -49,7 +46,7 @@
     include "footer.php";
 ?>
 <!-- carga ficheros javascript -->
-<script src="../public/js/inventarios.js"></script>
+<script src="../public/js/precios.js"></script>
 <?php
 }
 ?>

@@ -65,7 +65,7 @@ function tblproductos(){
                     </tr>
                 `
             });
-            document.getElementById('fplprodcutos').innerHTML = tbl
+            document.getElementById('fplproductos').innerHTML = tbl
         }
     });
 }
