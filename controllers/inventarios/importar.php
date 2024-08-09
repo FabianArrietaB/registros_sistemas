@@ -7,7 +7,7 @@
         $con = new Conexion();
         $conexion = $con->conectarFomplus();
         // CREANDO EL ARCHIVO
-        $excel = $_FILES['files']['tmp_name'];
+        $excel = $_FILES['productos']['tmp_name'];
         // CARGANDO EL ARCHIVO
         $spreadsheet = IOFactory::load($excel);
         // SELECCIONAR LA PRIMERA HOJA
@@ -19,7 +19,6 @@
         $index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($columnas);
         //CONVIRTIENDO EN DATOS
         $data = array();
-        $data2 = array();
 
         for ($fila = 2; $fila <= $filas; $fila++) {
 

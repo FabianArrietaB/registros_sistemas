@@ -7,7 +7,7 @@
         $con = new Conexion();
         $conexion = $con->conectarFomplus();
         // CREANDO EL ARCHIVO
-        $excel = $_FILES['files']['tmp_name'];
+        $excel = $_FILES['precios']['tmp_name'];
         // CARGANDO EL ARCHIVO
         $spreadsheet = IOFactory::load($excel);
         // SELECCIONAR LA PRIMERA HOJA
@@ -19,15 +19,14 @@
         $index = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($columnas);
         //CONVIRTIENDO EN DATOS
         $data = array();
-        $data2 = array();
 
         for ($fila = 2; $fila <= $filas; $fila++) {
 
                 $data[] = array(
-                        'REFERENCIA'    => $hoja->getCell("A$fila")->GetValue(),
-                        'DESCRIPCION'   => $hoja->getCell("B$fila")->GetValue(),
-                        'NOMBRE'        => $hoja->getCell("C$fila")->GetValue(),
-                        'VALOR'         => $hoja->getCell("D$fila")->GetValue(),
+                        'PRE_REFER'    => $hoja->getCell("A$fila")->GetValue(),
+                        'PRE_CODIGO'   => $hoja->getCell("B$fila")->GetValue(),
+                        'PRE_OBSERV'        => $hoja->getCell("C$fila")->GetValue(),
+                        'PRE_VALOR'         => $hoja->getCell("D$fila")->GetValue(),
                 );
         }
 
@@ -39,19 +38,18 @@
                                                                 PRE_CODIGO,
                                                                 PRE_OBSERV,
                                                                 PRE_VALOR)
-                                                        VALUES  (:REFERENCIA,
-                                                                :CODIGO,
-                                                                :DESCRIPCION,
-                                                                :VALOR);");
-                $stmt -> bindParam(":REFERENCIA",  $value['REFERENCIA'],  PDO::PARAM_STR);
-                $stmt -> bindParam(":CODIGO",      $value['CODIGO'],      PDO::PARAM_STR);
-                $stmt -> bindParam(":DESCRIPCION", $value['DESCRIPCION'], PDO::PARAM_STR);
-                $stmt -> bindParam(":VALOR",       $value['VALOR'],       PDO::PARAM_STR);
+                                                        VALUES  (:PRE_REFER,
+                                                                :PRE_CODIGO,
+                                                                :PRE_OBSERV,
+                                                                :PRE_VALOR);");
+                $stmt -> bindParam(":PRE_REFER",       $value['PRE_REFER'],  PDO::PARAM_STR);
+                $stmt -> bindParam(":PRE_CODIGO",      $value['PRE_CODIGO'],      PDO::PARAM_STR);
+                $stmt -> bindParam(":PRE_OBSERV",      $value['PRE_OBSERV'], PDO::PARAM_STR);
+                $stmt -> bindParam(":PRE_VALOR",       $value['PRE_VALOR'],       PDO::PARAM_STR);
 
                 /*en esta condicion verificamos que si
                 la cumple vaya contabilizando los productos */
                 $productos += ($stmt->execute()) ? 1 : 0;
-                $total = $productos / 3;
         }
 
         header('Content-Type: application/json');

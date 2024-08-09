@@ -24,7 +24,7 @@
                             <form action="#" id="form_file" enctype="multipart/form-data">
                                 <div class="input-group">
                                     <input accept=".csv,.xlsx,.xls" id="precios" name="precios" type="file" class="form-control" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-                                    <button onclick="importar()" class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Cargar</button>
+                                    <button onclick="importarprecios()" class="btn btn-outline-success" type="button" id="inputGroupFileAddon04">Cargar</button>
                                 </div>
                             </form>
                         </div>
@@ -38,7 +38,7 @@
                 </div>
             </div>
         </div>
-    </div>>
+    </div>
 </div>
 <!-- fin del contenido principal -->
 <!-- por ultimo se carga el footer -->

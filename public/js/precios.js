@@ -43,7 +43,10 @@ $('#referencia').keypress(function(e) {
                 //console.log(data);
                 let tbl = '';
                 data.forEach((item, index) => {
-                    tbl += `
+                    if(item === ""){
+                        tbl += '<tr><td colspan="4">No hay datos</td></tr>';
+                    }else{
+                        tbl += `
                         <tr class="bg-white border-b">
                             <td style="width: 10%" class="text-center">${++index}</td>
                             <td style="width: 10%" class="text-center">${item.PRODUCTO}</td>
@@ -51,6 +54,7 @@ $('#referencia').keypress(function(e) {
                             <td class="text-center" style="width: 10%" >${item.LISTA_PRECIO}</td>
                         </tr>
                     `
+                    }
                 });
                 document.getElementById('fplprecios').innerHTML = tbl
             }
@@ -58,7 +62,7 @@ $('#referencia').keypress(function(e) {
     }
 });
 
-function importar() {
+function importarprecios() {
     var excel = $("#precios").val();
     if(excel === ""){
         Swal.fire({
@@ -81,16 +85,16 @@ function importar() {
                 icon: 'info',
                 title: 'Cargando Datos',
                 showConfirmButton: false,
-                timer: 5000
+                timer: 8000
             });
         },
         success: function (resp){
             Swal.fire({
                 icon: 'success',
                 title: 'Datos Cargados',
-                text: 'Se cargaron ' + resp.productos + " Productos",
+                text: 'Se cargaron ' + resp.productos + " Movimientos",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 5000
             });
         }
     });

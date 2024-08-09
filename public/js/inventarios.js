@@ -70,8 +70,8 @@ function tblproductos(){
     });
 }
 
-function importar() {
-    var excel = $("#files").val();
+function importarproductos() {
+    var excel = $("#productos").val();
     if(excel === ""){
         Swal.fire({
             icon: 'error',
@@ -93,7 +93,7 @@ function importar() {
                 icon: 'info',
                 title: 'Cargando Datos',
                 showConfirmButton: false,
-                timer: 5000
+                timer: 8000
             });
         },
         success: function (resp){
@@ -102,7 +102,7 @@ function importar() {
                 title: 'Datos Cargados',
                 text: 'Se cargaron ' + resp.productos + " Productos",
                 showConfirmButton: false,
-                timer: 2000
+                timer: 5000
             });
         }
     });
