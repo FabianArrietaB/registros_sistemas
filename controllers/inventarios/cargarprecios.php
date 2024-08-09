@@ -53,6 +53,6 @@
         }
 
         header('Content-Type: application/json');
-        echo json_encode(array('productos' => $total, 'data' => $data));
+        echo json_encode(array('productos' => $productos, 'data' => $data));
 
 ?>
