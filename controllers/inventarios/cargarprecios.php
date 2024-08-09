@@ -50,10 +50,9 @@
                 /*en esta condicion verificamos que si
                 la cumple vaya contabilizando los productos */
                 $productos += ($stmt->execute()) ? 1 : 0;
-                $totalproductos = $productos / 3;
         }
 
         header('Content-Type: application/json');
-        echo json_encode(array('productos' => $totalproductos, 'data' => $data));
+        echo json_encode(array('productos' => $productos, 'data' => $data));
 
 ?>
