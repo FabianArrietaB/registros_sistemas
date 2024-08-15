@@ -95,9 +95,9 @@ function permisos(id){
             }
 
             if(item.costo == 1){
-                costo = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.costo}','costo')">INVENTARIOS</button>`
+                costo = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.costo}','costo')">CONTEOS</button>`
             }else{
-                costo = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.costo}','costo')">INVENTARIOS</button>`
+                costo = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.costo}','costo')">CONTEOS</button>`
             }
 
             if(item.cartera == 1){
