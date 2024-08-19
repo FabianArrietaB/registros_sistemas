@@ -7,6 +7,7 @@
     $sql = "SELECT
         c.id_credencial AS idcredencial,
         c.cre_dominio   AS dominio,
+        c.cre_url       AS url,
         c.cre_usuario   AS usuario,
         c.cre_password  AS password,
         c.id_operador   AS idoperador,
@@ -30,7 +31,7 @@
             <tr>
                 <th scope="col" >AREA</th>
                 <th scope="col" >SEDE</th>
-                <th scope="col" >DOMINIO</th>
+                <th scope="col" >DOMINIO - URL</th>
                 <th scope="col" >USUARIO</th>
                 <th scope="col" >CONTRASEÑA</th>
                 <th scope="col" >ESTADO</th>
@@ -48,7 +49,7 @@
             <tr>
                 <td><?php echo $credencial['area'];?></td>
                 <td><?php echo $credencial['sede'];?></td>
-                <td><?php echo $credencial['dominio'];?></td>
+                <td><?= $credencial['dominio'] . ' - ' . $credencial['url'];?></td>
                 <td><?php echo $credencial['usuario'];?></td>
                 <td><?php echo $credencial['password'];?></td>
                 <td>
