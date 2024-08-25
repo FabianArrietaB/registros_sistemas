@@ -185,9 +185,9 @@ function permisos(id){
             }
 
             if(item.logistica == 1){
-                logistica = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.logistica}','logistica')">GASTOS LOGISTICA</button>`
+                logistica = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.logistica}','logistica')">LOGISTICA</button>`
             }else{
-                logistica = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.logistica}','logistica')">GASTOS LOGISTICA</button>`
+                logistica = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.logistica}','logistica')">LOGISTICA</button>`
             }
 
             if(item.ajuste_contabilidad == 1){
