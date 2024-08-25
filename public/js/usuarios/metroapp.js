@@ -247,13 +247,13 @@ function permisos(id){
                         <h3>LISTA PERMISOS</h3>
                     </div>
                     <div class="col-md-4">
-                        <div class="d-grid gap-2">
-                        ${precio}
+                    <div class="d-grid gap-2">
+                        ${costo}
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="d-grid gap-2">
-                        ${costo}
+                        ${precio}
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -273,7 +273,7 @@ function permisos(id){
                     </div>
                     <div class="col-md-4">
                         <div class="d-grid gap-2">
-                        ${compra}
+                        ${pedidos}
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -283,7 +283,22 @@ function permisos(id){
                     </div>
                     <div class="col-md-4">
                         <div class="d-grid gap-2">
+                        ${compra}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-grid gap-2">
                         ${impresion}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-grid gap-2">
+                        ${logistica}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-grid gap-2">
+                        ${traslado}
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -293,7 +308,7 @@ function permisos(id){
                     </div>
                     <div class="col-md-4">
                         <div class="d-grid gap-2">
-                        ${traslado}
+                        ${codebar}
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -316,11 +331,7 @@ function permisos(id){
                         ${brilla}
                         </div>
                     </div>
-                    <div class="col-md-4">
-                        <div class="d-grid gap-2">
-                        ${logistica}
-                        </div>
-                    </div>
+                    
                     <div class="col-md-4">
                         <div class="d-grid gap-2">
                         ${adjcontabilidad}
