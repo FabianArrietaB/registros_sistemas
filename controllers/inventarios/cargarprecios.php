@@ -25,8 +25,8 @@
                 $data[] = array(
                         'PRE_REFER'    => $hoja->getCell("A$fila")->GetValue(),
                         'PRE_CODIGO'   => $hoja->getCell("B$fila")->GetValue(),
-                        'PRE_OBSERV'        => $hoja->getCell("C$fila")->GetValue(),
-                        'PRE_VALOR'         => $hoja->getCell("D$fila")->GetValue(),
+                        'PRE_OBSERV'   => $hoja->getCell("C$fila")->GetValue(),
+                        'PRE_VALOR'    => $hoja->getCell("D$fila")->GetValue(),
                 );
         }
 
