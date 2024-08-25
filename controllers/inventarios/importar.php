@@ -26,12 +26,12 @@
                         'REFERENCIA'    => $hoja->getCell("A$fila")->GetValue(),
                         'DESCRIPCION'   => $hoja->getCell("B$fila")->GetValue(),
                         'CODIGO'        => $hoja->getCell("C$fila")->GetValue(),
-                        'COD_CLASE'     => $hoja->getCell("E$fila")->GetValue(),
-                        'COD_GRUPO'     => $hoja->getCell("G$fila")->GetValue(),
-                        'COD_LINEA'     => $hoja->getCell("I$fila")->GetValue(),
-                        'UNDMEDIDA'     => $hoja->getCell("J$fila")->GetValue(),
-                        'ULTCOMPRA'     => $hoja->getCell("K$fila")->GetValue(),
-                        'VALORIVA'      => $hoja->getCell("L$fila")->GetValue()
+                        'COD_CLASE'     => $hoja->getCell("D$fila")->GetValue(),
+                        'COD_GRUPO'     => $hoja->getCell("E$fila")->GetValue(),
+                        'COD_LINEA'     => $hoja->getCell("F$fila")->GetValue(),
+                        'UNDMEDIDA'     => $hoja->getCell("H$fila")->GetValue(),
+                        'ULTCOMPRA'     => $hoja->getCell("I$fila")->GetValue(),
+                        'VALORIVA'      => $hoja->getCell("J$fila")->GetValue()
                 );
         }
 
