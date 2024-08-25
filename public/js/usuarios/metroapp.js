@@ -148,6 +148,12 @@ function permisos(id){
                 sessiones = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.sesiones}','sesiones')">SESSIONES</button>`
             }
 
+            if(item.codebar == 1){
+                codebar = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.codebar}','traslado')">CODIGO BARRAS</button>`
+            }else{
+                codebar = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.codebar}','traslado')">CODIGO BARRAS</button>`
+            }
+
             if(item.traslado == 1){
                 traslado = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.traslado}','traslado')">TRASLADOS</button>`
             }else{
