@@ -149,9 +149,9 @@ function permisos(id){
             }
 
             if(item.codebar == 1){
-                codebar = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.codebar}','traslado')">CODIGO BARRAS</button>`
+                codebar = `<button type="button" class="btn btn-success btn-sm" onclick="addremove('${item.id}', '${item.codebar}','codebar')">CODIGO BARRAS</button>`
             }else{
-                codebar = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.codebar}','traslado')">CODIGO BARRAS</button>`
+                codebar = `<button type="button" class="btn btn-outline-danger btn-sm" onclick="addremove('${item.id}', '${item.codebar}','codebar')">CODIGO BARRAS</button>`
             }
 
             if(item.traslado == 1){

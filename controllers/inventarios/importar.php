@@ -25,13 +25,12 @@
                 $data[] = array(
                         'REFERENCIA'    => $hoja->getCell("A$fila")->GetValue(),
                         'DESCRIPCION'   => $hoja->getCell("B$fila")->GetValue(),
-                        'CODIGO'        => $hoja->getCell("C$fila")->GetValue(),
-                        'COD_CLASE'     => $hoja->getCell("D$fila")->GetValue(),
-                        'COD_GRUPO'     => $hoja->getCell("E$fila")->GetValue(),
-                        'COD_LINEA'     => $hoja->getCell("F$fila")->GetValue(),
-                        'UNDMEDIDA'     => $hoja->getCell("H$fila")->GetValue(),
-                        'ULTCOMPRA'     => $hoja->getCell("I$fila")->GetValue(),
-                        'VALORIVA'      => $hoja->getCell("J$fila")->GetValue()
+                        'COD_CLASE'     => $hoja->getCell("C$fila")->GetValue(),
+                        'COD_GRUPO'     => $hoja->getCell("D$fila")->GetValue(),
+                        'COD_LINEA'     => $hoja->getCell("E$fila")->GetValue(),
+                        'UNDMEDIDA'     => $hoja->getCell("F$fila")->GetValue(),
+                        'ULTCOMPRA'     => $hoja->getCell("G$fila")->GetValue(),
+                        'VALORIVA'      => $hoja->getCell("H$fila")->GetValue()
                 );
         }
 
@@ -41,7 +40,6 @@
         foreach ($data as $value) {
         $stmt = $conexion->prepare("INSERT INTO MAEINV (INV_REFER,
                                                                 INV_NOMBRE,
-                                                                INV_CODIGO,
                                                                 INV_CLASE,
                                                                 INV_GRUPO,
                                                                 INV_LINEA,
@@ -50,7 +48,6 @@
                                                                 INV_PORIVA)
                                                         VALUES  (:REFERENCIA,
                                                                 :DESCRIPCION,
-                                                                :CODIGO,
                                                                 :COD_CLASE,
                                                                 :COD_GRUPO,
                                                                 :COD_LINEA,
@@ -59,7 +56,6 @@
                                                                 :VALORIVA);");
                 $stmt -> bindParam(":REFERENCIA",   $value['REFERENCIA'],       PDO::PARAM_STR);
                 $stmt -> bindParam(":DESCRIPCION",  $value['DESCRIPCION'],      PDO::PARAM_STR);
-                $stmt -> bindParam(":CODIGO",       $value['CODIGO'],           PDO::PARAM_STR);
                 $stmt -> bindParam(":COD_CLASE",    $value['COD_CLASE'],        PDO::PARAM_STR);
                 $stmt -> bindParam(":COD_GRUPO",    $value['COD_GRUPO'],        PDO::PARAM_STR);
                 $stmt -> bindParam(":COD_LINEA",    $value['COD_LINEA'],        PDO::PARAM_STR);
