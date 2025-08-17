@@ -5,18 +5,18 @@ class Conexion{
 
    public function conectar(){
       $servidor = "localhost";
-      $usuario = "root";
+      $usuario = "";
       $password = "";
-      $db = "sistemas";
+      $db = "";
       $conexion = mysqli_connect($servidor, $usuario, $password, $db);
       return $conexion;
    }
 
    public function conectarBD(){
       $servidor = "SERVIDOR";
-      $usuario  = "consulta";
-      $password = "Sistema2024";
-      $db       = "METROPOLIS_EXT";
+      $usuario  = "";
+      $password = "";
+      $db       = "";
       try {
          $conexion = new PDO("sqlsrv:server=$servidor;database=$db", $usuario, $password);
          $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -28,9 +28,9 @@ class Conexion{
 
    public function conectarFomplus(){
       $servidor = "SERVIDOR";
-      $usuario  = "consulta";
-      $password = "Sistema2024";
-      $db       = "METROCERAMICA";
+      $usuario  = "";
+      $password = "";
+      $db       = "";
       try {
          $conexion = new PDO("sqlsrv:server=$servidor;database=$db", $usuario, $password);
          $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
